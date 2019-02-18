@@ -34,12 +34,13 @@ public class AstroidPlugin implements IGamePluginService{
     private Entity createAstroidShip(GameData gameData) {
 
         float deacceleration = 10;
-        float acceleration = 200;
-        float maxSpeed = 300;
-        float rotationSpeed = 5;
+        float acceleration = 75;
+        float maxSpeed = 60;
+        float rotationSpeed = 0.1f;
         float x = gameData.getDisplayWidth() / 2 + gameData.getDisplayWidth() / 4;
         float y = gameData.getDisplayHeight() / 2 + gameData.getDisplayHeight() / 4;
-        float radians = 3.1415f / 2;
+        float radians =  (float) (Math.random() * (3.1415f * 2));
+//        float radians = 3.1415f / 2;
         
         Entity astroidShip = new Astroid();
         astroidShip.add(new MovingPart(deacceleration, acceleration, maxSpeed, rotationSpeed));
