@@ -143,43 +143,43 @@ public class Enemy extends SpaceObject {
                 switch (r) {
                     case 1:
                         setLeft(true);
-                        System.out.println(r);
+                        //System.out.println(r);
                         break;
                     case 2:
                         setLeft(false);
-                        System.out.println(r);
+                        //System.out.println(r);
                         break;
                     case 3:
                         setRight(true);
-                        System.out.println(r);
+                        //System.out.println(r);
                         break;
                     case 4:
                         setRight(false);
-                        System.out.println(r);
+                        //System.out.println(r);
                         break;
                     case 5:
                         setUp(true);
-                        System.out.println(r);
+                        //System.out.println(r);
                         break;
                     case 6:
                         setUp(true);
-                        System.out.println(r); 
+                        //System.out.println(r); 
                         break;
                     case 7:
                         shoot();
-                        System.out.println(r); 
+                        //System.out.println(r); 
                         break;
                     case 8:
                         shoot();
-                        System.out.println(r);
+                        //System.out.println(r);
                         break;
                     case 9:
                         shoot();
-                        System.out.println(r);  
+                        //System.out.println(r);  
                         break;
                     case 10:
                         shoot();
-                        System.out.println(r); 
+                        //System.out.println(r); 
                         break;
                 }
                 try {
