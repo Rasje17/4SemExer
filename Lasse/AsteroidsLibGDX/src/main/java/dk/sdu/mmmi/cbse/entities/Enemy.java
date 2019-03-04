@@ -4,21 +4,27 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import dk.sdu.mmmi.cbse.main.Game;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Enemy extends SpaceObject{
+public class Enemy extends SpaceObject {
+
+    private final int MAX_BULLETS = 4;
 
     private boolean left;
     private boolean right;
     private boolean up;
-    private boolean shoot;
+    
+    private ArrayList<Bullet> bullets;
 
     private float maxSpeed;
     private float acceleration;
     private float deceleration;
 
-    public Enemy() {
+    public Enemy(ArrayList<Bullet> bullets) {
+        
+        this.bullets = bullets;
 
         x = Game.WIDTH / 3;
         y = Game.HEIGHT / 3;
@@ -35,7 +41,6 @@ public class Enemy extends SpaceObject{
         AI ai = new AI();
         Thread t = new Thread(ai);
         t.start();
-
 
     }
 
@@ -64,9 +69,10 @@ public class Enemy extends SpaceObject{
     public void setUp(boolean b) {
         up = b;
     }
-    
-    public void setShoot(boolean b){
-        shoot = b;
+
+    public void shoot() {
+    if (bullets.size() == MAX_BULLETS) return;
+        bullets.add(new Bullet(x, y, radians));
     }
 
     public void update(float dt) {
@@ -109,7 +115,7 @@ public class Enemy extends SpaceObject{
 
     public void draw(ShapeRenderer sr) {
 
-        sr.setColor(1, 1, 1, 1);
+        sr.setColor(255, 255, 0, 1);
 
         sr.begin(ShapeType.Line);
 
@@ -125,55 +131,64 @@ public class Enemy extends SpaceObject{
 
     }
 
-  
-
-    private class AI implements Runnable{
+    private class AI implements Runnable {
 
         public AI() {
         }
-          @Override
-    public void run() {
-        while (true) {
-            int r = (int) (1 + Math.random() * 9);
-            switch (r) {
-                case 1:
-                    setLeft(true);
-                    break;
-                case 2:
-                    setLeft(false);
-                    break;
-                case 3:
-                    setRight(true);
-                    break;
-                case 4:
-                    setRight(false);
-                    break;
-                case 5:
-                    setUp(true);
-                    break;
-                case 6:
-                    setUp(true);
-                    break;
-                case 7:
-                    setShoot(true);
-                    break;
-                case 8:
-                    setShoot(false);
-                    break;
-                case 9:
-                    setUp(false);
-                    break;
-                case 10:
-                    setUp(false);
-                    break;
+
+        @Override
+        public void run() {
+            while (true) {
+                int r = (int) (1 + Math.random() * 9);
+                switch (r) {
+                    case 1:
+                        setLeft(true);
+                        //System.out.println(r);
+                        break;
+                    case 2:
+                        setLeft(false);
+                        //System.out.println(r);
+                        break;
+                    case 3:
+                        setRight(true);
+                        //System.out.println(r);
+                        break;
+                    case 4:
+                        setRight(false);
+                        //System.out.println(r);
+                        break;
+                    case 5:
+                        setUp(true);
+                        //System.out.println(r);
+                        break;
+                    case 6:
+                        setUp(true);
+                        //System.out.println(r); 
+                        break;
+                    case 7:
+                        shoot();
+                        //System.out.println(r); 
+                        break;
+                    case 8:
+                        shoot();
+                        //System.out.println(r);
+                        break;
+                    case 9:
+                        shoot();
+                        //System.out.println(r);  
+                        break;
+                    case 10:
+                        shoot();
+                        //System.out.println(r); 
+                        break;
+                }
+                try {
+                    Thread.sleep(600);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Enemy.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-//            try {
-//                wait(1000);
-//            } catch (InterruptedException ex) {
-//                Logger.getLogger(Enemy.class.getName()).log(Level.SEVERE, null, ex);
-//            }
         }
-    }
     }
 
 }

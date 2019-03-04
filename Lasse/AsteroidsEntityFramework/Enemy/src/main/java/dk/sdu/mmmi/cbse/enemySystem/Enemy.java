@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dk.sdu.mmmi.cbse.enemySystem;
+package dk.sdu.mmmi.cbse.enemysystem;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
-/**
- *
- * @author Pottemuld
- */
+import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
+
 public class Enemy extends Entity {
     
 }
