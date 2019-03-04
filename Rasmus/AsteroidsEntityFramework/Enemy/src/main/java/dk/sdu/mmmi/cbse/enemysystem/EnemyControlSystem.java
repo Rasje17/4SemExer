@@ -27,9 +27,49 @@ public class EnemyControlSystem implements IEntityProcessingService {
             PositionPart positionPart = enemy.getPart(PositionPart.class);
             MovingPart movingPart = enemy.getPart(MovingPart.class);
 
-            movingPart.setLeft(gameData.getKeys().isDown(LEFT));
-            movingPart.setRight(gameData.getKeys().isDown(RIGHT));
-            movingPart.setUp(gameData.getKeys().isDown(UP));
+            int r = (int) (1 + Math.random() * 9);
+            switch (r) {
+                case 1:
+                    movingPart.setLeft(true);
+                    System.out.println(r);
+                    break;
+                case 2:
+                    movingPart.setLeft(false);
+                    System.out.println(r);
+                    break;
+                case 3:
+                    movingPart.setRight(true);
+                    System.out.println(r);
+                    break;
+                case 4:
+                    movingPart.setRight(false);
+                    System.out.println(r);
+                    break;
+                case 5:
+                    movingPart.setUp(true);
+                    System.out.println(r);
+                    break;
+                case 6:
+                    movingPart.setUp(true);
+                    System.out.println(r);
+                    break;
+                case 7:
+//                        shoot();
+//                        System.out.println(r); 
+                    break;
+                case 8:
+//                        shoot();
+                    System.out.println(r);
+                    break;
+                case 9:
+//                        shoot();
+                    System.out.println(r);
+                    break;
+                case 10:
+//                        shoot();
+                    System.out.println(r);
+                    break;
+            }
 
             movingPart.process(gameData, enemy);
             positionPart.process(gameData, enemy);

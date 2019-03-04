@@ -20,9 +20,12 @@ import dk.sdu.mmmi.cbse.enemysystem.EnemyPlugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game
-        implements ApplicationListener {
+public class Game implements ApplicationListener {
 
+            float r = 1;
+            float g = 1;
+            float b = 1;
+            
     private static OrthographicCamera cam;
     private ShapeRenderer sr;
 
@@ -93,8 +96,17 @@ public class Game
 
     private void draw() {
         for (Entity entity : world.getEntities()) {
+            
+//            float r = (int) (Math.random()*255);
+//            float g = (int) (Math.random()*255);
+//            float b = (int) (Math.random()*255);
+//            System.out.println("r: " + r);
 
-            sr.setColor(1, 1, 1, 1);
+
+            sr.setColor(r, g, b, 1);
+//            r= (r+1)%256;
+//            g = (g+1)%256;
+//            b = (b+1)%256;
 
             sr.begin(ShapeRenderer.ShapeType.Line);
 
@@ -128,3 +140,4 @@ public class Game
     public void dispose() {
     }
 }
+
