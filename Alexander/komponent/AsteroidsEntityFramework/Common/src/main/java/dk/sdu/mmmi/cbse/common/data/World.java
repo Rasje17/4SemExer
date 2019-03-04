@@ -26,11 +26,20 @@ public class World {
     public void removeEntity(Entity entity) {
         entityMap.remove(entity.getID());
     }
-    
+/**
+ * 
+ * @return entityMap
+ */
     public Collection<Entity> getEntities() {
         return entityMap.values();
     }
 
+    /**
+     * 
+     * @param <E>
+     * @param entityTypes
+     * @return list of all entities
+     */
     public <E extends Entity> List<Entity> getEntities(Class<E>... entityTypes) {
         List<Entity> r = new ArrayList<>();
         for (Entity e : getEntities()) {
