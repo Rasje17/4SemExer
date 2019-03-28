@@ -23,6 +23,7 @@
                     <useOSGiDependencies>true</useOSGiDependencies>
                     <publicPackages>
                         <publicPackage>sem4.common.data</publicPackage>
+                        <publicPackage>sem4.common.data.entityparts</publicPackage>
                         <publicPackage>sem4.common.events</publicPackage>
                         <publicPackage>sem4.common.services</publicPackage>
                     </publicPackages>

@@ -14,11 +14,15 @@ import sem4.common.data.World;
 import sem4.common.data.entityparts.MovingPart;
 import sem4.common.data.entityparts.PositionPart;
 import sem4.common.services.IEntityProcessingService;
+import org.openide.util.lookup.ServiceProvider;
+import org.openide.util.lookup.ServiceProviders;
 
 /**
  *
  * @author rasmus
  */
+@ServiceProviders(value = {
+    @ServiceProvider(service = IEntityProcessingService.class),})
 public class AstroidControlSystem implements IEntityProcessingService {
 
    @Override
