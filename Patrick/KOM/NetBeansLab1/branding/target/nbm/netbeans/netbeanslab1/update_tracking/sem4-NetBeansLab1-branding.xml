@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="sem4.NetBeansLab1.branding">
+    <module_version install_time="1553177371437" last="true" origin="installer" specification_version="1.0">
+        <file crc="3014286809" name="config/Modules/sem4-NetBeansLab1-branding.xml"/>
+        <file crc="68085771" name="core/locale/core_netbeanslab1.jar"/>
+        <file crc="4065042847" name="modules/locale/org-netbeans-core-windows_netbeanslab1.jar"/>
+        <file crc="4237472510" name="modules/locale/org-netbeans-core_netbeanslab1.jar"/>
+        <file crc="527028982" name="modules/sem4-NetBeansLab1-branding.jar"/>
+    </module_version>
+</module>
