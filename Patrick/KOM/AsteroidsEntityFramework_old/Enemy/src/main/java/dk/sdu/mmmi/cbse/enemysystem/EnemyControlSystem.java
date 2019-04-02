@@ -1,13 +1,24 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package dk.sdu.mmmi.cbse.enemysystem;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
+import static dk.sdu.mmmi.cbse.common.data.GameKeys.LEFT;
+import static dk.sdu.mmmi.cbse.common.data.GameKeys.RIGHT;
+import static dk.sdu.mmmi.cbse.common.data.GameKeys.UP;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import java.util.Random;
 
+/**
+ *
+ * @author rasmus
+ */
 public class EnemyControlSystem implements IEntityProcessingService {
 
     @Override
@@ -16,42 +27,10 @@ public class EnemyControlSystem implements IEntityProcessingService {
             PositionPart positionPart = enemy.getPart(PositionPart.class);
             MovingPart movingPart = enemy.getPart(MovingPart.class);
 
-            Random rand = new Random();
-            int r = rand.nextInt(10);
-            System.out.println(r);
-            switch (r) {
-                case 0:
-                    movingPart.setLeft(true);
-                    break;
-                case 1:
-                    movingPart.setLeft(false);
-                    break;
-                case 2:
-                    movingPart.setRight(true);
-                    break;
-                case 3:
-                    movingPart.setRight(false);
-                    break;
-                case 4:
-                    movingPart.setUp(false);
-                    break;
-                case 5:
-                    movingPart.setUp(true);
-                    break;
-                case 6:
-                    movingPart.setUp(true);
-                    break;
-                case 7:
-                    movingPart.setUp(true);
-                    break;
-                case 8:
-//                    shoot();
-                    break;
-                case 9:
-//                    shoot();
-                    break;
-            }
-            
+            movingPart.setLeft(gameData.getKeys().isDown(LEFT));
+            movingPart.setRight(gameData.getKeys().isDown(RIGHT));
+            movingPart.setUp(gameData.getKeys().isDown(UP));
+
             movingPart.process(gameData, enemy);
             positionPart.process(gameData, enemy);
 
@@ -82,4 +61,5 @@ public class EnemyControlSystem implements IEntityProcessingService {
         entity.setShapeX(shapex);
         entity.setShapeY(shapey);
     }
+
 }

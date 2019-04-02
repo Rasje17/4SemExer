@@ -5,22 +5,23 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import dk.sdu.mmmi.cbse.asteroid.AsteroidControlSystem;
-import dk.sdu.mmmi.cbse.asteroid.AsteroidPlugin;
+import dk.sdu.mmmi.cbse.astoid.AstroidControlSystem;
+import dk.sdu.mmmi.cbse.astoid.AstroidPlugin;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
+import dk.sdu.mmmi.cbse.enemysystem.EnemyControlSystem;
 import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
 import dk.sdu.mmmi.cbse.playersystem.PlayerPlugin;
 import dk.sdu.mmmi.cbse.playersystem.PlayerControlSystem;
 import dk.sdu.mmmi.cbse.enemysystem.EnemyPlugin;
-import dk.sdu.mmmi.cbse.enemysystem.EnemyControlSystem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game implements ApplicationListener {
+public class Game
+        implements ApplicationListener {
 
     private static OrthographicCamera cam;
     private ShapeRenderer sr;
@@ -56,10 +57,10 @@ public class Game implements ApplicationListener {
         entityPlugins.add(enemyPlugin);
         entityProcessors.add(enemyProcess);
         
-        IGamePluginService asteroidPlugin = new AsteroidPlugin();
-        IEntityProcessingService asteroidProcess = new AsteroidControlSystem();
-        entityPlugins.add(asteroidPlugin);
-        entityProcessors.add(asteroidProcess);
+        IGamePluginService astroidPlugin = new AstroidPlugin();
+        IEntityProcessingService astroidProcess = new AstroidControlSystem();
+        entityPlugins.add(astroidPlugin);
+        entityProcessors.add(astroidProcess);
         
         // Lookup all Game Plugins using ServiceLoader
         for (IGamePluginService iGamePlugin : entityPlugins) {
