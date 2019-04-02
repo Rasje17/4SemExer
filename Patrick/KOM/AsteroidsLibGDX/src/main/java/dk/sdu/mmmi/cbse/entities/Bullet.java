@@ -1,60 +1,59 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dk.sdu.mmmi.cbse.entities;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 
 public class Bullet extends SpaceObject {
     
-    private float lifeTime;
-    private float lifeTimer;
+    private float speed = 400;
     
-    private boolean remove;
-    
-    public Bullet(float x, float y, float radiance){
+    public Bullet(float x, float y, float heading) {
         this.x = x;
         this.y = y;
-        this.radians = radiance;
+        this.radians = heading;
         
-        float speed = 350;
+        shapex = new float[2];
+	shapey = new float[2];
+        
         dx = MathUtils.cos(radians) * speed;
         dy = MathUtils.sin(radians) * speed;
-        
-        width = height = 2;
-        
-        lifeTimer = 0;
-        lifeTime = 1;
+
     }
     
-    public boolean shouldRemove(){
-        return remove;
+    private void setShape() {
+        shapex[0] = x + MathUtils.cos(radians) * 3;
+        shapey[0] = y + MathUtils.sin(radians) * 3;
+
+        shapex[1] = x + MathUtils.cos(radians - 3.1415f) * 3;
+        shapey[1] = y + MathUtils.sin(radians - 3.1145f) * 3;
     }
     
-    public void update(float dt){
+    public void update(float dt) {
         
-        x += dx*dt;
-        y += dy*dt;
+        x += dx * dt;
+        y += dy * dt;
+        
+        setShape();
         
         wrap();
         
-        lifeTimer += dt;
-        if(lifeTimer > lifeTime){
-            remove = true;
-        }
-        
     }
     
-    public void draw(ShapeRenderer sr){
+    public void draw(ShapeRenderer sr) {
+
         sr.setColor(1, 1, 1, 1);
-        sr.begin(ShapeType.Line);
-        sr.circle(x-width/2, y-height/2, width/2);
+
+        sr.begin(ShapeRenderer.ShapeType.Line);
+
+        for (int i = 0, j = shapex.length - 1;
+                i < shapex.length;
+                j = i++) {
+
+            sr.line(shapex[i], shapey[i], shapex[j], shapey[j]);
+
+        }
+
         sr.end();
-        
+
     }
-    
 }

@@ -8,22 +8,20 @@ import java.util.ArrayList;
 
 public class Player extends SpaceObject {
 
-    private final int MAX_BULLETS =4;
-    
     private boolean left;
     private boolean right;
     private boolean up;
-    
-    private ArrayList<Bullet> bullets;
 
     private float maxSpeed;
     private float acceleration;
     private float deceleration;
 
-    public Player(ArrayList<Bullet> bullets) {
+    private ArrayList<Bullet> bullets;
 
-        this.bullets = bullets;
+    public Player() {
 
+        bullets = new ArrayList<Bullet>();
+        
         x = Game.WIDTH / 2;
         y = Game.HEIGHT / 2;
 
@@ -64,10 +62,13 @@ public class Player extends SpaceObject {
     public void setUp(boolean b) {
         up = b;
     }
-
-    public void shoot(){
-        if (bullets.size() == MAX_BULLETS) return;
-        bullets.add(new Bullet(x, y, radians));
+    
+    public void shoot() {
+        bullets.add(new Bullet(shapex[0], shapey[0], radians));
+    }
+    
+    public ArrayList<Bullet> getBullets() {
+        return bullets;
     }
 
     public void update(float dt) {

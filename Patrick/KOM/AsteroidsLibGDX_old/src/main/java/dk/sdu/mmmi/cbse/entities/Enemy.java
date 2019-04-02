@@ -5,32 +5,29 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import dk.sdu.mmmi.cbse.main.Game;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Enemy extends SpaceObject {
 
+    private final int MAX_BULLETS = 4;
+
     private boolean left;
     private boolean right;
     private boolean up;
+    
+    private ArrayList<Bullet> bullets;
 
     private float maxSpeed;
     private float acceleration;
     private float deceleration;
 
-    private final int MAXBULLETS = 4;
-    private ArrayList<Bullet> bullets;
+    public Enemy(ArrayList<Bullet> bullets) {
+        
+        this.bullets = bullets;
 
-    public Enemy() {
-
-        bullets = new ArrayList<Bullet>();
-
-        Random rand = new Random();
-        float rx = (float) rand.nextDouble();
-        float ry = (float) rand.nextDouble();
-        x = Game.WIDTH * rx;
-        y = Game.HEIGHT * ry;
+        x = Game.WIDTH / 3;
+        y = Game.HEIGHT / 3;
 
         maxSpeed = 300;
         acceleration = 200;
@@ -41,10 +38,10 @@ public class Enemy extends SpaceObject {
 
         radians = 3.1415f / 2;
         rotationSpeed = 3;
-
         AI ai = new AI();
         Thread t = new Thread(ai);
         t.start();
+
     }
 
     private void setShape() {
@@ -73,10 +70,9 @@ public class Enemy extends SpaceObject {
         up = b;
     }
 
-    private void shoot() {
-        if (MAXBULLETS > bullets.size()) {
-            bullets.add(new Bullet(shapex[0], shapey[0], radians));
-        }
+    public void shoot() {
+    if (bullets.size() == MAX_BULLETS) return;
+        bullets.add(new Bullet(x, y, radians));
     }
 
     public void update(float dt) {
@@ -119,7 +115,7 @@ public class Enemy extends SpaceObject {
 
     public void draw(ShapeRenderer sr) {
 
-        sr.setColor(1, 1, 1, 1);
+        sr.setColor(255, 255, 0, 1);
 
         sr.begin(ShapeType.Line);
 
@@ -135,10 +131,6 @@ public class Enemy extends SpaceObject {
 
     }
 
-    public ArrayList<Bullet> getBullets() {
-        return bullets;
-    }
-
     private class AI implements Runnable {
 
         public AI() {
@@ -148,37 +140,46 @@ public class Enemy extends SpaceObject {
         public void run() {
             while (true) {
                 int r = (int) (1 + Math.random() * 9);
-                System.out.println(r);
                 switch (r) {
                     case 1:
                         setLeft(true);
+                        System.out.println(r);
                         break;
                     case 2:
                         setLeft(false);
+                        System.out.println(r);
                         break;
                     case 3:
                         setRight(true);
+                        System.out.println(r);
                         break;
                     case 4:
                         setRight(false);
+                        System.out.println(r);
                         break;
                     case 5:
                         setUp(true);
+                        System.out.println(r);
                         break;
                     case 6:
                         setUp(true);
+                        System.out.println(r); 
                         break;
                     case 7:
                         shoot();
+                        System.out.println(r); 
                         break;
                     case 8:
                         shoot();
+                        System.out.println(r);
                         break;
                     case 9:
                         shoot();
+                        System.out.println(r);  
                         break;
                     case 10:
-                        setUp(false);
+                        shoot();
+                        System.out.println(r); 
                         break;
                 }
                 try {
@@ -189,4 +190,5 @@ public class Enemy extends SpaceObject {
             }
         }
     }
+
 }
