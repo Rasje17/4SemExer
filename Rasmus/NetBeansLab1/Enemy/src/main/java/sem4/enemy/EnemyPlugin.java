@@ -5,6 +5,8 @@
  */
 package sem4.enemy;
 
+import org.openide.util.lookup.ServiceProvider;
+import org.openide.util.lookup.ServiceProviders;
 import sem4.common.data.Entity;
 import sem4.common.data.GameData;
 import sem4.common.data.World;
@@ -16,6 +18,9 @@ import sem4.common.services.IGamePluginService;
  *
  * @author rasmus
  */
+
+@ServiceProviders(value = {
+    @ServiceProvider(service = IGamePluginService.class),})
 public class EnemyPlugin implements IGamePluginService {
     
     private Entity enemy;

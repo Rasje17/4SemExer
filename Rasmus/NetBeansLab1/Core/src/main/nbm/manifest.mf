@@ -1,3 +1,4 @@
 Manifest-Version: 1.0
+OpenIDE-Module-Install: sem4/main/Installer.class
 OpenIDE-Module-Localizing-Bundle: sem4/core/Bundle.properties
 

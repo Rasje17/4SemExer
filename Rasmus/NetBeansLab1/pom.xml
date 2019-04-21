@@ -64,6 +64,7 @@
         <module>Common</module>
         <module>Core</module>
         <module>Enemy</module>
+        <module>SilentUpdater</module>
     </modules>
     <properties>
         <netbeans.version>RELEASE82</netbeans.version>

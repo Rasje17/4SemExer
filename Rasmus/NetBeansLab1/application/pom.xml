@@ -30,11 +30,6 @@
             <artifactId>org-netbeans-core-startup</artifactId>
             <version>${netbeans.version}</version>
         </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>NetBeansLab1-branding</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <!-- NbModuleSuite functional in RELEASE70 or later: -->
         <dependency>
             <groupId>org.netbeans.api</groupId>
@@ -50,6 +45,23 @@
             <scope>test</scope>
         </dependency>
         -->
+        <!-- to use windowed pluginmaneger
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-modules-autoupdate-ui</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.modules</groupId>
+            <artifactId>org-netbeans-core-windows</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>SilentUpdate</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

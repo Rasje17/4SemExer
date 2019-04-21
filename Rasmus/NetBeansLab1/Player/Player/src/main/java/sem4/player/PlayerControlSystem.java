@@ -9,14 +9,16 @@ import sem4.common.data.World;
 import sem4.common.data.entityparts.MovingPart;
 import sem4.common.data.entityparts.PositionPart;
 import sem4.common.services.IEntityProcessingService;
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
-import static java.lang.Math.sqrt;
+import org.openide.util.lookup.ServiceProvider;
+import org.openide.util.lookup.ServiceProviders;
 
 /**
  *
- * @author jcs
+ * @author rasmus
  */
+
+@ServiceProviders(value = {
+    @ServiceProvider(service = IEntityProcessingService.class),})
 public class PlayerControlSystem implements IEntityProcessingService {
 
     @Override
