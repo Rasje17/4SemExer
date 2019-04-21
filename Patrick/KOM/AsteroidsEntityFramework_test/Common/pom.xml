@@ -6,9 +6,9 @@
         <artifactId>AsteroidsEntityFramework</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>Player</artifactId>
+    <artifactId>Common</artifactId>
     <packaging>jar</packaging>
-
+    
     <build>
         <plugins>
             <plugin>
@@ -18,11 +18,4 @@
             </plugin>
         </plugins>
     </build>
-    <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>Common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
 </project>

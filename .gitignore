@@ -9,13 +9,6 @@
 /Rasmus/NetBeansLab1/enemysystem/target/
 /Rasmus/NetBeansLab1/Player/Player/target/
 /Rasmus/NetBeansLab1/Enemy/target/
-
-/Patrick/KOM/AsteroidsEntityFramework/Common/target/
-/Patrick/KOM/AsteroidsEntityFramework/Enemy/target/
-/Patrick/KOM/AsteroidsEntityFramework/Core/target/
-/Patrick/KOM/AsteroidsEntityFramework/Player/target/
-/Patrick/KOM/AsteroidsEntityFramework/Asteroid/target/
-/Patrick/KOM/AsteroidsEntityFramework/Bullet/target/
 /Rasmus/tree/nbproject/private/
 /Rasmus/NetBeansLab1 - Kopi/Astroid/target/
 /Rasmus/NetBeansLab1 - Kopi/Common/target/
@@ -32,3 +25,22 @@
 /Rasmus/NetBeansLab2/application/target/
 /Rasmus/NetBeansLab2/branding/target/
 /Rasmus/NetBeansLab1/SilentUpdater/target/
+
+/Patrick/KOM/AsteroidsEntityFramework/Common/target/
+/Patrick/KOM/AsteroidsEntityFramework/Enemy/target/
+/Patrick/KOM/AsteroidsEntityFramework/Core/target/
+/Patrick/KOM/AsteroidsEntityFramework/Player/target/
+/Patrick/KOM/AsteroidsEntityFramework/Asteroid/target/
+/Patrick/KOM/AsteroidsEntityFramework/Bullet/target/
+/Patrick/KOM/AsteroidsEntityFramework_test/Asteroid/target/
+/Patrick/KOM/AsteroidsEntityFramework_test/Bullet/target/
+/Patrick/KOM/AsteroidsEntityFramework_test/Common/target/
+/Patrick/KOM/AsteroidsEntityFramework_test/Core/target/
+/Patrick/KOM/AsteroidsEntityFramework_test/Enemy/target/
+/Patrick/KOM/AsteroidsEntityFramework_test/Player/target/
+/Patrick/KOM/AsteroidsEntityFramework - Test/Asteroid/target/
+/Patrick/KOM/AsteroidsEntityFramework - Test/Bullet/target/
+/Patrick/KOM/AsteroidsEntityFramework - Test/Common/target/
+/Patrick/KOM/AsteroidsEntityFramework - Test/Core/target/
+/Patrick/KOM/AsteroidsEntityFramework - Test/Enemy/target/
+/Patrick/KOM/AsteroidsEntityFramework - Test/Player/target/

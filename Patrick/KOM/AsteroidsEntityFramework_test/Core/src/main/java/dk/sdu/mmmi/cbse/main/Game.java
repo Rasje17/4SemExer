@@ -12,6 +12,7 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
+import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
 import dk.sdu.mmmi.cbse.playersystem.PlayerPlugin;
 import dk.sdu.mmmi.cbse.playersystem.PlayerControlSystem;
@@ -29,7 +30,7 @@ public class Game implements ApplicationListener {
     private List<IEntityProcessingService> entityProcessors = new ArrayList<>();
     private List<IGamePluginService> entityPlugins = new ArrayList<>();
     private World world = new World();
-    
+
     @Override
     public void create() {
 
@@ -45,7 +46,7 @@ public class Game implements ApplicationListener {
         Gdx.input.setInputProcessor(
                 new GameInputProcessor(gameData)
         );
-
+ 
         IGamePluginService playerPlugin = new PlayerPlugin();
         IEntityProcessingService playerProcess = new PlayerControlSystem();
         entityPlugins.add(playerPlugin);
@@ -75,12 +76,12 @@ public class Game implements ApplicationListener {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         gameData.setDelta(Gdx.graphics.getDeltaTime());
+        
+        gameData.getKeys().update();
 
         update();
 
         draw();
-
-        gameData.getKeys().update();
     }
 
     private void update() {
@@ -88,6 +89,10 @@ public class Game implements ApplicationListener {
         for (IEntityProcessingService entityProcessorService : entityProcessors) {
             entityProcessorService.process(gameData, world);
         }
+        
+//        for (IPostEntityProcessingService postEntityProcessorService : getPostEntityProcessingServices()) {
+//            postEntityProcessorService.process(gameData, world);
+//        }
     }
 
     private void draw() {

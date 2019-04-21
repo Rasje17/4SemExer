@@ -6,7 +6,6 @@ import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import java.util.Random;
 
 public class AsteroidControlSystem implements IEntityProcessingService {
 
@@ -18,11 +17,11 @@ public class AsteroidControlSystem implements IEntityProcessingService {
 
             positionPart.process(gameData, asteroid);
             movingPart.process(gameData, asteroid);
-            
+
             updateShape(asteroid);
         }
     }
-    
+
     private void updateShape(Entity entity) {
         float[] shapex = entity.getShapeX();
         float[] shapey = entity.getShapeY();
