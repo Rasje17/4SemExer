@@ -1,5 +1,6 @@
 package dk.sdu.mmmi.cbse.enemysystem;
 
+import dk.sdu.mmmi.cbse.bullet.BulletControlSystem;
 import dk.sdu.mmmi.cbse.bullet.BulletPlugin;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
@@ -8,9 +9,12 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class EnemyControlSystem implements IEntityProcessingService {
+    
+    ArrayList<IEntityProcessingService> bullets = new ArrayList<>();
 
     @Override
     public void process(GameData gameData, World world) {
@@ -67,8 +71,15 @@ public class EnemyControlSystem implements IEntityProcessingService {
         PositionPart pos = enemy.getPart(PositionPart.class);
         float radians = pos.getRadians();
         
-        IGamePluginService bullet = new BulletPlugin(x, y, radians);
-        bullet.start(gameData, world);
+        IGamePluginService b = new BulletPlugin(x, y, radians);
+        IEntityProcessingService bullet = new BulletControlSystem();
+        
+        b.start(gameData, world);
+        bullets.add(bullet);
+    }
+    
+    public ArrayList<IEntityProcessingService> getBullets() {
+        return this.bullets;
     }
 
     private void updateShape(Entity entity) {

@@ -29,7 +29,7 @@ public class Game implements ApplicationListener {
     private List<IEntityProcessingService> entityProcessors = new ArrayList<>();
     private List<IGamePluginService> entityPlugins = new ArrayList<>();
     private World world = new World();
-
+    
     @Override
     public void create() {
 
