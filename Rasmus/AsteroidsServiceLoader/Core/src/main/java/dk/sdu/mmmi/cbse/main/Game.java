@@ -48,6 +48,13 @@ public class Game
         }
     }
 
+    private void update() {
+        // Update
+        for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
+            entityProcessorService.process(gameData, world);
+        }
+    }
+
     @Override
     public void render() {
 
@@ -62,13 +69,6 @@ public class Game
         draw();
 
         gameData.getKeys().update();
-    }
-
-    private void update() {
-        // Update
-        for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
-            entityProcessorService.process(gameData, world);
-        }
     }
 
     private void draw() {
