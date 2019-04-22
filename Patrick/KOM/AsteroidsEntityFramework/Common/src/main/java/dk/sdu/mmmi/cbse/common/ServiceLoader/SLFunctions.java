@@ -1,0 +1,23 @@
+package dk.sdu.mmmi.cbse.common.ServiceLoader;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ServiceLoader;
+
+public class SLFunctions {
+    
+    private Map<Class, ServiceLoader> loader = new HashMap<>();
+    
+    
+    public <T> ArrayList<T> loadServices(Class<T> service) {
+        ArrayList<T> modules = new ArrayList<>();
+        
+        for (T mod : ServiceLoader.load(service)) {
+            modules.add(mod);
+        }
+        
+        return modules;
+    }
+    
+}
