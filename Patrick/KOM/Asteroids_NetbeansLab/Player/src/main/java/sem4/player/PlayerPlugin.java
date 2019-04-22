@@ -6,7 +6,13 @@ import sem4.common.data.World;
 import sem4.common.data.entityparts.MovingPart;
 import sem4.common.data.entityparts.PositionPart;
 import sem4.common.services.IGamePluginService;
+import org.openide.util.lookup.ServiceProvider;
+import org.openide.util.lookup.ServiceProviders;
 
+
+@ServiceProviders(value =  {
+    @ServiceProvider(service = IGamePluginService.class)
+})
 public class PlayerPlugin implements IGamePluginService {
 
     private Entity player;

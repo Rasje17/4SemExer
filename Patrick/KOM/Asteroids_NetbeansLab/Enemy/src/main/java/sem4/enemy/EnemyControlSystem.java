@@ -11,7 +11,13 @@ import sem4.common.services.IEntityProcessingService;
 import sem4.common.services.IGamePluginService;
 import java.util.ArrayList;
 import java.util.Random;
+import org.openide.util.lookup.ServiceProvider;
+import org.openide.util.lookup.ServiceProviders;
 
+
+@ServiceProviders(value =  {
+    @ServiceProvider(service = IEntityProcessingService.class)
+})
 public class EnemyControlSystem implements IEntityProcessingService {
     
     ArrayList<IEntityProcessingService> bullets = new ArrayList<>();

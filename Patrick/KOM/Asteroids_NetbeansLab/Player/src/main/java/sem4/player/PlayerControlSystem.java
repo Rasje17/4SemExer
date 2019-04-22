@@ -12,11 +12,13 @@ import sem4.common.services.IEntityProcessingService;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
+import org.openide.util.lookup.ServiceProvider;
+import org.openide.util.lookup.ServiceProviders;
 
-/**
- *
- * @author jcs
- */
+
+@ServiceProviders(value =  {
+    @ServiceProvider(service = IEntityProcessingService.class)
+})
 public class PlayerControlSystem implements IEntityProcessingService {
 
     @Override

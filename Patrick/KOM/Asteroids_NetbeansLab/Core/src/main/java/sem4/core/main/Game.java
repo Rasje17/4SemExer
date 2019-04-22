@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import sem4.asteroid.AsteroidControlSystem;
 import sem4.asteroid.AsteroidPlugin;
-import sem4.common.ServiceLoader.SLFunctions;
 import sem4.common.data.Entity;
 import sem4.common.data.GameData;
 import sem4.common.data.World;
@@ -19,14 +18,14 @@ import sem4.player.PlayerControlSystem;
 import sem4.enemy.EnemyPlugin;
 import sem4.enemy.EnemyControlSystem;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.ServiceLoader;
+import java.util.Collection;
+import org.openide.util.Lookup;
 
 public class Game implements ApplicationListener {
 
     private static OrthographicCamera cam;
     private ShapeRenderer sr;
-    private final SLFunctions sl = new SLFunctions();
+    private final Lookup lookup = Lookup.getDefault();
 
     private final GameData gameData = new GameData();
 //    private List<IEntityProcessingService> entityProcessors = new ArrayList<>();
@@ -130,12 +129,12 @@ public class Game implements ApplicationListener {
     public void dispose() {
     }
 
-    private ArrayList<IEntityProcessingService> getEntityProcessingServices() {
-        return sl.loadServices(IEntityProcessingService.class);
+    private Collection<? extends IEntityProcessingService> getEntityProcessingServices() {
+        return lookup.lookupAll(IEntityProcessingService.class);
     }
 
-    private ArrayList<IGamePluginService> getEntityPluginServices() {
-        return sl.loadServices(IGamePluginService.class);
+    private Collection<? extends IGamePluginService> getEntityPluginServices() {
+        return lookup.lookupAll(IGamePluginService.class);
     }
     
 }

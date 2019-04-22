@@ -7,7 +7,13 @@ import sem4.common.data.entityparts.MovingPart;
 import sem4.common.data.entityparts.PositionPart;
 import sem4.common.services.IGamePluginService;
 import java.util.Random;
+import org.openide.util.lookup.ServiceProvider;
+import org.openide.util.lookup.ServiceProviders;
 
+
+@ServiceProviders(value =  {
+    @ServiceProvider(service = IGamePluginService.class)
+})
 public class AsteroidPlugin implements IGamePluginService {
     
     private Entity asteroid;

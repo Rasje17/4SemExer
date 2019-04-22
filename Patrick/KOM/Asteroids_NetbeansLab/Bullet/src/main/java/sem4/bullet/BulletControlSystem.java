@@ -1,5 +1,7 @@
 package sem4.bullet;
 
+import org.openide.util.lookup.ServiceProvider;
+import org.openide.util.lookup.ServiceProviders;
 import sem4.common.data.Entity;
 import sem4.common.data.GameData;
 import sem4.common.data.World;
@@ -7,6 +9,10 @@ import sem4.common.data.entityparts.MovingPart;
 import sem4.common.data.entityparts.PositionPart;
 import sem4.common.services.IEntityProcessingService;
 
+
+@ServiceProviders(value =  {
+    @ServiceProvider(service = IEntityProcessingService.class)
+})
 public class BulletControlSystem implements IEntityProcessingService {
 
     @Override
