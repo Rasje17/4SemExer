@@ -1,3 +1,4 @@
 Manifest-Version: 1.0
+OpenIDE-Module-Install: sem4/silentupdate/UpdateActivator.class
 OpenIDE-Module-Localizing-Bundle: sem4/silentupdate/Bundle.properties
-
+OpenIDE-Module-Layer: sem4/silentupdate/layer.xml
