@@ -60,10 +60,10 @@
         <module>application</module>
         <module>OSGIExtender</module>
     <module>OSGICore</module>
-    <module>OSGILibgdx</module>
         <module>Common</module>
     <module>OSGIAtroid</module>
     <module>OSGIEnemy</module>
+    <module>libgdx</module>
   </modules>
 
     <properties>
