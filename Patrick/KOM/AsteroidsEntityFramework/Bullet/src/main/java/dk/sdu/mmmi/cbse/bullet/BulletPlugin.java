@@ -13,6 +13,10 @@ public class BulletPlugin implements IGamePluginService {
     
     private float x, y, radians;
     
+    public BulletPlugin() {
+        
+    }
+    
     // bullets are made by the ships that shoot them, and thus need to be told where their starting coordinates are
     public BulletPlugin(float x, float y, float heading) {
         this.x = x;
