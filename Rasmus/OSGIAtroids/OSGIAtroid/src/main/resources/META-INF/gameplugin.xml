@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="sem4.osgiatroid.AsteroidPlugin">
+    <implementation class="sem4.osgiatroid.AsteroidPlugin"/>
+   <service>
+       <provide interface="4sem.common.services.IGamePluginService"/>
+   </service>
+</scr:component>

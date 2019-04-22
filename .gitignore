@@ -30,6 +30,10 @@
 /Rasmus/OSGIAtroids/OSGIExtender/target/
 /Rasmus/OSGIAtroids/OSGICore/target/
 /Rasmus/OSGIAtroids/Common/target/
+/Rasmus/OSGIAtroids/OSGILibgdx/target/
+/Rasmus/OSGIAtroids/libgdx/target/
+/Rasmus/OSGIAtroids/OSGIEnemy/target/
+/Rasmus/OSGIAtroids/OSGIAtroid/target/
 
 /Patrick/KOM/AsteroidsEntityFramework/Common/target/
 /Patrick/KOM/AsteroidsEntityFramework/Enemy/target/
