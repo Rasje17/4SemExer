@@ -30,6 +30,10 @@
 /Rasmus/OSGIAtroids/OSGIExtender/target/
 /Rasmus/OSGIAtroids/OSGICore/target/
 /Rasmus/OSGIAtroids/Common/target/
+/Rasmus/OSGIAtroids/OSGILibgdx/target/
+/Rasmus/OSGIAtroids/libgdx/target/
+/Rasmus/OSGIAtroids/OSGIEnemy/target/
+/Rasmus/OSGIAtroids/OSGIAtroid/target/
 
 /Patrick/KOM/AsteroidsEntityFramework/Common/target/
 /Patrick/KOM/AsteroidsEntityFramework/Enemy/target/
@@ -61,7 +65,19 @@
 /Patrick/KOM/AsteroidsEntityFramework_netbeanslab/Core/target/
 /Patrick/KOM/AsteroidsEntityFramework_netbeanslab/Enemy/target/
 /Patrick/KOM/AsteroidsEntityFramework_netbeanslab/Player/target/
-/Rasmus/OSGIAtroids/OSGILibgdx/target/
-/Rasmus/OSGIAtroids/libgdx/target/
-/Rasmus/OSGIAtroids/OSGIEnemy/target/
-/Rasmus/OSGIAtroids/OSGIAtroid/target/
+/Patrick/KOM/NetbeansLab/nbproject/private/
+/Patrick/KOM/NetbeansLab/build/
+/Patrick/KOM/NetbeansLab/Asteroid/nbproject/private/
+/Patrick/KOM/NetbeansLab/Bullet/nbproject/private/
+/Patrick/KOM/NetbeansLab/Common/nbproject/private/
+/Patrick/KOM/NetbeansLab/Core/nbproject/private/
+/Patrick/KOM/NetbeansLab/Enemy/nbproject/private/
+/Patrick/KOM/NetbeansLab/Player/nbproject/private/
+/Patrick/KOM/Asteroids_NetbeansLab/branding/target/
+/Patrick/KOM/Asteroids_NetbeansLab/application/target/
+/Patrick/KOM/Asteroids_NetbeansLab/Common/target/
+/Patrick/KOM/Asteroids_NetbeansLab/Bullet/target/
+/Patrick/KOM/Asteroids_NetbeansLab/Player/target/
+/Patrick/KOM/Asteroids_NetbeansLab/Enemy/target/
+/Patrick/KOM/Asteroids_NetbeansLab/Asteroid/target/
+/Patrick/KOM/Asteroids_NetbeansLab/Core/target/
