@@ -25,6 +25,17 @@
             <version>4.3.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-openide-util-lookup</artifactId>
+            <version>RELEASE81</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -36,7 +47,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>sem4.osgiplayer.Activator</Bundle-Activator>
+<!--                        <Bundle-Activator>sem4.osgiplayer.Activator</Bundle-Activator>-->
                         <Export-Package />
                     </instructions>
                 </configuration>

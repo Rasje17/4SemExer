@@ -61,6 +61,7 @@
         <module>Core</module>
         <module>OSGiExtender</module>
     <module>OSGiPlayer</module>
+    <module>OSGiEnemy</module>
   </modules>
 
     <properties>

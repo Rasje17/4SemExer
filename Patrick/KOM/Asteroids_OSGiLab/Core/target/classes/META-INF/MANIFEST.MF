@@ -3,7 +3,7 @@ OpenIDE-Module-Install: sem4/core/main/Installer.class
 OpenIDE-Module-Localizing-Bundle: sem4/core/Bundle.properties
 OpenIDE-Module-Specification-Version: 1.0
 OpenIDE-Module-Implementation-Version: 1.0-20190423
-OpenIDE-Module-Build-Version: 201904230154
+OpenIDE-Module-Build-Version: 201904230317
 OpenIDE-Module: sem4.Core
 OpenIDE-Module-Public-Packages: -
 OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
