@@ -20,7 +20,7 @@ import org.openide.util.lookup.ServiceProviders;
 })
 public class EnemyControlSystem implements IEntityProcessingService {
     
-    ArrayList<IEntityProcessingService> bullets = new ArrayList<>();
+//    ArrayList<IEntityProcessingService> bullets = new ArrayList<>();
 
     @Override
     public void process(GameData gameData, World world) {
@@ -30,7 +30,6 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
             Random rand = new Random();
             int r = rand.nextInt(10);
-            System.out.println(r);
             switch (r) {
                 case 0:
                     movingPart.setLeft(true);
@@ -84,9 +83,9 @@ public class EnemyControlSystem implements IEntityProcessingService {
 //        bullets.add(bullet);
 //    }
     
-    public ArrayList<IEntityProcessingService> getBullets() {
-        return this.bullets;
-    }
+//    public ArrayList<IEntityProcessingService> getBullets() {
+//        return this.bullets;
+//    }
 
     private void updateShape(Entity entity) {
         float[] shapex = new float[4];

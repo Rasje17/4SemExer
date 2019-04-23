@@ -13,7 +13,12 @@ import sem4.common.services.IGamePluginService;
 import sem4.core.managers.GameInputProcessor;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import org.openide.util.Lookup;
+import org.openide.util.LookupEvent;
+import org.openide.util.LookupListener;
+import sem4.common.services.IPostEntityProcessingService;
 
 public class Game implements ApplicationListener {
 
@@ -25,6 +30,8 @@ public class Game implements ApplicationListener {
 //    private List<IEntityProcessingService> entityProcessors = new ArrayList<>();
 //    private List<IGamePluginService> entityPlugins = new ArrayList<>();
     private World world = new World();
+    private List<IGamePluginService> gamePlugins = new CopyOnWriteArrayList<>();
+    private Lookup.Result<IGamePluginService> result;
     
     @Override
     public void create() {
@@ -38,9 +45,7 @@ public class Game implements ApplicationListener {
 
         sr = new ShapeRenderer();
 
-        Gdx.input.setInputProcessor(
-                new GameInputProcessor(gameData)
-        );
+        Gdx.input.setInputProcessor(new GameInputProcessor(gameData));
 
 //        IGamePluginService playerPlugin = new PlayerPlugin();
 //        IEntityProcessingService playerProcess = new PlayerControlSystem();
@@ -57,9 +62,13 @@ public class Game implements ApplicationListener {
 //        entityPlugins.add(asteroidPlugin);
 //        entityProcessors.add(asteroidProcess);
         
-        // Lookup all Game Plugins using ServiceLoader
-        for (IGamePluginService iGamePlugin : getEntityPluginServices()) {
-            iGamePlugin.start(gameData, world);
+        result = lookup.lookupResult(IGamePluginService.class);
+        result.addLookupListener(lookupListener);
+        result.allItems();
+
+        for (IGamePluginService plugin : result.allInstances()) {
+            plugin.start(gameData, world);
+            gamePlugins.add(plugin);
         }
     }
 
@@ -83,6 +92,9 @@ public class Game implements ApplicationListener {
         // Update
         for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
             entityProcessorService.process(gameData, world);
+        }
+        for (IPostEntityProcessingService postEntityProcessorService : getPostEntityProcessingServices()) {
+            postEntityProcessorService.process(gameData, world);
         }
     }
 
@@ -127,8 +139,33 @@ public class Game implements ApplicationListener {
         return lookup.lookupAll(IEntityProcessingService.class);
     }
 
-    private Collection<? extends IGamePluginService> getEntityPluginServices() {
-        return lookup.lookupAll(IGamePluginService.class);
+    private Collection<? extends IPostEntityProcessingService> getPostEntityProcessingServices() {
+        return lookup.lookupAll(IPostEntityProcessingService.class);
     }
+
+    private final LookupListener lookupListener = new LookupListener() {
+        @Override
+        public void resultChanged(LookupEvent le) {
+
+            Collection<? extends IGamePluginService> updated = result.allInstances();
+
+            for (IGamePluginService us : updated) {
+                // Newly installed modules
+                if (!gamePlugins.contains(us)) {
+                    us.start(gameData, world);
+                    gamePlugins.add(us);
+                }
+            }
+
+            // Stop and remove module
+            for (IGamePluginService gs : gamePlugins) {
+                if (!updated.contains(gs)) {
+                    gs.stop(gameData, world);
+                    gamePlugins.remove(gs);
+                }
+            }
+        }
+
+    };
     
 }

@@ -63,6 +63,33 @@
             <artifactId>SilentUpdate</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!--
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Bullet</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Player</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Enemy</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Asteroid</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        -->
     </dependencies>
 
     <build>
