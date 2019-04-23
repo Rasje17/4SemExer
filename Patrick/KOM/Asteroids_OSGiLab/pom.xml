@@ -62,7 +62,7 @@
         <module>OSGiExtender</module>
     <module>OSGiPlayer</module>
     <module>OSGiEnemy</module>
-  </modules>
+    </modules>
 
     <properties>
         <netbeans.version>RELEASE82</netbeans.version>

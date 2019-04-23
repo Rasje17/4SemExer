@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 OpenIDE-Module-Localizing-Bundle: sem4/common/Bundle.properties
 OpenIDE-Module-Specification-Version: 1.0
 OpenIDE-Module-Implementation-Version: 1.0-20190423
-OpenIDE-Module-Build-Version: 201904230317
+OpenIDE-Module-Build-Version: 201904230414
 OpenIDE-Module: sem4.Common
 OpenIDE-Module-Public-Packages: sem4.common.ServiceLoader.*, sem4.comm
  on.data.*, sem4.common.data.entityparts.*, sem4.common.events.*, sem4

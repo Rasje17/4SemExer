@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><module codename="sem4.Core">
-    <module_version install_time="1555989465968" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1555992903773" last="true" origin="installer" specification_version="1.0">
         <file crc="3002939551" name="config/Modules/sem4-Core.xml"/>
         <file crc="2488665527" name="modules/ext/sem4.Core/com-badlogicgames-gdx/gdx-backend-lwjgl.jar"/>
         <file crc="2933476186" name="modules/ext/sem4.Core/com-badlogicgames-gdx/gdx-box2d-platform-natives-desktop.jar"/>
@@ -17,6 +17,6 @@
         <file crc="1629828147" name="modules/ext/sem4.Core/org-lwjgl-lwjgl/lwjgl-platform-natives-windows.jar"/>
         <file crc="1810775593" name="modules/ext/sem4.Core/org-lwjgl-lwjgl/lwjgl.jar"/>
         <file crc="1003691195" name="modules/ext/sem4.Core/org-lwjgl-lwjgl/lwjgl_util.jar"/>
-        <file crc="3389971553" name="modules/sem4-Core.jar"/>
+        <file crc="1846043284" name="modules/sem4-Core.jar"/>
     </module_version>
 </module>
