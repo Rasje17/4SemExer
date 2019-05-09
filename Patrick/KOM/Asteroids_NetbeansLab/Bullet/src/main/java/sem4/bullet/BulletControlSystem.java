@@ -29,8 +29,8 @@ public class BulletControlSystem implements IEntityProcessingService {
     }
     
     private void updateShape(Entity entity) {
-        float[] shapex = entity.getShapeX();
-        float[] shapey = entity.getShapeY();
+        float[] shapex = new float[2];
+        float[] shapey = new float[2];
         PositionPart positionPart = entity.getPart(PositionPart.class);
         float x = positionPart.getX();
         float y = positionPart.getY();
