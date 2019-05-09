@@ -6,14 +6,18 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+/**
+ * @author Patrick Christoffersen - pachr16@student.sdu.dk
+ * @author Rasmus Jensen - rasje17@student.sdu.dk
+ */
 public class Decode {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
         // initiating input and output streams
-        FileInputStream inFile = new FileInputStream("C://users//pvies//desktop//huffmantrees_nopackages//test1.txt");
+        FileInputStream inFile = new FileInputStream(args[0]);
         BitInputStream reader = new BitInputStream(inFile);
-        BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream("C://users//pvies//desktop//huffmantrees_nopackages//nyAflevering.docx"));
+        BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream(args[1]));
 
         // initiating the array for counting occurences of each byte - we know that there is 256 possibilities, so this is the length of the array
         int[] occurences = new int[256];

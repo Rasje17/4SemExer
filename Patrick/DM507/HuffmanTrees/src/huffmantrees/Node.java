@@ -1,7 +1,9 @@
 package huffmantrees;
 
 /**
- *
+ * Since we have made a few changes to this class, we have included it as well.
+ * The most significant is the new constructor, to be able to create a node with no value, but instead define childnodes.
+ * 
  * @author Patrick Christoffersen - pachr16@student.sdu.dk
  * @author Rasmus Jensen - rasje17@student.sdu.dk
  */

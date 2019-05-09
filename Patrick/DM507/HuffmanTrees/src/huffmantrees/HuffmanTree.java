@@ -1,5 +1,9 @@
 package huffmantrees;
 
+/**
+ * @author Patrick Christoffersen - pachr16@student.sdu.dk
+ * @author Rasmus Jensen - rasje17@student.sdu.dk
+ */
 public class HuffmanTree {
     
     private Element root;   // the root element used in the tree

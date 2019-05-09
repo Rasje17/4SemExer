@@ -6,11 +6,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+/**
+ * @author Patrick Christoffersen - pachr16@student.sdu.dk
+ * @author Rasmus Jensen - rasje17@student.sdu.dk
+ */
 public class Encode {
 
     public static void main(String[] args) throws IOException {
         // initiating the input stream and the array for counting occurences
-        BufferedInputStream reader = new BufferedInputStream(new FileInputStream("C://users//pvies//desktop//huffmantrees_nopackages//AFLEVERING.docx"));
+        BufferedInputStream reader = new BufferedInputStream(new FileInputStream(args[0]));
         // we know there are 256 possible bytes, so that is the length of the occurence-array
         int[] occurencesArray = new int[256];
 
@@ -28,7 +32,7 @@ public class Encode {
         HuffmanTree huffTree = new HuffmanTree(occurencesArray);
 
         // initiating output stream
-        OutputStream outStream = new FileOutputStream("C://users//pvies//desktop//huffmantrees_nopackages//test1.txt");
+        OutputStream outStream = new FileOutputStream(args[1]);
         BitOutputStream output = new BitOutputStream(outStream);
 
         // first, for every possible value of a byte, output the occurence of each one in the input file.
