@@ -9,7 +9,7 @@ import java.io.OutputStream;
 public class Encode {
 
     public static void main(String[] args) throws IOException {
-        BufferedInputStream reader = new BufferedInputStream(new FileInputStream(args[0]));
+        BufferedInputStream reader = new BufferedInputStream(new FileInputStream("C://users//pvies//desktop//huffmantrees_nopackages//test1.txt"));
         int[] occurencesArray = new int[256];
 
         int var = reader.read();
@@ -20,7 +20,7 @@ public class Encode {
 
         HuffmanTree huffTree = new HuffmanTree(occurencesArray);
 
-        OutputStream outStream = new FileOutputStream(args[1]);
+        OutputStream outStream = new FileOutputStream("C://users//pvies//desktop//huffmantrees_nopackages//placeithere.txt");
         BitOutputStream output = new BitOutputStream(outStream);
 
         for (int i : occurencesArray) {
