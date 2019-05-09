@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-    <artifactId>OSGIAtroids-parent</artifactId>
-    <groupId>sem4</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+        <artifactId>OSGIAtroids-parent</artifactId>
+        <groupId>sem4</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
     <groupId>sem4</groupId>
     <artifactId>libgdx</artifactId>
@@ -15,7 +15,7 @@
     <name>libgdx OSGi Bundle</name>
 
     <properties>
-          <libGDX.version>1.9.6</libGDX.version>
+        <libGDX.version>1.9.6</libGDX.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -96,7 +96,7 @@
                 <version>2.3.7</version>
                 <extensions>true</extensions>
                 <configuration>
-                   <!-- <instructions>
+                    <!-- <instructions>
                         <Bundle-Activator>sem4.libgdx.Activator</Bundle-Activator>
                         <Export-Package />
                     </instructions> -->
@@ -195,8 +195,20 @@
                 </dependency>
                 <!-- org.apache.felix:org.apache.felix.gogo.shell:0.6.1 useless from Maven since stdin is swallowed -->
             </dependencies>
-            <build>
+            <!--<build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.felix</groupId>
+                        <artifactId>maven-bundle-plugin</artifactId>
+                        <configuration>
+                            <instructions>
+                                <Export-Package>com.badlogic.gdx.*</Export-Package>
+                                <Import-Package>!com.apple.eio,!com.sun.*,!org.objectweb.*,*</Import-Package>
+                                <Embed-Dependency>*</Embed-Dependency>
+                                <Embed-Transitive>true</Embed-Transitive>
+                            </instructions>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-antrun-plugin</artifactId>
@@ -227,7 +239,32 @@
                         </configuration>
                     </plugin>
                 </plugins>
-            </build>
+            </build> -->
+            <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Export-Package>com.badlogic.gdx.*</Export-Package>
+                        <Import-Package>!com.apple.eio,!com.sun.*,!org.objectweb.*,*</Import-Package>
+                        <Embed-Dependency>*</Embed-Dependency>
+                        <Embed-Transitive>true</Embed-Transitive>
+                    </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
         </profile>
     </profiles>
 </project>
