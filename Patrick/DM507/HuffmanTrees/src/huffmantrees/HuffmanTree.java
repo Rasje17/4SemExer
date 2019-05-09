@@ -21,7 +21,7 @@ public class HuffmanTree {
             pq.insert(element);
         }
         
-        for (int i = 0; i < leaves-2; i++) {
+        for (int i = 0; i < leaves-1; i++) {
             Element ele1 = pq.extractMin();
             Element ele2 = pq.extractMin();
             
@@ -42,6 +42,7 @@ public class HuffmanTree {
     
     private void traversal(Node x, String code, Node parent) {
         if (x != null) {
+            System.out.println(code);
             traversal(x.getLeft(), code + '0', x);
             traversal(x.getRight(), code + '1', x);
         }
@@ -55,6 +56,7 @@ public class HuffmanTree {
     }
     
     public String encode(int index) {
+        System.out.println("We're encoding! This is the result: " + hCodes[index]);
         return hCodes[index];
     }
     

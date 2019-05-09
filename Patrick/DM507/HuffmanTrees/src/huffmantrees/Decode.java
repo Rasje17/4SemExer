@@ -9,9 +9,9 @@ import java.io.IOException;
 public class Decode {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        FileInputStream inFile = new FileInputStream(args[0]);
+        FileInputStream inFile = new FileInputStream("C://users//pvies//desktop//huffmantrees_nopackages//placeithere.txt");
         BitInputStream reader = new BitInputStream(inFile);
-        BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream(args[1]));
+        BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream("C://users//pvies//desktop//huffmantrees_nopackages//iwannaread.txt"));
 
         int[] occurences = new int[256];
 
@@ -30,9 +30,11 @@ public class Decode {
                     if (var == 0) {
                         currentNode = currentNode.getLeft();
                         var = reader.readBit();
+                        System.out.println("Now reading: " + var);
                     } else if (var == 1) {
                         currentNode = currentNode.getRight();
                         var = reader.readBit();
+                        System.out.println("Now reading: " + var);
                     }
                 } else {
                     output.write(currentNode.getByte());

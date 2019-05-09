@@ -12,6 +12,7 @@ public class Encode {
         BufferedInputStream reader = new BufferedInputStream(new FileInputStream("C://users//pvies//desktop//huffmantrees_nopackages//test1.txt"));
         int[] occurencesArray = new int[256];
 
+        reader.mark(Integer.MAX_VALUE);
         int var = reader.read();
         while (var != -1) {
             occurencesArray[var]++;
@@ -27,6 +28,7 @@ public class Encode {
             output.writeInt(i);
         }
 
+        reader.reset();
         var = reader.read();
         while (var != -1) {
             for (char bit : huffTree.encode(var).toCharArray()) {
