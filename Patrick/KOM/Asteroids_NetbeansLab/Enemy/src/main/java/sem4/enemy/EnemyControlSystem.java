@@ -15,9 +15,9 @@ import org.openide.util.lookup.ServiceProvider;
 import org.openide.util.lookup.ServiceProviders;
 
 
-@ServiceProviders(value =  {
-    @ServiceProvider(service = IEntityProcessingService.class)
-})
+//@ServiceProviders(value =  {
+//    @ServiceProvider(service = IEntityProcessingService.class)
+//})
 public class EnemyControlSystem implements IEntityProcessingService {
     
 //    ArrayList<IEntityProcessingService> bullets = new ArrayList<>();
