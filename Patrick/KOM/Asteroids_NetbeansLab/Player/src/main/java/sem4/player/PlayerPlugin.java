@@ -10,9 +10,9 @@ import org.openide.util.lookup.ServiceProvider;
 import org.openide.util.lookup.ServiceProviders;
 
 
-@ServiceProviders(value =  {
-    @ServiceProvider(service = IGamePluginService.class)
-})
+//@ServiceProviders(value =  {
+//    @ServiceProvider(service = IGamePluginService.class)
+//})
 public class PlayerPlugin implements IGamePluginService {
 
     private Entity player;

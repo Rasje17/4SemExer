@@ -18,6 +18,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
 import org.openide.util.LookupListener;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import sem4.common.services.IPostEntityProcessingService;
 
 public class Game implements ApplicationListener {
@@ -32,6 +34,7 @@ public class Game implements ApplicationListener {
     private World world = new World();
     private List<IGamePluginService> gamePlugins = new CopyOnWriteArrayList<>();
     private Lookup.Result<IGamePluginService> result;
+    private ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"enemyBeans.xml", "playerBeans.xml"});
     
     @Override
     public void create() {
@@ -62,6 +65,15 @@ public class Game implements ApplicationListener {
 //        entityPlugins.add(asteroidPlugin);
 //        entityProcessors.add(asteroidProcess);
         
+
+        IGamePluginService playerPlugin = (IGamePluginService) context.getBean("playerPlugin", IGamePluginService.class);
+        IGamePluginService enemyPlugin = (IGamePluginService) context.getBean("enemyPlugin", IGamePluginService.class);
+        
+        playerPlugin.start(gameData, world);
+        gamePlugins.add(playerPlugin);
+        enemyPlugin.start(gameData, world);
+        gamePlugins.add(enemyPlugin);
+
         result = lookup.lookupResult(IGamePluginService.class);
         result.addLookupListener(lookupListener);
         result.allItems();
@@ -89,13 +101,20 @@ public class Game implements ApplicationListener {
     }
 
     private void update() {
-        // Update
+        
+        IEntityProcessingService enemyCS = (IEntityProcessingService) context.getBean("enemyControlSystem", IEntityProcessingService.class);
+        IEntityProcessingService playerCS = (IEntityProcessingService) context.getBean("playerControlSystem", IEntityProcessingService.class);
+        
+        enemyCS.process(gameData, world);
+        playerCS.process(gameData, world);
+        
         for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
             entityProcessorService.process(gameData, world);
         }
         for (IPostEntityProcessingService postEntityProcessorService : getPostEntityProcessingServices()) {
             postEntityProcessorService.process(gameData, world);
         }
+        
     }
 
     private void draw() {
