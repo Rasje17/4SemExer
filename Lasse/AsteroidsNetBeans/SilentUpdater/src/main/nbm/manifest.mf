@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Install: sdu/lafis17/netbeanslab/silentupdater/UpdateActivator.class
+OpenIDE-Module-Localizing-Bundle: sdu/lafis17/netbeanslab/silentupdater/Bundle.properties
+OpenIDE-Module-Layer: sdu/lafis17/netbeanslab/silentupdater/layer.xml
+

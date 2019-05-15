@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<module codename="sdu.lafis17.netbeanslab.Player">
+    <module_version install_time="1555995155101" last="true" origin="Default Update Center" specification_version="1.0.1">
+        <file crc="1291188768" name="config/Modules/sdu-lafis17-netbeanslab-Player.xml"/>
+        <file crc="91788667" name="modules/sdu-lafis17-netbeanslab-Player.jar"/>
+    </module_version>
+</module>

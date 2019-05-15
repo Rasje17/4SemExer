@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Install: sdu/lafis17/netbeanslab/silentupdater/UpdateAc
+ tivator.class
+OpenIDE-Module-Localizing-Bundle: sdu/lafis17/netbeanslab/silentupdate
+ r/Bundle.properties
+OpenIDE-Module-Layer: sdu/lafis17/netbeanslab/silentupdater/layer.xml
+OpenIDE-Module-Specification-Version: 1.0.1
+OpenIDE-Module-Implementation-Version: 1.0.1-20190423
+OpenIDE-Module-Build-Version: 201904230451
+OpenIDE-Module: sdu.lafis17.netbeanslab.SilentUpdater
+OpenIDE-Module-Public-Packages: -
+OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
+OpenIDE-Module-Display-Category: sdu.lafis17.netbeanslab
+OpenIDE-Module-Name: SilentUpdater
+OpenIDE-Module-Short-Description: <undefined>
+OpenIDE-Module-Long-Description: <undefined>
+OpenIDE-Module-Module-Dependencies: org.netbeans.api.annotations.commo
+ n/1 > 1.27.1, org.netbeans.modules.autoupdate.services > 1.52.1, org.
+ openide.io > 1.49.1, org.openide.util > 9.7.1, org.openide.modules > 
+ 7.48.1, org.openide.util.ui > 9.6.1
+

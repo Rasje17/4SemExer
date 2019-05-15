@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<module codename="sdu.lafis17.netbeanslab.Common">
+    <module_version install_time="1555995155025" last="true" origin="Default Update Center" specification_version="1.0.1">
+        <file crc="3323381829" name="config/Modules/sdu-lafis17-netbeanslab-Common.xml"/>
+        <file crc="2344648470" name="modules/sdu-lafis17-netbeanslab-Common.jar"/>
+    </module_version>
+</module>

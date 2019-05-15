@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Install: sdu/lafis17/netbeanslab/core/main/Installer.class
+OpenIDE-Module-Localizing-Bundle: sdu/lafis17/netbeanslab/core/Bundle.properties
+

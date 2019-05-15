@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Localizing-Bundle: sdu/lafis17/netbeanslab/asteroidsnet
+ beans/branding/Bundle.properties
+AutoUpdate-Essential-Module: true
+OpenIDE-Module-Specification-Version: 1.0.1
+OpenIDE-Module-Implementation-Version: 1.0.1-20190423
+OpenIDE-Module-Build-Version: 201904230451
+OpenIDE-Module: sdu.lafis17.netbeanslab.AsteroidsNetBeans.branding
+OpenIDE-Module-Public-Packages: -
+OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
+OpenIDE-Module-Display-Category: sdu.lafis17.netbeanslab
+OpenIDE-Module-Name: AsteroidsNetBeans-branding
+OpenIDE-Module-Short-Description: <undefined>
+OpenIDE-Module-Long-Description: <undefined>
+OpenIDE-Module-Module-Dependencies: org.netbeans.api.annotations.commo
+ n/1 > 1.27.1
+

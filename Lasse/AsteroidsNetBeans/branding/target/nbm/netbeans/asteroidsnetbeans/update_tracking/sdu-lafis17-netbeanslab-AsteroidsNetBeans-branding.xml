@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="sdu.lafis17.netbeanslab.AsteroidsNetBeans.branding">
+    <module_version install_time="1555995110731" last="true" origin="installer" specification_version="1.0.1">
+        <file crc="3967273734" name="config/Modules/sdu-lafis17-netbeanslab-AsteroidsNetBeans-branding.xml"/>
+        <file crc="1918209697" name="core/locale/core_asteroidsnetbeans.jar"/>
+        <file crc="1714341569" name="modules/locale/org-netbeans-core-windows_asteroidsnetbeans.jar"/>
+        <file crc="1576094419" name="modules/locale/org-netbeans-core_asteroidsnetbeans.jar"/>
+        <file crc="3261313958" name="modules/sdu-lafis17-netbeanslab-AsteroidsNetBeans-branding.jar"/>
+    </module_version>
+</module>

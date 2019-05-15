@@ -1,0 +1,49 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Install: sdu/lafis17/netbeanslab/core/main/Installer.cl
+ ass
+OpenIDE-Module-Localizing-Bundle: sdu/lafis17/netbeanslab/core/Bundle.
+ properties
+OpenIDE-Module-Specification-Version: 1.0.1
+OpenIDE-Module-Implementation-Version: 1.0.1-20190423
+OpenIDE-Module-Build-Version: 201904230452
+OpenIDE-Module: sdu.lafis17.netbeanslab.Core
+OpenIDE-Module-Public-Packages: -
+OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
+OpenIDE-Module-Display-Category: sdu.lafis17.netbeanslab
+OpenIDE-Module-Name: Core
+OpenIDE-Module-Short-Description: <undefined>
+OpenIDE-Module-Long-Description: <undefined>
+X-Class-Path: ext/sdu.lafis17.netbeanslab.Core/com-badlogicgames-gdx/g
+ dx.jar ext/sdu.lafis17.netbeanslab.Core/com-badlogicgames-gdx/gdx-pla
+ tform-natives-desktop.jar ext/sdu.lafis17.netbeanslab.Core/com-badlog
+ icgames-gdx/gdx-backend-lwjgl.jar ext/sdu.lafis17.netbeanslab.Core/or
+ g-lwjgl-lwjgl/lwjgl.jar ext/sdu.lafis17.netbeanslab.Core/org-lwjgl-lw
+ jgl/lwjgl-platform-natives-windows.jar ext/sdu.lafis17.netbeanslab.Co
+ re/org-lwjgl-lwjgl/lwjgl-platform-natives-linux.jar ext/sdu.lafis17.n
+ etbeanslab.Core/org-lwjgl-lwjgl/lwjgl-platform-natives-osx.jar ext/sd
+ u.lafis17.netbeanslab.Core/net-java-jinput/jinput.jar ext/sdu.lafis17
+ .netbeanslab.Core/net-java-jutils/jutils.jar ext/sdu.lafis17.netbeans
+ lab.Core/org-lwjgl-lwjgl/lwjgl_util.jar ext/sdu.lafis17.netbeanslab.C
+ ore/com-badlogicgames-jlayer/jlayer.jar ext/sdu.lafis17.netbeanslab.C
+ ore/org-jcraft/jorbis.jar ext/sdu.lafis17.netbeanslab.Core/com-badlog
+ icgames-gdx/gdx-box2d.jar ext/sdu.lafis17.netbeanslab.Core/com-badlog
+ icgames-gdx/gdx-box2d-platform-natives-desktop.jar ext/sdu.lafis17.ne
+ tbeanslab.Core/com-badlogicgames-gdx/gdx-freetype.jar ext/sdu.lafis17
+ .netbeanslab.Core/com-badlogicgames-gdx/gdx-freetype-platform-natives
+ -desktop.jar
+Maven-Class-Path: com.badlogicgames.gdx:gdx:1.5.0 com.badlogicgames.gd
+ x:gdx-platform:1.5.0:natives-desktop com.badlogicgames.gdx:gdx-backen
+ d-lwjgl:1.5.0 org.lwjgl.lwjgl:lwjgl:2.9.1 org.lwjgl.lwjgl:lwjgl-platf
+ orm:2.9.1:natives-windows org.lwjgl.lwjgl:lwjgl-platform:2.9.1:native
+ s-linux org.lwjgl.lwjgl:lwjgl-platform:2.9.1:natives-osx net.java.jin
+ put:jinput:2.0.5 net.java.jutils:jutils:1.0.0 org.lwjgl.lwjgl:lwjgl_u
+ til:2.9.1 com.badlogicgames.jlayer:jlayer:1.0.1-gdx org.jcraft:jorbis
+ :0.0.17 com.badlogicgames.gdx:gdx-box2d:1.5.0 com.badlogicgames.gdx:g
+ dx-box2d-platform:1.5.0:natives-desktop com.badlogicgames.gdx:gdx-fre
+ etype:1.5.0 com.badlogicgames.gdx:gdx-freetype-platform:1.5.0:natives
+ -desktop
+OpenIDE-Module-Module-Dependencies: org.netbeans.api.annotations.commo
+ n/1 > 1.27.1, sdu.lafis17.netbeanslab.Common > 1.0.1, org.openide.mod
+ ules > 7.48.1, org.openide.util.ui > 9.6.1, org.openide.util.lookup >
+  8.33.1
+
