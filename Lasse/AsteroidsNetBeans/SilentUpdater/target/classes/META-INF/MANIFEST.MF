@@ -5,8 +5,8 @@ OpenIDE-Module-Localizing-Bundle: sdu/lafis17/netbeanslab/silentupdate
  r/Bundle.properties
 OpenIDE-Module-Layer: sdu/lafis17/netbeanslab/silentupdater/layer.xml
 OpenIDE-Module-Specification-Version: 1.0.1
-OpenIDE-Module-Implementation-Version: 1.0.1-20190423
-OpenIDE-Module-Build-Version: 201904230451
+OpenIDE-Module-Implementation-Version: 1.0.1-20190515
+OpenIDE-Module-Build-Version: 201905152227
 OpenIDE-Module: sdu.lafis17.netbeanslab.SilentUpdater
 OpenIDE-Module-Public-Packages: -
 OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1

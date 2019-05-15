@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 OpenIDE-Module-Localizing-Bundle: sdu/lafis17/netbeanslab/common/Bundl
  e.properties
 OpenIDE-Module-Specification-Version: 1.0.1
-OpenIDE-Module-Implementation-Version: 1.0.1-20190423
-OpenIDE-Module-Build-Version: 201904230452
+OpenIDE-Module-Implementation-Version: 1.0.1-20190515
+OpenIDE-Module-Build-Version: 201905152227
 OpenIDE-Module: sdu.lafis17.netbeanslab.Common
 OpenIDE-Module-Public-Packages: sdu.lafis17.netbeanslab.common.ModuleL
  oader.*, sdu.lafis17.netbeanslab.common.data.*, sdu.lafis17.netbeansl

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><module codename="sdu.lafis17.netbeanslab.SilentUpdater">
-    <module_version install_time="1555995116502" last="true" origin="installer" specification_version="1.0.1">
+    <module_version install_time="1557959260234" last="true" origin="installer" specification_version="1.0.1">
         <file crc="1696613892" name="config/Modules/sdu-lafis17-netbeanslab-SilentUpdater.xml"/>
-        <file crc="1578584223" name="modules/sdu-lafis17-netbeanslab-SilentUpdater.jar"/>
+        <file crc="43910193" name="modules/sdu-lafis17-netbeanslab-SilentUpdater.jar"/>
+        <file crc="1010985863" name="update_tracking/sdu-lafis17-netbeanslab-SilentUpdater.xml"/>
     </module_version>
 </module>
