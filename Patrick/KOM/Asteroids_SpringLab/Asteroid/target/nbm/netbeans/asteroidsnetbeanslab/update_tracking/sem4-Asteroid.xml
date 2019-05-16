@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="sem4.Asteroid">
+    <module_version install_time="1557968576022" last="true" origin="installer" specification_version="1.0">
+        <file crc="2603692482" name="config/Modules/sem4-Asteroid.xml"/>
+        <file crc="975902115" name="modules/sem4-Asteroid.jar"/>
+    </module_version>
+</module>
