@@ -22,8 +22,8 @@ import sem4.common.services.IEntityProcessingService;
  * @author rasmus
  */
 
-@ServiceProviders(value = {
-    @ServiceProvider(service = IEntityProcessingService.class),})
+//@ServiceProviders(value = {
+//    @ServiceProvider(service = IEntityProcessingService.class),})
 public class EnemyControlSystem implements IEntityProcessingService {
 
     @Override
