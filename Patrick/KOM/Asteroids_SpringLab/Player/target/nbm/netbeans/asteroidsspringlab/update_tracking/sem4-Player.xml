@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><module codename="sem4.Player">
-    <module_version install_time="1557969827409" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1557977420569" last="true" origin="installer" specification_version="1.0">
         <file crc="165506739" name="config/Modules/sem4-Player.xml"/>
-        <file crc="567007766" name="modules/sem4-Player.jar"/>
+        <file crc="3870848747" name="modules/sem4-Player.jar"/>
+        <file crc="4100493756" name="update_tracking/sem4-Player.xml"/>
     </module_version>
 </module>
