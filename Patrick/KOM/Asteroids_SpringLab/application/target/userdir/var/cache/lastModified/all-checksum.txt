@@ -1,0 +1,11 @@
+platform=1557973091330
+cluster.asteroidsspringlab=1557973091325
+cluster.bin=1557973091328
+cluster.etc=1557973091330
+cluster.platform=1557973091330
+user=1557973091330
+crc=7
+locale=en_US
+branding=asteroidsspringlab
+java.version=1.8.0_201
+java.vm.version=25.201-b09
