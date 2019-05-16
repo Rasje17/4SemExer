@@ -17,8 +17,8 @@ import org.openide.util.lookup.ServiceProviders;
  * @author rasmus
  */
 
-@ServiceProviders(value = {
-    @ServiceProvider(service = IEntityProcessingService.class),})
+//@ServiceProviders(value = {
+//    @ServiceProvider(service = IEntityProcessingService.class),})
 public class PlayerControlSystem implements IEntityProcessingService {
 
     @Override

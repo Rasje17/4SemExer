@@ -63,7 +63,7 @@
         </dependency>-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>SilentUpdater</artifactId>
+            <artifactId>Core</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

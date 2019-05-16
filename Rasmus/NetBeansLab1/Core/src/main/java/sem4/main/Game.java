@@ -17,6 +17,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
 import org.openide.util.LookupListener;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import sem4.common.services.IPostEntityProcessingService;
 
 public class Game implements ApplicationListener {
@@ -24,6 +26,9 @@ public class Game implements ApplicationListener {
     private static OrthographicCamera cam;
     private ShapeRenderer sr;
     
+      ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"EnemyBeans.xml", "PlayerBeans.xml" });
+    
+
     private final Lookup lookup = Lookup.getDefault();
     private List<IGamePluginService> gamePlugins = new CopyOnWriteArrayList<>();
     private Lookup.Result<IGamePluginService> result;
@@ -55,7 +60,16 @@ public class Game implements ApplicationListener {
             iGamePlugin.start(gameData, world);
             gamePlugins.add(iGamePlugin);
         }
+                IGamePluginService enemypugin = (IGamePluginService) context.getBean("EnemyPlugin");
+                IGamePluginService playerplugin = (IGamePluginService) context.getBean("PlayerPlugin");
+                enemypugin.start(gameData, world);
+                gamePlugins.add(enemypugin);
+                playerplugin.start(gameData, world);
+                gamePlugins.add(playerplugin);
+        
     }
+    
+
 
     @Override
     public void render() {
@@ -73,6 +87,12 @@ public class Game implements ApplicationListener {
 
     private void update() {
         // Update
+        
+        IEntityProcessingService enepro = (IEntityProcessingService) context.getBean("EnemyControl");
+        IEntityProcessingService plypro = (IEntityProcessingService) context.getBean("PlayerControl");
+        
+        enepro.process(gameData, world);
+        plypro.process(gameData, world);
         for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
             entityProcessorService.process(gameData, world);
         }

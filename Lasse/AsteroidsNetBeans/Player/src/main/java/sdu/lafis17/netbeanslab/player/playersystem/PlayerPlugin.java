@@ -1,8 +1,6 @@
 package sdu.lafis17.netbeanslab.player.playersystem;
 
 
-import org.openide.util.lookup.ServiceProvider;
-import org.openide.util.lookup.ServiceProviders;
 import sdu.lafis17.netbeanslab.common.data.Entity;
 import sdu.lafis17.netbeanslab.common.data.GameData;
 import sdu.lafis17.netbeanslab.common.data.World;
@@ -10,9 +8,6 @@ import sdu.lafis17.netbeanslab.common.data.entityparts.MovingPart;
 import sdu.lafis17.netbeanslab.common.data.entityparts.PositionPart;
 import sdu.lafis17.netbeanslab.common.services.IGamePluginService;
 
-@ServiceProviders(value= {
-    @ServiceProvider(service = IGamePluginService.class)
-})
 public class PlayerPlugin implements IGamePluginService {
 
 	private Entity player;

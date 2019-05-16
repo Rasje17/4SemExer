@@ -1,7 +1,5 @@
 package sdu.lafis17.netbeanslab.player.playersystem;
 
-import org.openide.util.lookup.ServiceProvider;
-import org.openide.util.lookup.ServiceProviders;
 import sdu.lafis17.netbeanslab.common.data.Entity;
 import sdu.lafis17.netbeanslab.common.data.GameData;
 import static sdu.lafis17.netbeanslab.common.data.GameKeys.LEFT;
@@ -13,9 +11,6 @@ import sdu.lafis17.netbeanslab.common.data.entityparts.PositionPart;
 import sdu.lafis17.netbeanslab.common.services.IEntityProcessingService;
 
 
-@ServiceProviders(value= {
-    @ServiceProvider(service = IEntityProcessingService.class)
-})
 public class PlayerControlSystem implements IEntityProcessingService {
 
 	@Override

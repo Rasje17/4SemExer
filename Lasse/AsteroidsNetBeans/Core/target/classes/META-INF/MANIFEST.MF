@@ -4,8 +4,8 @@ OpenIDE-Module-Install: sdu/lafis17/netbeanslab/core/main/Installer.cl
 OpenIDE-Module-Localizing-Bundle: sdu/lafis17/netbeanslab/core/Bundle.
  properties
 OpenIDE-Module-Specification-Version: 1.0.1
-OpenIDE-Module-Implementation-Version: 1.0.1-20190423
-OpenIDE-Module-Build-Version: 201904230452
+OpenIDE-Module-Implementation-Version: 1.0.1-20190515
+OpenIDE-Module-Build-Version: 201905152227
 OpenIDE-Module: sdu.lafis17.netbeanslab.Core
 OpenIDE-Module-Public-Packages: -
 OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
@@ -30,7 +30,14 @@ X-Class-Path: ext/sdu.lafis17.netbeanslab.Core/com-badlogicgames-gdx/g
  icgames-gdx/gdx-box2d-platform-natives-desktop.jar ext/sdu.lafis17.ne
  tbeanslab.Core/com-badlogicgames-gdx/gdx-freetype.jar ext/sdu.lafis17
  .netbeanslab.Core/com-badlogicgames-gdx/gdx-freetype-platform-natives
- -desktop.jar
+ -desktop.jar ext/sdu.lafis17.netbeanslab.Core/org-springframework/spr
+ ing-context.jar ext/sdu.lafis17.netbeanslab.Core/org-springframework/
+ spring-aop.jar ext/sdu.lafis17.netbeanslab.Core/aopalliance/aopallian
+ ce.jar ext/sdu.lafis17.netbeanslab.Core/org-springframework/spring-be
+ ans.jar ext/sdu.lafis17.netbeanslab.Core/org-springframework/spring-c
+ ore.jar ext/sdu.lafis17.netbeanslab.Core/commons-logging/commons-logg
+ ing.jar ext/sdu.lafis17.netbeanslab.Core/org-springframework/spring-e
+ xpression.jar
 Maven-Class-Path: com.badlogicgames.gdx:gdx:1.5.0 com.badlogicgames.gd
  x:gdx-platform:1.5.0:natives-desktop com.badlogicgames.gdx:gdx-backen
  d-lwjgl:1.5.0 org.lwjgl.lwjgl:lwjgl:2.9.1 org.lwjgl.lwjgl:lwjgl-platf
@@ -41,9 +48,13 @@ Maven-Class-Path: com.badlogicgames.gdx:gdx:1.5.0 com.badlogicgames.gd
  :0.0.17 com.badlogicgames.gdx:gdx-box2d:1.5.0 com.badlogicgames.gdx:g
  dx-box2d-platform:1.5.0:natives-desktop com.badlogicgames.gdx:gdx-fre
  etype:1.5.0 com.badlogicgames.gdx:gdx-freetype-platform:1.5.0:natives
- -desktop
+ -desktop org.springframework:spring-context:4.1.5.RELEASE org.springf
+ ramework:spring-aop:4.1.5.RELEASE aopalliance:aopalliance:1.0 org.spr
+ ingframework:spring-beans:4.1.5.RELEASE org.springframework:spring-co
+ re:4.1.5.RELEASE commons-logging:commons-logging:1.2 org.springframew
+ ork:spring-expression:4.1.5.RELEASE
 OpenIDE-Module-Module-Dependencies: org.netbeans.api.annotations.commo
  n/1 > 1.27.1, sdu.lafis17.netbeanslab.Common > 1.0.1, org.openide.mod
  ules > 7.48.1, org.openide.util.ui > 9.6.1, org.openide.util.lookup >
-  8.33.1
+  8.33.1, sdu.lafis17.netbeanslab.Player > 1.0.1
 
