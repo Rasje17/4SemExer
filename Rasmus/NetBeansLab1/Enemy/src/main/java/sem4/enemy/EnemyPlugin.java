@@ -19,8 +19,8 @@ import sem4.common.services.IGamePluginService;
  * @author rasmus
  */
 
-@ServiceProviders(value = {
-    @ServiceProvider(service = IGamePluginService.class),})
+//@ServiceProviders(value = {
+//    @ServiceProvider(service = IGamePluginService.class),})
 public class EnemyPlugin implements IGamePluginService {
     
     private Entity enemy;

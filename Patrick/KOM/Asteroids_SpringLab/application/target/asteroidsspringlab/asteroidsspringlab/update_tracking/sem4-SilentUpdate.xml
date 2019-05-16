@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="sem4.SilentUpdate">
+    <module_version install_time="1557973071168" last="true" origin="installer" specification_version="1.0">
+        <file crc="100331139" name="config/Modules/sem4-SilentUpdate.xml"/>
+        <file crc="1582858587" name="modules/sem4-SilentUpdate.jar"/>
+    </module_version>
+</module>
