@@ -32,10 +32,10 @@ def main():
 
     # P(v|q)
     # emission[state, observation]
-    emissions = np.array([[.0, .0, .0],  # Initial state
-                          [.2, .4, .4],  # Hot state
-                          [.5, .4, .1],  # Cold state
-                          [.0, .0, .0],  # Final state
+    emissions = np.array([[.0, .0, .0, .0],  # Initial state
+                          [.0, .2, .4, .4],  # Hot state
+                          [.0, .5, .4, .1],  # Cold state
+                          [.0, .0, .0, .0],  # Final state
                           ])
 
     for observations in observationss:
@@ -55,7 +55,30 @@ def inclusive_range(a, b):
 
 
 def compute_forward(states, observations, transitions, emissions):
-    pass
+    # subtract 2 because we don't look at initialize and final states
+    N = len(states)-2
+
+    # subtract 1 because the first value is a dummy value (None) that we don't look at
+    T = len(observations)-1
+
+    forward = 5 * np.ones((N+2, T+1))
+
+    for s in inclusive_range(1, N):
+        forward[s, 1] = transitions[0, s] * emissions[s, observations[1]]
+
+    for t in inclusive_range(2, T):
+        for currentState in inclusive_range(1, N):
+            forward[currentState, t] = sum(
+                forward[nextState, t - 1] * transitions[nextState, currentState] * emissions[currentState, observations[t]]
+                for nextState in inclusive_range(1, N)
+            )
+
+    forward[N+1, T] = sum(
+        forward[s, T] * transitions[s, N+1]
+        for s in inclusive_range(1, N)
+    )
+
+    return forward[N+1, T]
 
 
 def compute_viterbi(states, observations, transitions, emissions):
