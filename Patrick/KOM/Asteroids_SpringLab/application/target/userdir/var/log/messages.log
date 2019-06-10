@@ -1,0 +1,108 @@
+-------------------------------------------------------------------------------
+>Log Session: Thursday, May 16, 2019 5:30:43 AM CEST
+>System Info: 
+  Product Version         = NetBeans Platform 8.2 (Build 201609300101)
+  Operating System        = Windows 10 version 10.0 running on amd64
+  Java; VM; Vendor        = 1.8.0_201; Java HotSpot(TM) 64-Bit Server VM 25.201-b09; Oracle Corporation
+  Runtime                 = Java(TM) SE Runtime Environment 1.8.0_201-b09
+  Java Home               = C:\Program Files\Java\jdk1.8.0_201\jre
+  System Locale; Encoding = en_US (asteroidsspringlab); Cp1252
+  Home Directory          = C:\Users\pvies
+  Current Directory       = C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab
+  User Directory          = C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\userdir
+  Cache Directory         = C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\userdir\var\cache
+  Installation            = C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\asteroidsspringlab
+                            C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\bin
+                            C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\etc
+                            C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform
+                            C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform
+  Boot & Ext. Classpath   = C:\Program Files\Java\jdk1.8.0_201\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_201\jre\classes;C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext\zipfs.jar
+  Application Classpath   = C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\boot.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\org-openide-modules.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\org-openide-util-lookup.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\org-openide-util-ui.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\org-openide-util.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\boot_ja.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\boot_pt_BR.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\boot_ru.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\boot_zh_CN.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-modules_ja.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-modules_pt_BR.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-modules_ru.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-modules_zh_CN.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-util-lookup_ja.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-util-lookup_pt_BR.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-util-lookup_ru.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-util-lookup_zh_CN.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-util-ui_ja.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-util-ui_pt_BR.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-util-ui_ru.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-util-ui_zh_CN.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-util_ja.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-util_pt_BR.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-util_ru.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\lib\locale\org-openide-util_zh_CN.jar;C:\Program Files\Java\jdk1.8.0_201\lib\dt.jar;C:\Program Files\Java\jdk1.8.0_201\lib\tools.jar
+  Startup Classpath       = C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\asm-all-5.0.1.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\core-base.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\core.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\org-netbeans-libs-asm.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\org-openide-filesystems.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\core-base_ja.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\core-base_pt_BR.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\core-base_ru.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\core-base_zh_CN.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\core_ja.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\core_pt_BR.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\core_ru.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\core_zh_CN.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\org-netbeans-libs-asm_ja.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\org-netbeans-libs-asm_pt_BR.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\org-netbeans-libs-asm_ru.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\org-netbeans-libs-asm_zh_CN.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\org-openide-filesystems_ja.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\org-openide-filesystems_pt_BR.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\org-openide-filesystems_ru.jar;C:\Users\pvies\Dropbox\SDU\SE\4. Semester\Netbeans\4SemExer\Patrick\KOM\Asteroids_SpringLab\application\target\asteroidsspringlab\platform\core\locale\org-openide-filesystems_zh_CN.jar
+-------------------------------------------------------------------------------
+INFO [org.springframework.context.support.ClassPathXmlApplicationContext]: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@65c5d685: startup date [Thu May 16 05:30:43 CEST 2019]; root of context hierarchy
+INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader]: Loading XML bean definitions from class path resource [enemyBeans.xml]
+INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader]: Loading XML bean definitions from class path resource [playerBeans.xml]
+INFO [org.netbeans.core.startup.NbEvents]: Turning on modules:
+	org.openide.util.lookup [8.33.1 201609300101]
+	org.openide.util [9.7.1 201609300101]
+	org.openide.util.ui [9.6.1 201609300101]
+	org.openide.modules [7.48.1 201609300101]
+	org.netbeans.api.progress/1 [1.47.1 201609300101]
+	org.openide.filesystems [9.10.1 201609300101]
+	org.netbeans.libs.asm [5.3.1 201609300101]
+	org.netbeans.bootstrap/1 [2.76.1 201609300101]
+	org.netbeans.core.startup.base [1.62.1.1 1 201609300101]
+	org.netbeans.core.startup/1 [1.62.1.1 201609300101]
+	org.netbeans.api.annotations.common/1 [1.27.1 201609300101]
+	org.openide.awt [7.67.1 201609300101]
+	org.netbeans.api.progress.nb [1.47.1 201609300101]
+	org.netbeans.modules.autoupdate.services [1.52.1 201609300101]
+	org.netbeans.api.intent [1.2.1 201609300101]
+	org.netbeans.api.io [1.3.1 201609300101]
+	org.openide.io [1.49.1 201609300101]
+	sem4.SilentUpdate [1.0 1.0-20190516 201905160123]
+	sem4.Common [1.0 1.0-20190515 201905152215]
+	sem4.Player [1.0 1.0-20190515 201905152215]
+	sem4.Enemy [1.0 1.0-20190515 201905152215]
+	sem4.Asteroid [1.0 1.0-20190515 201905152215]
+	sem4.Bullet [1.0 1.0-20190515 201905152215]
+	sem4.Core [1.0 1.0-20190515 201905152215]
+INFO [org.netbeans.core.startup.layers.BinaryFS]: value = sem4.silentupdate.Bundle#Services/AutoupdateType/org_netbeans_modules_autoupdate_silentupdate_update_center.instance from Services/AutoupdateType/org_netbeans_modules_autoupdate_silentupdate_update_center.instance
+java.util.MissingResourceException: Can't find resource for bundle org.openide.util.NbBundle$PBundle, key Services/AutoupdateType/org_netbeans_modules_autoupdate_silentupdate_update_center.instance
+	at java.util.ResourceBundle.getObject(ResourceBundle.java:450)
+[catch] at org.netbeans.core.startup.layers.BinaryFS$AttrImpl.getValue(BinaryFS.java:719)
+	at org.netbeans.core.startup.layers.BinaryFS$BFSBase.getAttribute(BinaryFS.java:549)
+	at org.openide.filesystems.MultiFileObject.getAttribute(MultiFileObject.java:944)
+	at org.openide.filesystems.MultiFileObject.getAttribute(MultiFileObject.java:877)
+	at org.openide.filesystems.MultiFileObject.getAttribute(MultiFileObject.java:940)
+	at org.openide.filesystems.MultiFileObject.getAttribute(MultiFileObject.java:877)
+	at org.openide.filesystems.MultiFileObject.getAttribute(MultiFileObject.java:798)
+	at org.openide.filesystems.FileSystem$2.annotateName(FileSystem.java:872)
+	at org.openide.filesystems.FileSystem$2.annotateName(FileSystem.java:847)
+	at org.netbeans.modules.autoupdate.updateprovider.AutoupdateCatalogFactory.displayName(AutoupdateCatalogFactory.java:186)
+	at org.netbeans.modules.autoupdate.updateprovider.AutoupdateCatalogFactory.createUpdateProvider(AutoupdateCatalogFactory.java:160)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.netbeans.core.startup.layers.BinaryFS$AttrImpl$MethodAndParams.invoke(BinaryFS.java:773)
+	at org.netbeans.core.startup.layers.BinaryFS$AttrImpl.getValue(BinaryFS.java:703)
+	at org.netbeans.core.startup.layers.BinaryFS$BFSBase.getAttribute(BinaryFS.java:549)
+	at org.openide.filesystems.MultiFileObject.getAttribute(MultiFileObject.java:944)
+	at org.openide.filesystems.MultiFileObject.getAttribute(MultiFileObject.java:877)
+	at org.openide.filesystems.MultiFileObject.getAttribute(MultiFileObject.java:940)
+	at org.openide.filesystems.MultiFileObject.getAttribute(MultiFileObject.java:877)
+	at org.openide.filesystems.MultiFileObject.getAttribute(MultiFileObject.java:798)
+	at org.netbeans.modules.openide.filesystems.RecognizeInstanceFiles$FOItem.createInstanceFor(RecognizeInstanceFiles.java:293)
+	at org.netbeans.modules.openide.filesystems.RecognizeInstanceFiles$FOItem.getInstance(RecognizeInstanceFiles.java:280)
+	at org.openide.util.lookup.AbstractLookup$R.allInstances(AbstractLookup.java:1055)
+	at org.openide.util.lookup.AbstractLookup$R.allInstances(AbstractLookup.java:1035)
+	at org.openide.util.lookup.ProxyLookup$LazyCollection.computeSingleResult(ProxyLookup.java:1285)
+	at org.openide.util.lookup.ProxyLookup$LazyCollection.computeDelegate(ProxyLookup.java:1123)
+	at org.openide.util.lookup.ProxyLookup$LazyCollection.delegate(ProxyLookup.java:1090)
+	at org.openide.util.lookup.ProxyLookup$LazyCollection.delegate(ProxyLookup.java:1073)
+	at org.openide.util.lookup.ProxyLookup$LazyCollection.toArray(ProxyLookup.java:1179)
+	at java.util.ArrayList.addAll(ArrayList.java:581)
+	at org.openide.util.lookup.ProxyLookup$LazyCollection.computeDelegate(ProxyLookup.java:1143)
+	at org.openide.util.lookup.ProxyLookup$LazyCollection.delegate(ProxyLookup.java:1090)
+	at org.openide.util.lookup.ProxyLookup$LazyCollection.delegate(ProxyLookup.java:1073)
+	at org.openide.util.lookup.ProxyLookup$LazyCollection.isEmpty(ProxyLookup.java:1163)
+	at org.openide.util.lookup.ProxyLookup$LazyCollection.computeDelegate(ProxyLookup.java:1134)
+	at org.openide.util.lookup.ProxyLookup$LazyCollection.access$900(ProxyLookup.java:1051)
+	at org.openide.util.lookup.ProxyLookup$LazyCollection$1.hasNext(ProxyLookup.java:1251)
+	at org.netbeans.modules.autoupdate.services.UpdateUnitProviderImpl.getUpdateUnitProviders(UpdateUnitProviderImpl.java:279)
+	at org.netbeans.api.autoupdate.UpdateUnitProviderFactory.getUpdateUnitProviders(UpdateUnitProviderFactory.java:86)
+	at sem4.silentupdate.UpdateHandler.getSilentUpdateProvider(UpdateHandler.java:244)
+	at sem4.silentupdate.UpdateHandler.findLocalInstalled(UpdateHandler.java:175)
+	at sem4.silentupdate.UpdateHandler.checkAndHandleUpdates(UpdateHandler.java:51)
+	at sem4.silentupdate.UpdateActivator$1.run(UpdateActivator.java:23)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+CONFIG [null]: Missing resource from class: org.openide.util.NbBundle$PBundle
+CONFIG [null]: Key which was not found: Services/AutoupdateType/org_netbeans_modules_autoupdate_silentupdate_update_center.instance

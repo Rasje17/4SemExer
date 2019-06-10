@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<module codename="sem4.Player">
+    <module_version install_time="1557973102726" last="true" origin="Default Update Center" specification_version="1.0">
+        <file crc="165506739" name="config/Modules/sem4-Player.xml"/>
+        <file crc="120465328" name="modules/sem4-Player.jar"/>
+        <file crc="856008760" name="update_tracking/sem4-Player.xml"/>
+    </module_version>
+</module>

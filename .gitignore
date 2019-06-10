@@ -36,6 +36,8 @@
 /Rasmus/OSGIAtroids/OSGIAtroid/target/
 /Rasmus/OSGIAtroids/Test/nbproject/private/
 /Rasmus/OSGIAtroids/Test/build/
+/Rasmus/NetBeansLab1/Player/Player/nbproject/
+/Rasmus/OSGIAtroids/OSGiLibGDX/target/
 
 /Patrick/KOM/AsteroidsEntityFramework/Common/target/
 /Patrick/KOM/AsteroidsEntityFramework/Enemy/target/
@@ -95,5 +97,7 @@
 /Patrick/DM507/HuffmanTrees/nbproject/private/
 /Patrick/DM507/HuffmanTrees/build/
 /Patrick/DM507/HuffmanTrees/dist/
-/Rasmus/NetBeansLab1/Player/Player/nbproject/
-/Rasmus/OSGIAtroids/OSGiLibGDX/target/
+/Patrick/KOM/Asteroids_SpringLab/nbproject/private/
+/Patrick/KOM/Asteroids_SpringLab/Player/nbproject/
+
+

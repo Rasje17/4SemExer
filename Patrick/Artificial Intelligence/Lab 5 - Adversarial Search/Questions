@@ -1,0 +1,26 @@
+Questions from AI Lab 6 - 04/04/19
+
+Regarding a Tic-Tac-Toe game
+1. What is the branching factor at depth 0? At depth 1?
+	At depth 0 it is 9 as there are 9 possible moves to be made and at depth 1 it is 8 as there are 8 free spaces. 
+	General equation is presumed to be (height - current depth), with heigth being the empty node in this case.
+
+2. What is the maximal depth?
+	The maximal depth is 8
+	
+3. Will a MIN move attempt to minimize or maximize the utility?
+	A MIN move will attempt to minimize the utility, since the win condition for player MIN is to have the utility as a negative number
+
+4. Are states after a terminal state explored?
+	There is no need to explore state nodes after a terminal state as the terminal state is the end of the game
+
+5. Are all possible states explored to a terminal state?
+	Yes, as the algorithm can not know the players' next move, and therefore has to be prepared for any move, whether or not it is the best move for either player
+
+6. Is this a depth-first or breadth-first search? How do you
+	know? (see Python code)
+	Depth-first
+	
+7. Run the MinMax tic-tac-toe program (you will play O)
+	IT WORKS!
+	

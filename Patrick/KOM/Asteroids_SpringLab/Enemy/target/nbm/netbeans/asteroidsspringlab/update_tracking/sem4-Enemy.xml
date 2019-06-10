@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="sem4.Enemy">
+    <module_version install_time="1557969828877" last="true" origin="installer" specification_version="1.0">
+        <file crc="3655310519" name="config/Modules/sem4-Enemy.xml"/>
+        <file crc="1053590280" name="modules/sem4-Enemy.jar"/>
+    </module_version>
+</module>

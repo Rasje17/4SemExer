@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="sem4.Bullet">
+    <module_version install_time="1557969816825" last="true" origin="installer" specification_version="1.0">
+        <file crc="922189039" name="config/Modules/sem4-Bullet.xml"/>
+        <file crc="2212920542" name="modules/sem4-Bullet.jar"/>
+    </module_version>
+</module>
