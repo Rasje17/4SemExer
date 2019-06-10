@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>sem4</groupId>
-    <artifactId>OSGIAtroids-parent</artifactId>
+    <artifactId>OSGI-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>OSGIAtroids-parent</name>
+    <name>OSGI-parent</name>
 
     <repositories>
         <!--
@@ -58,17 +59,10 @@
     <modules>
         <module>branding</module>
         <module>application</module>
-        <module>OSGIExtender</module>
-    <module>OSGICore</module>
-        <module>Common</module>
-    <module>OSGIAtroid</module>
-    <module>OSGIEnemy</module>
-    <module>libgdx</module>
-    <module>libgdxFix</module>
-  </modules>
+    </modules>
 
     <properties>
         <netbeans.version>RELEASE82</netbeans.version>
-        <brandingToken>osgiatroids</brandingToken>
+        <brandingToken>osgi</brandingToken>
     </properties>
 </project>
