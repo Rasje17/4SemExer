@@ -30,8 +30,8 @@ def TREE_SEARCH():
         node = REMOVE_FIRST(fringe)
         if node.STATE == GOAL_STATE:
             return node.path()
-        children = EXPAND(node)
-        fringe = INSERT_ALL(children, fringe)
+        for e in EXPAND(node):
+            fringe.append(e)
         print("fringe: {}".format(fringe))
 
 
@@ -55,7 +55,7 @@ def EXPAND(node):
 Insert node in to the queue (fringe).
 '''
 def INSERT(node, queue):
-    queue.insert(0, node)
+    queue.append(node)
     return queue
 
 
@@ -74,8 +74,8 @@ def INSERT_ALL(list, queue):
 Removes and returns the first element from fringe
 '''
 def REMOVE_FIRST(queue):
-    element = queue[-1]
-    queue.remove(queue[-1])
+    element = queue[0]
+    queue.remove(queue[0])
     return element
 
 '''

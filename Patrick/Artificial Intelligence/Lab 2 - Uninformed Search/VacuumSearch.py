@@ -55,7 +55,7 @@ def EXPAND(node):
 Insert node in to the queue (fringe).
 '''
 def INSERT(node, queue):
-    queue.insert(0, node)
+    queue.insert(0, node)       # FIFO
     return queue
 
 
@@ -73,7 +73,7 @@ def INSERT_ALL(list, queue):
 '''
 Removes and returns the first element from fringe
 '''
-def REMOVE_FIRST(queue):
+def REMOVE_FIRST(queue):        # FIFO
     element = queue[-1]
     queue.remove(queue[-1])
     return element

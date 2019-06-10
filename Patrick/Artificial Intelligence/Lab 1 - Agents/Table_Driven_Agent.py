@@ -14,7 +14,9 @@ table = {
     ((B, "Clean"), (A, "Dirty")): "Suck",
     ((B, "Dirty"), (B, "Clean")): "Left",
     ((B, "Dirty"), (B, "Dirty")): "Suck",
-    ((A, "Clean"), (B, "Dirty"), (B, "Clean")): "Left"
+    ((A, "Clean"), (B, "Dirty"), (B, "Clean")): "Left",
+    ((A, "Clean"), (B, "Clean"), (A, "Clean")): "Done",
+    # continue statespace ...
 }
 
 def LOOKUP(percepts, table):

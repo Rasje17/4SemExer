@@ -35,7 +35,7 @@ def TREE_SEARCH():
     initial_node = Node(INITIAL_STATE[0], INITIAL_STATE[1])
     fringe = INSERT(initial_node, fringe)
     while fringe is not None:
-        fringe.sort(key=((operator.attrgetter('TOTAL'))))
+        fringe.sort(key=((operator.attrgetter('TOTAL'))))     # sort fringe according to total cost, in order to expand best nodes first
         node = REMOVE_FIRST(fringe)
         if node.STATE == GOAL_STATE1 or node.STATE == GOAL_STATE2:
             return node.path()

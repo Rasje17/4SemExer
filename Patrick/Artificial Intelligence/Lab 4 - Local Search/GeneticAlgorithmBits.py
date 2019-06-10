@@ -2,8 +2,8 @@ import math
 import random
 
 
-p_mutation = 0.2
-num_of_generations = 30
+p_mutation = 0.2        # probability of mutation happening
+num_of_generations = 30    # maximum number of generations - stops before this point if a solution is found
 
 
 def genetic_algorithm(population, fitness_fn, minimal_fitness):
@@ -49,12 +49,12 @@ def reproduce(mother, father):
     Return the child individual
     '''
 
-    crossover_point = random.randint(0, (len(mother)-1))
+    crossover_point = random.randint(0, (len(mother)-1))    # chooses crossover point randomly
 
     mother_part = mother[:crossover_point]
     father_part = father[crossover_point:]
 
-    child = mother_part + father_part
+    child = mother_part + father_part       # combines parts of two parents into a new individual
 
     return child
 
@@ -65,16 +65,16 @@ def mutate(individual):
     Return the mutated individual
     '''
 
-    r = random.randint(0, len(individual)-1)
+    r = random.randint(0, len(individual)-1)    # chooses random index
 
-    mutation = individual[:r]
+    mutation = individual[:r]   # adds everything from before that index
 
-    if individual[r] == 0:
+    if individual[r] == 0:  # flips the bit of the chosen index; if it was 0, add a 1 instead, and vice versa
         mutation += (1,)
     else:
         mutation += (0,)
 
-    mutation += individual[(r+1):]
+    mutation += individual[(r+1):]  # then add the rest of the original bitstring
 
     return mutation
 
@@ -94,9 +94,10 @@ def random_selection(population, fitness_fn):
     ordered_population = list(population)
     total_fitness = 0
 
-    for individual in ordered_population:
+    for individual in ordered_population:       # adds up total fitness in the population, this is used in roulette wheel selection
         total_fitness += fitness_fn(individual)
 
+    # picks two parents using roulette wheel selection
     selection1 = selection(ordered_population, total_fitness, fitness_fn)
     selection2 = selection(ordered_population, total_fitness, fitness_fn)
 
@@ -105,7 +106,7 @@ def random_selection(population, fitness_fn):
     return selected
 
 
-def selection(elements, total_fitness, fitness_fn):
+def selection(elements, total_fitness, fitness_fn):     # picks two parents using roulette wheel selection
     r = random.randint(0, total_fitness)
     temp = 0
     for individual in elements:
@@ -118,7 +119,7 @@ def fitness_function(individual):
     enu = enumerate(reversed(individual))
     fitness = 0
     for pair in enu:
-            fitness += math.pow(2, pair[0]) * pair[1]
+            fitness += math.pow(2, pair[0]) * pair[1]   # calculates the value of the bitstring
     '''
     Computes the decimal value of the individual
     Return the fitness level of the individual
@@ -135,7 +136,7 @@ def fitness_function(individual):
 
 
 def get_fittest_individual(iterable, func):
-    return max(iterable, key=func)
+    return max(iterable, key=func)      # fittest individual is the one with the highest value
 
 
 def get_initial_population(n, count):
@@ -150,9 +151,9 @@ def get_initial_population(n, count):
 
 
 def main():
-    bitLength = 6
-    numIndividuals = 4
-    minimal_fitness = math.pow(2, bitLength) - 1
+    bitLength = 6       # amount of bits in each individual
+    numIndividuals = 4      # amount of individuals at start
+    minimal_fitness = math.pow(2, bitLength) - 1    # breakpoint; if the fitness reaches this level, it is deemed good enough, and the loop is stopped.
 
     # Curly brackets also creates a set, if there isn't a colon to indicate a dictionary
     '''

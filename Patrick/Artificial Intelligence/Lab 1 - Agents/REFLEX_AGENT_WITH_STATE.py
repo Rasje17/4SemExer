@@ -6,7 +6,7 @@ state = {}
 action = None
 model = {A: None, B: None, C: None, D: None}
 
-RULE_ACTION = {
+RULE_ACTION = {     # defining possible actions
     1: "Suck",
     2: "Right",
     3: "Left",
@@ -15,7 +15,7 @@ RULE_ACTION = {
     6: "NoOp"
 }
 
-rules = {
+rules = {       # defining what action to do based on environment
     (A, "Dirty"): 1,
     (B, "Dirty"): 1,
     (C, "Dirty"): 1,
@@ -27,12 +27,12 @@ rules = {
     (A, B, C, D, "Clean"): 6
 }
 
-Enviornment = {
+Enviornment = {     # initial statespace
     A: "Dirty",
     B: "Clean",
     C: "Dirty",
     D: "Clean",
-    "Current": A
+    "Current": A        # will only run NoOp if in the starting position. If all states are clean, but we are currently in C, we will go back to the starting environment before choosing NoOp.
 }
 
 def INTERPRET_INPUT(input):
@@ -57,11 +57,11 @@ def REFLEX_AGENT_WITH_STATE(percept):
     action = RULE_ACTION[rule]
     return action
 
-def Sensors():
+def Sensors():      # detecting state of the current environment
     location = Enviornment["Current"]
     return (location, Enviornment[location])
 
-def Actuators(action):
+def Actuators(action):      # how each action impacts the environment
     location = Enviornment["Current"]
     if action == "Suck":
         Enviornment[location] = "Clean"
@@ -77,7 +77,7 @@ def Actuators(action):
 def run(n):
     print("\tCurrent\tNew")
     print("Location\tStatus\tAction\tLocation\tStatus")
-    for i in range(1, n):
+    for i in range(1, n):       # n not included!
         (location, status) = Sensors()
         print("{:12s}{:8s}".format(location, status), end="")
         action = REFLEX_AGENT_WITH_STATE(Sensors())

@@ -35,7 +35,7 @@ def TREE_SEARCH():
     initial_node = Node(INITIAL_STATE[0], INITIAL_STATE[1])
     fringe = INSERT(initial_node, fringe)
     while fringe is not None:
-        fringe.sort(key=((operator.attrgetter('TOTAL'))))
+        fringe.sort(key=((operator.attrgetter('TOTAL'))))     # sort fringe according to lowest total cost, in order to expand cheapest nodes first
         node = REMOVE_FIRST(fringe)
         if node.STATE == GOAL_STATE1 or node.STATE == GOAL_STATE2:
             return node.path()
@@ -67,7 +67,7 @@ def EXPAND(node):
 Insert node in to the queue (fringe).
 '''
 def INSERT(node, queue):
-    queue.append(node)
+    queue.append(node)      # FIFO
     return queue
 
 
@@ -86,7 +86,7 @@ def INSERT_ALL(list, queue):
 Removes and returns the first element from fringe
 '''
 def REMOVE_FIRST(queue):
-    element = queue[0]
+    element = queue[0]      # FIFO
     queue.remove(queue[0])
     return element
 

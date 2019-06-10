@@ -2,8 +2,8 @@ import math
 import random
 
 
-p_mutation = 0.2
-num_of_generations = 100
+p_mutation = 0.2        # probability of mutations
+num_of_generations = 100    # maximum number of generations before loop is forced to stop
 
 
 def genetic_algorithm(population, fitness_fn, minimal_fitness):
@@ -28,7 +28,7 @@ def genetic_algorithm(population, fitness_fn, minimal_fitness):
 
         fittest_individual = get_fittest_individual(population, fitness_fn)
 
-        if 1 > fitness_fn(fittest_individual):
+        if 1 > fitness_fn(fittest_individual):  # when the amount of conflicts is less than 1, a solution is found -> break from the loop
             break
 
     print("Final generation {}:".format(generation))
@@ -49,7 +49,7 @@ def reproduce(mother, father):
     Return the child individual
     '''
 
-    crossover_point = random.randint(0, (len(mother)-1))
+    crossover_point = random.randint(0, (len(mother)-1))    # crossover point chosen randomly
 
     mother_part = mother[:crossover_point]
     father_part = father[crossover_point:]
@@ -91,13 +91,14 @@ def random_selection(population, fitness_fn):
     # list.
     ordered_population = list(population)
     n = len(ordered_population[0])
-    worst_fitness = (n*(n-1)/2)
+    worst_fitness = (n*(n-1)/2)     # maximum possible number of conflicts
     total_fitness = 0
 
     for individual in ordered_population:
         temp = (1 - (fitness_fn(individual)/worst_fitness))*100
         total_fitness += temp
 
+    # selects two parents using roulette wheel selection
     selection1 = selection(ordered_population, total_fitness, worst_fitness, fitness_fn)
     selection2 = selection(ordered_population, total_fitness, worst_fitness, fitness_fn)
 
@@ -115,7 +116,7 @@ def selection(elements, total_fitness, worst_fitness, fitness_fn):
             return individual
 
 
-def fitness_function(individual):
+def fitness_function(individual):       # counts amount of conflicts for each individual
     '''
     Computes the decimal value of the individual
     Return the fitness level of the individual
@@ -142,7 +143,7 @@ def fitness_function(individual):
 
 
 def get_fittest_individual(iterable, func):
-    return min(iterable, key=func)
+    return min(iterable, key=func)      # fittest individual has the lowest amount of conflicts
 
 
 def get_initial_population(n, count):
@@ -157,8 +158,8 @@ def get_initial_population(n, count):
 
 
 def main():
-    n = 4
-    minimal_fitness = (n*(n-1)/2)
+    n = 4   # the amount of columns/rows/queens per individual
+    minimal_fitness = (n*(n-1)/2)       # the highest possible amount of conflicts (never used)
 
     # Curly brackets also creates a set, if there isn't a colon to indicate a dictionary
     '''
@@ -169,7 +170,7 @@ def main():
         (1, 0, 0)
     }
     '''
-    initial_population = get_initial_population(n, 4)   #(length, individuals)
+    initial_population = get_initial_population(n, 4)   # (length, individuals)
 
     fittest = genetic_algorithm(initial_population, fitness_function, minimal_fitness)
     print('Fittest Individual: ' + str(fittest))

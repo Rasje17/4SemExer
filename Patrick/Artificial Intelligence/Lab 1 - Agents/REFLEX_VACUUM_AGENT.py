@@ -3,7 +3,7 @@ B = "B"
 C = "C"
 D = "D"
 
-Enviornment = {
+Enviornment = {     # initial statespace
     A: "Dirty",
     B: "Clean",
     C: "Dirty",
@@ -27,7 +27,7 @@ def Sensors():
     location = Enviornment["Current"]
     return (location, Enviornment[location])
 
-def Actuators(action):
+def Actuators(action):      # acting on the environment
     location = Enviornment["Current"]
     if action == "Suck":
         Enviornment[location] = "Clean"
@@ -43,7 +43,7 @@ def Actuators(action):
 def run(n, make_agent):
     print("\tCurrent\tNew")
     print("Loction\tStatus\tAction\tLocation\tStatus")
-    for i in range(1, n):
+    for i in range(1, n):       # n not included!
         (location, status) = Sensors()
         print("{:12s}{:8s}".format(location, status), end="")
         action = make_agent(Sensors())

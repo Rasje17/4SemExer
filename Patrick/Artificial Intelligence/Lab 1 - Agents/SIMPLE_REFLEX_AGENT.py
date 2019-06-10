@@ -1,12 +1,12 @@
 A = "A"
 B = "B"
-RULE_ACTION = {
+RULE_ACTION = {     # defining actions
     1: "Suck",
     2: "Right",
     3: "Left",
     4: "NoOp"
 }
-rules = {
+rules = {       # defining which action to choose based on current environment state
     (A, "Dirty"): 1,
     (B, "Dirty"): 1,
     (A, "Clean"): 2,
@@ -14,7 +14,7 @@ rules = {
     (A, B, "Clean"): 4
 }
 
-Enviornment = {
+Enviornment = {     # initial statespace
     A: "Dirty",
     B: "Dirty",
     "Current": A
@@ -33,11 +33,11 @@ def SIMPLE_REFLEX_AGENT(percept):
     action = RULE_ACTION[rule]
     return action
 
-def Sensors():
+def Sensors():      # detecting state of the current environment
     location = Enviornment["Current"]
     return (location, Enviornment[location])
 
-def Actuators(action):
+def Actuators(action):      # acting on the environment
     location = Enviornment["Current"]
     if action == "Suck":
         Enviornment[location] = "Clean"
@@ -49,7 +49,7 @@ def Actuators(action):
 def run(n):
     print("\tCurrent\t\tNew")
     print("Location\tStatus\tAction\tLocation\tStatus")
-    for i in range(1, n):
+    for i in range(1, n):       # n is not included!
         (location, status) = Sensors()
         print("{:12s}{:8s}".format(location, status), end="")
         action = SIMPLE_REFLEX_AGENT(Sensors())

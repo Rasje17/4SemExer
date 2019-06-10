@@ -82,7 +82,75 @@ def compute_forward(states, observations, transitions, emissions):
 
 
 def compute_viterbi(states, observations, transitions, emissions):
-    return []
+    big_n = len(states) - 2
+
+    # The first element is dummy, so we ignore it
+    big_t = len(observations) - 1
+
+    # The last state
+    f = big_n + 1
+
+    # Initialize to 5, so it's easy to see what elements were not overwritten
+    # (0 could be a valid value)
+    viterbi = 5 * np.ones((big_n + 2, big_t + 1))
+
+    # Must be of type int, otherwise it is tricky to use its elements to index
+    # the states
+    # Initialize to 5, so it's easy to see what elements were not overwritten
+    # (0 could be a valid value)
+    backpointers = 5 * np.ones((big_n + 2, big_t + 1), dtype=int)
+
+    for s in inclusive_range(1, big_n):
+        # emission[state, observation]
+        o1 = observations[1]
+
+        viterbi[s, 1] = transitions[0, s] * emissions[s, o1]
+        backpointers[s, 1] = 0
+
+    for t in inclusive_range(2, big_t):
+        # emission[state, observation]
+        ot = observations[t]
+
+        for s in inclusive_range(1, big_n):
+            viterbi[s, t] = max(
+                viterbi[s_prime, t - 1] * transitions[s_prime, s] * emissions[s, ot]
+                for s_prime in inclusive_range(1, big_n)
+            )
+
+            # Since we loop from 1 to big_n, the result of argmax is between
+            # 0 and big_n - 1. However, 0 is the initial state, the actual
+            # states start from 1, so we add 1.
+            backpointers[s, t] = 1 + argmax(
+                viterbi[s_prime, t - 1] * transitions[s_prime, s] * emissions[s, ot]
+                for s_prime in inclusive_range(1, big_n)
+            )
+
+    viterbi[f, big_t] = max(
+        viterbi[s, big_t] * transitions[s, f]
+        for s in inclusive_range(1, big_n)
+    )
+
+    # Since we loop from 1 to big_n, the result of argmax is between
+    # 0 and big_n - 1. However, 0 is the initial state, the actual
+    # states start from 1, so we add 1.
+    backpointers[f, big_t] = 1 + argmax(
+        viterbi[s, big_t] * transitions[s, f]
+        for s in inclusive_range(1, big_n)
+    )
+
+    path = []
+
+    # This is the last state index
+    index = backpointers[f, big_t]
+    path.append(states[index])
+
+    # We loop backward, adding the states to the path.
+    for t in range(big_t + 1, 1, -1):
+        index = backpointers[index, t - 1]
+        path.append(states[index])
+
+    # Finally we reverse the path, excluding the initial state
+    return reversed(path[:-1])
 
 
 def argmax(sequence):

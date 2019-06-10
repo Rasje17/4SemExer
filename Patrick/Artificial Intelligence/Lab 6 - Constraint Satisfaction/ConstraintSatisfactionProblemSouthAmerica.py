@@ -57,10 +57,10 @@ class CSP:
 
 
 def create_australia_csp():
-    costaRica, panama, colombia, ecuador, peru, venezuela, guyana, suriname, frenchGuyana, brasil, bolivia, paraguay, chile, argentina, uruguay = 'Costa Rica', 'Panama', 'Colombia', 'Ecuador', 'Peru', 'Venezuela', 'Guyana', 'Suriname', 'French Guyana', 'Brasil', 'Bolivia', 'Paraguay', 'Chile', 'Argentina', 'Uruguay'
-    values = ['Red', 'Green', 'Blue', 'Yellow']
-    variables = [costaRica, panama, colombia, ecuador, peru, venezuela, guyana, suriname, frenchGuyana, brasil, bolivia, paraguay, chile, argentina, uruguay]
-    domains = {
+    costaRica, panama, colombia, ecuador, peru, venezuela, guyana, suriname, frenchGuyana, brasil, bolivia, paraguay, chile, argentina, uruguay = 'Costa Rica', 'Panama', 'Colombia', 'Ecuador', 'Peru', 'Venezuela', 'Guyana', 'Suriname', 'French Guyana', 'Brasil', 'Bolivia', 'Paraguay', 'Chile', 'Argentina', 'Uruguay'  # variable names
+    values = ['Red', 'Green', 'Blue', 'Yellow']     # possible values
+    variables = [costaRica, panama, colombia, ecuador, peru, venezuela, guyana, suriname, frenchGuyana, brasil, bolivia, paraguay, chile, argentina, uruguay]       # variable list
+    domains = {     # domain (possible values) for each variable
         costaRica: values[:],
         panama: values[:],
         colombia: values[:],
@@ -78,7 +78,7 @@ def create_australia_csp():
         uruguay: values[:]
 
     }
-    neighbours = {
+    neighbours = {      # neighbours for each variable, used for constraints
         costaRica: [panama],
         panama: [costaRica, colombia],
         colombia: [panama, venezuela, ecuador, peru, brasil],

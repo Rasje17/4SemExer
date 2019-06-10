@@ -1,24 +1,24 @@
 def minmax_decision(state):
 
     def max_value(state):
-        if is_terminal(state):
-            return utility_of(state)
+        if is_terminal(state):      # if the game is finished at this board state,
+            return utility_of(state)    # evaluate who won
         v = -infinity
         for a, s in successors_of(state):
-            v = max(v, min_value(s))
+            v = max(v, min_value(s))    # picks the best sucessor board for max
         print('V: ' + str(v))
         return v
 
     def min_value(state):
-        if is_terminal(state):
-            return utility_of(state)
+        if is_terminal(state):      # if the game is finished at this board state,
+            return utility_of(state)    # evaluate who won
         v = infinity
         for a, s in successors_of(state):
-            v = min(v, max_value(s))
+            v = min(v, max_value(s))    # picks the best successor board for min
         return v
 
     infinity = float('inf')
-    action, state = argmax(successors_of(state), lambda a: min_value(a[1]))
+    action, state = argmax(successors_of(state), lambda a: min_value(a[1]))     # evaluates the utility of all moves
     return action
 
 
@@ -71,7 +71,7 @@ def utility_of(state):
     if state[6] == state[4] == state[2] == 'X':
         result = 1
 
-    #test for O win
+    # test for O win
     for c in [0, 3, 6]:
         if state[c + 0] == state[c + 1] == state[c + 2] == 'O':
             result = -1
@@ -94,7 +94,7 @@ def utility_of(state):
     return result
 
 
-def successors_of(state):
+def successors_of(state):   # returns all possible board states for the next move
     insert = 'X'
     if state.count('X') > state.count('O'):
         insert = 'O'
@@ -125,11 +125,11 @@ def main():
             display(board)
             board[int(input('Your move? '))] = 'O'
     display(board)
-    print("Game is over! Congratulations!")
+    print("GAME UNDER!")
 
 
 def argmax(iterable, func):
-    return max(iterable, key=func)
+    return max(iterable, key=func)  # finds the move with the highest utility-value
 
 
 if __name__ == '__main__':

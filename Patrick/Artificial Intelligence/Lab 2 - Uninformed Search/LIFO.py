@@ -74,8 +74,8 @@ def INSERT_ALL(list, queue):
 Removes and returns the first element from fringe
 '''
 def REMOVE_FIRST(queue):
-    element = queue[0]
-    queue.remove(queue[0])
+    element = queue[-1]      # index -1 is the last element of the queue
+    queue.remove(queue[-1])
     return element
 
 '''

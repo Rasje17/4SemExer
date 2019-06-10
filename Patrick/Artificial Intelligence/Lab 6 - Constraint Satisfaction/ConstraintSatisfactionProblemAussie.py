@@ -57,10 +57,10 @@ class CSP:
 
 
 def create_australia_csp():
-    wa, q, t, v, sa, nt, nsw = 'WA', 'Q', 'T', 'V', 'SA', 'NT', 'NSW'
-    values = ['Red', 'Green', 'Blue']
-    variables = [wa, q, t, v, sa, nt, nsw]
-    domains = {
+    wa, q, t, v, sa, nt, nsw = 'WA', 'Q', 'T', 'V', 'SA', 'NT', 'NSW'   # Variable names
+    values = ['Red', 'Green', 'Blue']                # Possible values
+    variables = [wa, q, t, v, sa, nt, nsw]      # variable list
+    domains = {             # domain (possible values) for each variable
         wa: values[:],
         q: values[:],
         t: values[:],
@@ -69,7 +69,7 @@ def create_australia_csp():
         nt: values[:],
         nsw: values[:],
     }
-    neighbours = {
+    neighbours = {      # neighbours of each variable, used for constraints
         wa: [sa, nt],
         q: [sa, nt, nsw],
         t: [],

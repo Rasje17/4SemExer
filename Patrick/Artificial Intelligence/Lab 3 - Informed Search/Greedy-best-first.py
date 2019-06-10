@@ -33,7 +33,7 @@ def TREE_SEARCH():
     initial_node = Node(INITIAL_STATE[0], INITIAL_STATE[1])
     fringe = INSERT(initial_node, fringe)
     while fringe is not None:
-        fringe.sort(key=operator.attrgetter('HEURISTIC'))
+        fringe.sort(key=operator.attrgetter('HEURISTIC'))     # sort the fringe according to lowest heuristic, in order to expand best nodes first
         node = REMOVE_FIRST(fringe)
         if node.STATE == GOAL_STATE:
             return node.path()
@@ -95,7 +95,7 @@ def successor_fn(state):  # Lookup list of successor states
 INITIAL_STATE = ('A', 6)
 GOAL_STATE = 'K' and 'L'
 
-STATE_SPACE = {
+STATE_SPACE = {     # only evaluates heuristics, not taking step cost into account
     'A': [('B', 5), ('C', 5), ('D', 2)],
     'B': [('F', 5), ('E', 4)],
     'C': [('E', 4)],

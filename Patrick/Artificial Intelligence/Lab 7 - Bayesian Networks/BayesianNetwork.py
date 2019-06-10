@@ -416,8 +416,8 @@ def diagnostic():
 
     print('')
 
-    # sample = create_random_sample(network)
-    # print_joint_probability(network, sample)
+    sample = create_random_sample(network)
+    print_joint_probability(network, sample)
 
 
 diagnostic()
