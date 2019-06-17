@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><module codename="sem4.Common">
-    <module_version install_time="1559731929343" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1560516905139" last="true" origin="installer" specification_version="1.0">
         <file crc="465414037" name="config/Modules/sem4-Common.xml"/>
-        <file crc="2109419835" name="modules/sem4-Common.jar"/>
+        <file crc="1805217563" name="modules/sem4-Common.jar"/>
     </module_version>
 </module>
