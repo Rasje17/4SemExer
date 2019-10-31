@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="sem4.OSGiExtender">
+    <module_version install_time="1559730950758" last="true" origin="installer" specification_version="1.0">
+        <file crc="1257903668" name="config/Modules/sem4-OSGiExtender.xml"/>
+        <file crc="1060761621" name="modules/sem4-OSGiExtender.jar"/>
+    </module_version>
+</module>

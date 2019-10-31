@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="sem4.Common">
+    <module_version install_time="1559731695211" last="true" origin="installer" specification_version="1.0">
+        <file crc="465414037" name="config/Modules/sem4-Common.xml"/>
+        <file crc="1944170888" name="modules/sem4-Common.jar"/>
+    </module_version>
+</module>

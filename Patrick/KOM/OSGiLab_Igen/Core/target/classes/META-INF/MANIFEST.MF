@@ -1,0 +1,41 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Install: sem4/core/main/Installer.class
+OpenIDE-Module-Localizing-Bundle: sem4/core/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+OpenIDE-Module-Implementation-Version: 1.0-20190605
+OpenIDE-Module-Build-Version: 201906051047
+OpenIDE-Module: sem4.Core
+OpenIDE-Module-Public-Packages: -
+OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
+OpenIDE-Module-Display-Category: sem4
+OpenIDE-Module-Name: Core
+OpenIDE-Module-Short-Description: <undefined>
+OpenIDE-Module-Long-Description: <undefined>
+X-Class-Path: ext/sem4.Core/com-badlogicgames-gdx/gdx.jar ext/sem4.Cor
+ e/com-badlogicgames-gdx/gdx-platform-natives-desktop.jar ext/sem4.Cor
+ e/com-badlogicgames-gdx/gdx-backend-lwjgl.jar ext/sem4.Core/org-lwjgl
+ -lwjgl/lwjgl.jar ext/sem4.Core/org-lwjgl-lwjgl/lwjgl-platform-natives
+ -windows.jar ext/sem4.Core/org-lwjgl-lwjgl/lwjgl-platform-natives-lin
+ ux.jar ext/sem4.Core/org-lwjgl-lwjgl/lwjgl-platform-natives-osx.jar e
+ xt/sem4.Core/net-java-jinput/jinput.jar ext/sem4.Core/net-java-jutils
+ /jutils.jar ext/sem4.Core/org-lwjgl-lwjgl/lwjgl_util.jar ext/sem4.Cor
+ e/com-badlogicgames-jlayer/jlayer.jar ext/sem4.Core/org-jcraft/jorbis
+ .jar ext/sem4.Core/com-badlogicgames-gdx/gdx-box2d.jar ext/sem4.Core/
+ com-badlogicgames-gdx/gdx-box2d-platform-natives-desktop.jar ext/sem4
+ .Core/com-badlogicgames-gdx/gdx-freetype.jar ext/sem4.Core/com-badlog
+ icgames-gdx/gdx-freetype-platform-natives-desktop.jar
+Maven-Class-Path: com.badlogicgames.gdx:gdx:1.5.0 com.badlogicgames.gd
+ x:gdx-platform:1.5.0:natives-desktop com.badlogicgames.gdx:gdx-backen
+ d-lwjgl:1.5.0 org.lwjgl.lwjgl:lwjgl:2.9.1 org.lwjgl.lwjgl:lwjgl-platf
+ orm:2.9.1:natives-windows org.lwjgl.lwjgl:lwjgl-platform:2.9.1:native
+ s-linux org.lwjgl.lwjgl:lwjgl-platform:2.9.1:natives-osx net.java.jin
+ put:jinput:2.0.5 net.java.jutils:jutils:1.0.0 org.lwjgl.lwjgl:lwjgl_u
+ til:2.9.1 com.badlogicgames.jlayer:jlayer:1.0.1-gdx org.jcraft:jorbis
+ :0.0.17 com.badlogicgames.gdx:gdx-box2d:1.5.0 com.badlogicgames.gdx:g
+ dx-box2d-platform:1.5.0:natives-desktop com.badlogicgames.gdx:gdx-fre
+ etype:1.5.0 com.badlogicgames.gdx:gdx-freetype-platform:1.5.0:natives
+ -desktop
+OpenIDE-Module-Module-Dependencies: org.netbeans.api.annotations.commo
+ n/1 > 1.27.1, sem4.Common > 1.0, org.openide.modules > 7.48.1, org.op
+ enide.util.ui > 9.6.1, org.openide.util.lookup > 8.33.1
+
