@@ -25,21 +25,34 @@ function saveData(businessObjectList, fileName) {
     let dataToSave = JSON.stringify(businessObjectList);
 
     try {
-        fileSys.writeFileSync('./data.json', dataToSave);    
+        fileSys.writeFileSync(fileName, dataToSave);
     } catch (error) {
         console.log('File does not exist...')
         return false;
     }
-    
+
     return true;
 }
 
 function loadData(fileName) {
     let businessObjectList = JSON.parse(fileSys.readFileSync(fileName));
     let newList = [];
-    businessObjectList.forEach(element => {
-        newList.push(new User(element.id, element.name, element.email, element.busBool, element.username, element.password));
-    });
+    switch (fileName) {
+        case './users.json':
+            businessObjectList.forEach(element => {
+                newList.push(new User(element.id, element.name, element.email, element.busBool, element.username, element.password));
+            });
+            break;
+        case './Offers.json':
+            businessObjectList.forEach(element => {
+                newList.push(new Offer(element.id, element.offeringBusiness, element.title, element.shortDesc, element.longDesc, element.contactInfo, element.applicants));
+            });
+            break;
+        default:
+            console.log('Filename not recognized');
+            return null;
+    }
+
     return newList;
 }
 
