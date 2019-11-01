@@ -21,6 +21,8 @@ requestHandler.GET = (request, response) => {
     response.end('We got a GET request');
 }
 
+
+
 let saveData = (dataToSave) => {
     let newData = JSON.stringify(dataToSave);
     //Possibly change text to application
@@ -98,11 +100,11 @@ class Offer {
 
 class User {
 
-    constructor(id, name, email, buissBool, username, password) {
+    constructor(id, name, email, busBool, username, password) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.buissBool = buissBool;
+        this.busBool = busBool;
         this.username = username;
         this.password = password;
     }
