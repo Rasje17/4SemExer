@@ -3,6 +3,7 @@
 */
 const http = require('http');
 const url = require('url');
+const fileSys = require('fs');
 
 
 
@@ -16,8 +17,39 @@ All possible requests has its own handler
 let requestHandler = Object.create(null);
 requestHandler.GET = (request, response) => {
     //console.log(request);
-    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.writeHead(200, { 'Content-Type': 'text/plain' });
     response.end('We got a GET request');
+}
+
+let saveData = (dataToSave) => {
+    let newData = JSON.stringify(dataToSave);
+    //Possibly change text to application
+    //const textToBLOB = new Blob([data], {type: 'text/json'});
+    //const saveFile = './saveData.json';
+
+    let existingData = "";
+    try {
+        existingData = fileSys.readFileSync('./data.json');
+
+    } catch (error) {
+        console.log("File does not exist");
+    }
+
+
+    fileSys.writeFileSync('./data.json', [newData, existingData]);
+
+}
+
+let loadData = (fileName, ID) => {
+    let plaintext = "";
+    plaintext = JSON.parse(fileSys.readFileSync(fileName));
+
+    //console.log("File does not exist/Can't parse");
+    console.log(plaintext);
+}
+
+let purgeFile = (saveFile) => {
+    fileSys.writeFileSync(saveFile, "");
 }
 
 /*
@@ -30,12 +62,14 @@ let server = http.createServer((request, response) => {
     console.log(test.name);
     try {
         requestHandler[request.method](request, response);
-        
+
     } catch (error) {
-        response.writeHead(405, {'Content-Type': 'text/plain'});
+        response.writeHead(405, { 'Content-Type': 'text/plain' });
         response.end('Method not allowed!');
     }
-
+    //loadData('./data.json', 123);
+    //purgeFile('./data.json');
+    saveData(test);
 });
 /*
 Defines which port to listen to
@@ -63,7 +97,7 @@ class Offer {
 }
 
 class User {
-    
+
     constructor(id, name, email, buissBool, username, password) {
         this.id = id;
         this.name = name;
