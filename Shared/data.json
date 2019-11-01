@@ -1,1 +1,1 @@
-{"id":123,"name":"NoName","email":"s@s.dk","busBool":false,"username":"something","password":"1234"},{"id":123,"name":"NoName","email":"s@s.dk","busBool":false,"username":"something","password":"1234"},
+[{"id":123,"name":"NoName","email":"s@s.dk","busBool":false,"username":"something","password":"1234"},{"id":321,"name":"newName","email":"e@e.com","busBool":false,"username":"UserName","password":"987654"}]

@@ -21,9 +21,22 @@ requestHandler.GET = (request, response) => {
     response.end('We got a GET request');
 }
 
+function saveData(businessObjectList, fileName) {
+    let dataToSave = JSON.stringify(businessObjectList);
+
+    try {
+        fileSys.writeFileSync('./data.json', dataToSave);    
+    } catch (error) {
+        console.log('File does not exist...')
+        return false;
+    }
+    
+    return true;
+}
 
 
-let saveData = (dataToSave) => {
+
+/* let saveData = (dataToSave) => {
     let newData = JSON.stringify(dataToSave);
     //Possibly change text to application
     //const textToBLOB = new Blob([data], {type: 'text/json'});
@@ -40,16 +53,27 @@ let saveData = (dataToSave) => {
 
     fileSys.writeFileSync('./data.json', [newData, existingData]);
 
+} */
+
+function loadData(fileName) {
+    let businessObjectList = JSON.parse(fileSys.readFileSync(fileName));
+    let newList = [];
+    businessObjectList.forEach(element => {
+        newList = new User(id, name, email, busBool, username, password);
+
+    });
+    return businessObjectList;
 }
 
-let loadData = (fileName, ID) => {
+/* let loadData = (fileName, ID) => {
     let plaintext = "";
     plaintext = JSON.parse(fileSys.readFileSync(fileName));
 
     //console.log("File does not exist/Can't parse");
     console.log(plaintext);
-}
+} */
 
+//Testmethod may delete later(?)
 let purgeFile = (saveFile) => {
     fileSys.writeFileSync(saveFile, "");
 }
@@ -60,8 +84,9 @@ All input will be refered to the handlers above
 based on the request-method received from the client
 */
 let server = http.createServer((request, response) => {
-    let test = new User(123, 'NoName', 's@s.dk', false, 'something', '1234');
-    console.log(test.name);
+    let test = [new User(123, 'NoName', 's@s.dk', false, 'something', '1234'), new User(321, 'newName', 'e@e.com', false, 'UserName', '987654')];
+    console.log(test[0].name);
+    console.log(test[1].name);
     try {
         requestHandler[request.method](request, response);
 
@@ -69,9 +94,10 @@ let server = http.createServer((request, response) => {
         response.writeHead(405, { 'Content-Type': 'text/plain' });
         response.end('Method not allowed!');
     }
-    //loadData('./data.json', 123);
+    loadData('./data.json', 123);
+    console.log
     //purgeFile('./data.json');
-    saveData(test);
+    //saveData(test);
 });
 /*
 Defines which port to listen to
