@@ -27,9 +27,8 @@ let server = http.createServer((request, response) => {
     console.log(outUsers[0].name + ', ' + outUsers[1].name);
     console.log(outOffers[0].offeringBusiness);
 });
-/*
-Defines which port to listen to
-*/
+
+//Defines which port to listen to
 server.listen(8888);
 
 
