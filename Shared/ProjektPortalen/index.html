@@ -3,12 +3,22 @@
 
 <head>
     <title>ProjektPortalen</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <h1>Velkommen til ProjektPortalen</h1>
-        <input type="button" value="Business" onclick="location.href='login.html'" />
-        <input type="button" value="Student" onclick="location.href='offerOverview.html'" />
+<header>
+    <a href="#home">Forside</a>
+    <a href="#news">Nyheder</a>
+    <a href="#contact">Kontakt</a>
+</header>
+
+<body class="welcomeBody">
+    <div class="welcome">
+        <h1>Velkommen til ProjektPortalen</h1>
+    </div>
+        <input class="welcomeButton" type="button" value="Virksomhed" onclick="location.href='login.html'" />
+        <input class="welcomeButton" type="button" value="Studerende" onclick="location.href='offerOverview.html'" />
+
 </body>
 
 </html>

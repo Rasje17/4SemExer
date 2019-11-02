@@ -5,31 +5,38 @@ const http = require('http');
 const url = require('url');
 const fileSys = require('fs');
 
+
 /*
 The server itself:
 All input will be refered to the handlers above 
 based on the request-method received from the client
 */
 let server = http.createServer((request, response) => {
+
+    /* ---- TESTS:
     let testUsers = [new User(123, 'NoName', 's@s.dk', false, 'something', '1234'), new User(321, 'newName', 'e@e.com', false, 'UserName', '987654')];
     let testOffers = [new Offer(951, 'Google', 'New Job', 'jobDesc', 'longer JobDisc', 88888888, testUsers[0])];
     saveUserList(testUsers);
     saveOfferList(testOffers);
-    try {
-        requestHandler[request.method](request, response);
-
-    } catch (error) {
-        response.writeHead(405, { 'Content-Type': 'text/plain' });
-        response.end('Method not allowed!');
-    }
     let outUsers = getUserList();
     let outOffers = getOfferList();
     console.log(outUsers[0].name + ', ' + outUsers[1].name);
     console.log(outOffers[0].offeringBusiness);
+    */
+
+    try {
+        requestHandler[request.method](request, response);
+        console.log("we're here!");
+    } catch (error) {
+        response.writeHead(405, { 'Content-Type': 'text/plain' });
+        response.end('You dumbfuck, shits crashed yo');
+    }
+
 });
 
 //Defines which port to listen to
 server.listen(8888);
+
 
 
 /*
@@ -38,12 +45,26 @@ All possible requests has its own handler
 */
 let requestHandler = Object.create(null);
 requestHandler.GET = (request, response) => {
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.end('We got a GET request');
+    response.writeHead(200, { 'Content-Type': 'text/json', "Access-Control-Allow-Origin": "*"});
+
+    console.log("We're in GET!");
+
+    let offerIDs = [];
+    getOfferList().forEach(element => {
+        offerIDs.push(element.id);
+    });
+
+    console.log("We got these IDs: " + offerIDs);
+
+    offerIDs.forEach(element => {
+        response.write(element.toString());
+    });
+
+    response.end(JSON.stringify(getOfferList()));
 }
 
 /*
-ServerLogic for handling saving and loading of data
+More server logic, for handling saving and loading of data
 */
 function getUserList() {
     return loadData('./users.json');
@@ -94,9 +115,11 @@ function loadData(fileName) {
     return newList;
 }
 
+
+
 /*
 Business Objects:
-ToDo (Description)...
+Defines the objects that has to be saved and manipulated with business logic.
 */
 class Offer {
     constructor(id, offeringBusiness, title, shortDesc, longDesc, contactInfo, applicants) {

@@ -1,9 +1,65 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>OfferOverview</title>
-    </head>
-    <body>
-        <h1>Offer overview page</h1>
-    </body>
+
+<head>
+    <title>ProjektPortalen</title>
+    <link rel="Stylesheet" href="styles.css">
+</head>
+
+<header>
+    <a href="#home">Forside</a>
+    <a href="#news">Nyheder</a>
+    <a href="#contact">Kontakt</a>
+</header>
+
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <input type="button" onclick="testFunction()" value="TESTING" />
+
+    <h2>Projekttilbud</h2>
+
+    <div class="offerList">
+        <div class="offerCells">
+            <p>Some text...................</p>
+        </div>
+        <div class="offerCells">
+            <p>Some text..</p>
+        </div>
+        <div class="offerCells">
+            <p>Some text..</p>
+        </div>
+    </div>
+
+    <div class="offerList">
+        <div class="offerCells">
+            <p>Some text...................</p>
+        </div>
+        <div class="offerCells">
+            <p>Some text..</p>
+        </div>
+        <div class="offerCells">
+            <p>Some text..</p>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    async function testFunction() {
+        console.log("Funtion has been called!");
+        fetch("http://localhost:8888/offers")
+            .then(resp => console.log(resp));
+
+
+        //console.log("we have fetched something!: " + offers);
+        //let offersJson = await JSON.parse(offers);
+
+    }
+</script>
+
 </html>
