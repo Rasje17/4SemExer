@@ -5,9 +5,32 @@ const http = require('http');
 const url = require('url');
 const fileSys = require('fs');
 
+/*
+The server itself:
+All input will be refered to the handlers above 
+based on the request-method received from the client
+*/
+let server = http.createServer((request, response) => {
+    let testUsers = [new User(123, 'NoName', 's@s.dk', false, 'something', '1234'), new User(321, 'newName', 'e@e.com', false, 'UserName', '987654')];
+    let testOffers = [new Offer(951, 'Google', 'New Job', 'jobDesc', 'longer JobDisc', 88888888, testUsers[0])];
+    saveUserList(testUsers);
+    saveOfferList(testOffers);
+    try {
+        requestHandler[request.method](request, response);
 
-
-
+    } catch (error) {
+        response.writeHead(405, { 'Content-Type': 'text/plain' });
+        response.end('Method not allowed!');
+    }
+    let outUsers = getUserList();
+    let outOffers = getOfferList();
+    console.log(outUsers[0].name + ', ' + outUsers[1].name);
+    console.log(outOffers[0].offeringBusiness);
+});
+/*
+Defines which port to listen to
+*/
+server.listen(8888);
 
 
 /*
@@ -16,11 +39,13 @@ All possible requests has its own handler
 */
 let requestHandler = Object.create(null);
 requestHandler.GET = (request, response) => {
-    //console.log(request);
     response.writeHead(200, { 'Content-Type': 'text/plain' });
     response.end('We got a GET request');
 }
 
+/*
+ServerLogic for handling saving and loading of data
+*/
 function getUserList() {
     return loadData('./users.json');
 }
@@ -46,7 +71,6 @@ function saveData(businessObjectList, fileName) {
         console.log('File does not exist...');
         return false;
     }
-
     return true;
 }
 
@@ -68,52 +92,14 @@ function loadData(fileName) {
             console.log('Filename not recognized');
             return null;
     }
-
     return newList;
 }
 
-//Testmethod may delete later(?)
-let purgeFile = (saveFile) => {
-    fileSys.writeFileSync(saveFile, "");
-}
-
 /*
-The server itself:
-All input will be refered to the handlers above 
-based on the request-method received from the client
-*/
-let server = http.createServer((request, response) => {
-    let testUsers = [new User(123, 'NoName', 's@s.dk', false, 'something', '1234'), new User(321, 'newName', 'e@e.com', false, 'UserName', '987654')];
-    let testOffers = [new Offer(951, 'Google', 'New Job', 'jobDesc', 'longer JobDisc', 88888888, testUsers[0])];
-    saveUserList(testUsers);
-    saveOfferList(testOffers);
-    try {
-        requestHandler[request.method](request, response);
-
-    } catch (error) {
-        response.writeHead(405, { 'Content-Type': 'text/plain' });
-        response.end('Method not allowed!');
-    }
-    let outUsers = getUserList();
-    let outOffers = getOfferList();
-    console.log(outUsers[0].name + ', ' + outUsers[1].name);
-    console.log(outOffers[0].offeringBusiness);
-    //purgeFile('./data.json');
-    //saveData(test);
-});
-/*
-Defines which port to listen to
-*/
-server.listen(8888);
-
-/*
-Business Objecs:
+Business Objects:
 ToDo (Description)...
 */
-
-
 class Offer {
-
     constructor(id, offeringBusiness, title, shortDesc, longDesc, contactInfo, applicants) {
         this.id = id;
         this.offeringBusiness = offeringBusiness;
@@ -123,11 +109,9 @@ class Offer {
         this.contactInfo = contactInfo;
         this.applicants = applicants;
     }
-
 }
 
 class User {
-
     constructor(id, name, email, busBool, username, password) {
         this.id = id;
         this.name = name;
@@ -136,10 +120,4 @@ class User {
         this.username = username;
         this.password = password;
     }
-
-    print() {
-        console.log(name + ', ' + email);
-    }
-
-
 }
