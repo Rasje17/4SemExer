@@ -52,13 +52,10 @@
 <script>
     async function testFunction() {
         console.log("Funtion has been called!");
+        
         fetch("http://localhost:8888/offers")
-            .then(resp => console.log(resp));
-
-
-        //console.log("we have fetched something!: " + offers);
-        //let offersJson = await JSON.parse(offers);
-
+            .then(resp => resp.json())
+            .then(json => console.log(json));
     }
 </script>
 
