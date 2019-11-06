@@ -1,43 +1,72 @@
 <!DOCTYPE html>
 <html>
-    <head>
 
-        <title>ProjektPortalen</title>
-        <link rel="stylesheet" href="styles.css">
+<head>
+    <title>ProjektPortalen</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function loginHandle(JSONdata) {
+            let data = JSON.parse(JSONdata);
+            let pw = document.getElementById("pwField").value;
+            let loginID = 0;
 
-            <script >
-                    let userName = "";
-                    let password = "";
-                    let data ="";
-                async function login() {
-                    console.log(userName + ", " + password);'
-                    fetch("http://localhost:8888/users") 
-                    .then(response => response.json())
-                    .then(json => data = json);
-                    console.log(data.toString());
+            console.log("We ARE HERE!!!");
+            if (data.password == pw.toString()) {
+                console.log("Password was correct!");
+                // login godkendt, giv id og send videre
+                if (data.busBool) {
+                    // business sendes til businesspage
+                    loginID = 2;
+                    window.location.href = 'businessPage.html?loginVal=' + loginID;
                 }
-            </script>
-    </head>
-    
-    <header>
-        <a href="#home">Forside</a>
-        <a href="#news">Nyheder</a>
-        <a href="#contact">Kontakt</a>
-    
-    </header>
+                else {
+                    // student sendes til offer overview
+                    loginID = 1;
+                    window.location.href = 'offerOverview.html?loginVal=' + loginID;
+                }
+            }
+            else {
+                // login afvist, reset
+                // evt check noget ud med et label og set style.visibility="visible", men "hidden" til at starte med
+                window.location.href = 'login.html';
+            }
+        }
 
-    <body>
-        <h1 align="center">Login</h1>
+        window.onload = () => {
+            let loginBtn = document.getElementById("loginButton");            
 
-        <div>
-            <form>
-                Brugernavn: <input class="loginBox" type="text" name="uname" id="userNameField" value="" onchange="userName = (this.value);"><br>
-                Password: <input class="loginBox" type="password" name="pw" id="passwordField" value="" onchange="password = (this.value);"><br>
-                <input class="loginBox" type="submit" value="Log ind" onclick="login()">
-                <input class="loginBox" type="button" value="Opret nyt login">
-            </form>
-        </div>
-    </body>
-    
-    
+            loginBtn.addEventListener("click", () => {
+                let userName = document.getElementById("uNameField").value;
+                fetch("http://localhost:8888/users/" + userName)
+                    .then(response => response.json())
+                    .then(json => loginHandle(json));
+            });
+
+            document.getElementById("createNewButton").onclick = function() {
+            location.href = 'createUser.html';
+        };
+        }
+    </script>
+</head>
+
+<header>
+    <a href="#home">Forside</a>
+    <a href="#news">Nyheder</a>
+    <a href="#contact">Kontakt</a>
+</header>
+
+<body>
+    <h1>Login</h1>
+
+    <div>
+        
+        <form>
+            Brugernavn: <input class="loginBox" id="uNameField" type="text" name="username"><br>
+            Password: <input class="loginBox" id="pwField" type="password" name="pw"><br>
+            <input class="loginBox" id="loginButton" type="submit" value="Log ind">
+            <input class="loginBox" id="createNewButton" type="button" value="Opret nyt login">
+        </form>
+    </div>
+</body>
+
 </html>

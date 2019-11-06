@@ -22,6 +22,25 @@ server.get('/offers', (req, res) => {
     res.json(JSON.stringify(testOffers));
 });
 
+server.get('/users/:usna', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+
+    let users = getUserList();
+
+    users.forEach(element => {
+        if (element.username == req.params.usna) {
+            // console.log to check which user we found:
+            console.log(element.username);
+            
+            res.json(JSON.stringify(element));
+            res.end();
+        }
+
+    res.end();
+    });
+})
+
 //Defines which port to listen to
 server.listen(8888);
 
