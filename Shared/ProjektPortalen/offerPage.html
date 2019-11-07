@@ -44,7 +44,7 @@
                 if(urlParams.get('userId') != null) {
                     console.log('hans hansen XXXXXXXXXXXXXXXXXXXXXXxxx')
                     fetch(('http://localhost:8888/offer?applicant=' + userId + '&offerId=' + offerId), 
-                        {method : 'POST'})
+                        {method : 'PUSH'})
                         .then(resp => console.log(resp.status));
                 } else {
                     //refer to login with url as parameter

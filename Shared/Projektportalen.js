@@ -5,6 +5,7 @@ const http = require('http');
 const url = require('url');
 const fileSys = require('fs');
 const express = require('express');
+const cors = require('cors');
 
 
 /*
@@ -12,13 +13,15 @@ The server itself.
 Handlers for each type of request.
 */
 const server = express();
+server.use(cors());
+//server.options('*', cors())
 
 server.get('/offers', (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
     //let testUsers = [new User(123, 'NoName', 's@s.dk', false, 'something', '1234'), [7,8]];
-    let testOffers = [new Offer(951, 'Google', 'New Job', 'jobDesc', 'longer JobDisc', 88888888, [7,8])];
+    let testOffers = [new Offer(951, 'Google', 'New Job', 'jobDesc', 'longer JobDisc', 88888888, [3,8])];
     saveOfferList(testOffers);
     res.json(JSON.stringify(testOffers));   
 });
@@ -40,8 +43,8 @@ server.get('/offer', (req, res) => {
 });
 
 server.post('/offer', (req, res) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    //res.header('Access-Control-Allow-Origin', '*');
+    //res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
     let offerList = getOfferList();
     offerList.forEach(e => {
