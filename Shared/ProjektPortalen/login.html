@@ -11,12 +11,13 @@
             let loginID = 0;
             console.log("We ARE HERE!!!");
             if (data.password == pw.toString()) {
+                let userID = data.id;
                 console.log("Password was correct!");
                 // login godkendt, giv id og send videre
                 if (data.busBool) {
                     // business sendes til businesspage
                     loginID = 2;
-                    window.location.href = 'businessPage.html?loginVal=' + loginID;
+                    window.location.href = 'businessPage.html?loginVal=' + loginID + "&userID=" + userID;
                 }
                 else {
                     // student sendes til offer overview

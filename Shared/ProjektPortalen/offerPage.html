@@ -5,26 +5,13 @@
     <title>ProjektPortalen</title>
     <link rel="stylesheet" href="styles.css">
     <meta charset="utf-8"/>
-</head>
-
-<header>
-    <a href="#home">Forside</a>
-    <a href="#news">Nyheder</a>
-    <a href="#contact">Kontakt</a>
-</header>
-
-<body>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         window.onload = () => {
-            console.log(urlParams.has('offerId'));
-            console.log(urlParams.get('offerId'));
 
             let offerId = (urlParams.get('offerId'));
             let userId = (urlParams.get('userId'));
-
-            console.log(urlParams.get('userId'));
 
             function offervalue(data) {
                 let receivedOffer = JSON.parse(data);
@@ -53,10 +40,19 @@
         }
 
     </script>
+</head>
 
-    <h2>
+<header>
+    <a href="#home">Forside</a>
+    <a href="#news">Nyheder</a>
+    <a href="#contact">Kontakt</a>
+</header>
+
+<body>
+
+    <h1>
         <p type='text' id='offerTitle'>
-    </h2>
+    </h1>
 
     <section class="offerPage">
         <p type='text' id='contactInfo'>

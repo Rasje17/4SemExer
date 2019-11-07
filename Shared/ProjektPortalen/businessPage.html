@@ -1,9 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>BusinessPage</title>
-    </head>
-    <body>
-        <h1>My BusinessPage</h1>
-    </body>
+
+<head>
+    <title>BusinessPage</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8" />
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        window.onload = () => {
+
+            let businessID = (urlParams.get("userID"));
+
+            fetch("http://localhost:8888/users?userID=" + businessID)
+                .then(res => res.json())
+                .then(json => showName(json))
+
+
+
+        }
+
+        function showName(data) {
+            document.getElementById("businessName").innerHTML = "Tilbudshåndtering for " + data;
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>
+        <p type='text' id='businessName'>
+    </h1>
+</body>
+
 </html>
