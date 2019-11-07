@@ -38,8 +38,10 @@ server.get('/usersLogin/:usna', (req, res) => {
     });
 })
 
-server.get("/users"), (req, res) => {
+server.get('/users', (req, res) => {
     let users = getUserList();
+
+    console.log(req);
 
     users.forEach(element => {
         if (element.id == req.query.userID) {
@@ -48,13 +50,13 @@ server.get("/users"), (req, res) => {
         }
     });
     res.end();
-}
+})
 
 // GET for all offers
 server.get('/offers', (req, res) => {
     
     //let testUsers = [new User(123, 'NoName', 's@s.dk', false, 'something', '1234'), [7,8]];
-    let testOffers = [new Offer(951, 123, 'New Job', 'jobDesc', 'longer JobDisc', 88888888, [3,8])];
+    let testOffers = [new Offer(951, 123, 'Google', 'New Job', 'jobDesc', 'longer JobDisc', 88888888, [3,8])];
     saveOfferList(testOffers);
     res.json(JSON.stringify(testOffers));   
 });
@@ -134,7 +136,7 @@ function loadData(fileName) {
             break;
         case './offers.json':
             businessObjectList.forEach(element => {
-                newList.push(new Offer(element.id, element.ownerID, element.title, element.longDesc, element.contactInfo, element.applicants));
+                newList.push(new Offer(element.id, element.ownerID, element.title, element.shortDesc, element.longDesc, element.contactInfo, element.applicants));
             });
             break;
         default:
@@ -154,10 +156,12 @@ Business Objects:
 Defines the objects that has to be saved and manipulated with business logic.
 */
 class Offer {
-    constructor(id, ownerID, title, longDesc, contactInfo, applicants) {
+    constructor(id, ownerID, offeringBusiness, title, shortDesc,  longDesc, contactInfo, applicants) {
         this.id = id;
         this.ownerID = ownerID;
+        this.offeringBusiness = offeringBusiness;
         this.title = title;
+        this.shortDesc = shortDesc;
         this.longDesc = longDesc;
         this.contactInfo = contactInfo;
         this.applicants = applicants;

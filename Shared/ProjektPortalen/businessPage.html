@@ -8,29 +8,77 @@
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
+
         window.onload = () => {
 
             let businessID = (urlParams.get("userID"));
 
-            fetch("http://localhost:8888/users?userID=" + businessID)
+            console.log(businessID);
+
+            fetch('http://localhost:8888/users?userID=' + businessID)
                 .then(res => res.json())
-                .then(json => showName(json))
+                .then(json => showName(json));
 
 
 
-        }
+            function showName(JSONdata) {
+                let data = JSON.parse(JSONdata);
 
-        function showName(data) {
-            document.getElementById("businessName").innerHTML = "Tilbudshåndtering for " + data;
+                console.log(data);
+
+                document.getElementById("businessName").innerHTML = "Tilbudshåndtering for " + data.name;
+            }
         }
     </script>
+
+    <script>
+
+        let createOfferButton = document.getElementById('createOfferButton');
+        createOfferButton.addEventListener('click', () => {
+            if (document.getElementById('offerTitle').value != "" && document.getElementById('shortDesc').value != "" && document.getElementById('longDesc').value != "" && document.getElementById('contantInfo').value != "") {
+                fetch('https://localhost:8888/createOffer', {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        ownerID: urlParams.get('userID'),
+                        offeringBusiness: XXXXX'get offerinBusiness from some kind of ID',
+                        title: document.getElementById('offerTitle').value,
+                        shortDesc: document.getElementById('shortDesc').value,
+                        longDesc: document.getElementById('longDesc').value,
+                        contactInfo: document.getElementById('contactInfo').value
+                    })
+                })
+                    .then(response => response.json())
+                    .then(json => console.log(json))
+                
+            } else {
+                console.log('udfyld vevnligst alle felterne!');
+            }
+        })
+
+
+
+
+    </script>
+
 
 </head>
 
 <body>
-    <h1>
+    <h2>
         <p type='text' id='businessName'>
-    </h1>
+    </h2>
+
+    <p>Titel</p>
+    <input class='createOffer' id='offerTitle' type='text'><br>
+    <p>Kort beskrivelse af projektet</p>
+    <input class='createOffer' id='shortDesc' type='text'><br>
+    <p>Brødtekst til Projektbeskrivelsen</p>
+    <input class='createOffer' id='longDesc' type='text'><br>
+    <p>Kontaktinformation</p>
+    <input class='createOffer' id='contactInfo' type='text'><br><br>
+    <input class='createOffer' id='createOfferButton' type='button' value='Opret'>
+
+
 </body>
 
 </html>
