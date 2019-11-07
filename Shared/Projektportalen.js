@@ -17,10 +17,46 @@ server.get('/offers', (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
-    let testUsers = [new User(123, 'NoName', 's@s.dk', false, 'something', '1234'), new User(321, 'newName', 'e@e.com', false, 'UserName', '987654')];
-    let testOffers = [new Offer(951, 'Google', 'New Job', 'jobDesc', 'longer JobDisc', 88888888, testUsers[0])];
-    res.json(JSON.stringify(testOffers));
+    //let testUsers = [new User(123, 'NoName', 's@s.dk', false, 'something', '1234'), [7,8]];
+    let testOffers = [new Offer(951, 'Google', 'New Job', 'jobDesc', 'longer JobDisc', 88888888, [7,8])];
+    saveOfferList(testOffers);
+    res.json(JSON.stringify(testOffers));   
 });
+
+server.get('/offer', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+
+    let offerList = getOfferList();
+    console.log(req.query.id);
+    offerList.forEach(e => {
+        if(e.id == req.query.id) {
+            console.log(e);
+            res.json(JSON.stringify(e));
+            res.end();
+        }
+    });
+    res.end();
+});
+
+server.post('/offer', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+
+    let offerList = getOfferList();
+    offerList.forEach(e => {
+        if(e.id == req.query.offerId) {
+
+            //listen bliver slettet for some wierd reason før der kan gøres noget...
+            console.log('before = ' + JSON.stringify(getOfferList));
+            e.addApplicant(req.query.applicant);
+            console.log('after = ' + JSON.stringify(getOfferList));
+            saveOfferList();
+            console.log('saved = ' + JSON.stringify(getOfferList));
+        }
+    })
+    
+})
 
 //Defines which port to listen to
 server.listen(8888);
@@ -62,25 +98,25 @@ console.log(outOffers[0].offeringBusiness);
 Server logic:
 All possible requests has its own handler
 */
-let requestHandler = Object.create(null);
-requestHandler.GET = (request, response) => {
+// let requestHandler = Object.create(null);
+// requestHandler.GET = (request, response) => {
 
 
-    console.log("We're in GET!");
+//     console.log("We're in GET!");
 
-    response.write(JSON.stringify(getOfferList()), JSON);
+//     response.write(JSON.stringify(getOfferList()), JSON);
 
-    let offerIDs = [];
-    getOfferList().forEach(element => {
-        offerIDs.push(element.id);
-    });
+//     let offerIDs = [];
+//     getOfferList().forEach(element => {
+//         offerIDs.push(element.id);
+//     });
 
-    console.log("We got these IDs: " + offerIDs);
+//     console.log("We got these IDs: " + offerIDs);
 
-    response.writeHead(200, { 'Content-Type': 'text/json', "Access-Control-Allow-Origin": "*" });
+//     response.writeHead(200, { 'Content-Type': 'text/json', "Access-Control-Allow-Origin": "*" });
 
-    response.end("Done");
-}
+//     response.end("Done");
+// }
 
 /*
 More server logic, for handling saving and loading of data
@@ -149,6 +185,12 @@ class Offer {
         this.longDesc = longDesc;
         this.contactInfo = contactInfo;
         this.applicants = applicants;
+    }
+
+    addApplicant(applicantId) {
+        if(!(this.applicants.includes(applicantId))) {
+            this.applicants.push(applicantId);  
+        }
     }
 }
 
