@@ -68,7 +68,7 @@ div {
     margin-bottom: 0.5%;
     font-size: 120%;
     text-align: left;
-    align-items: center;
+    align-items: normal;
 }
 
 .offerCells {
@@ -84,6 +84,24 @@ div {
     display: table;
     margin-left: 10%;
     margin-right:10%;
+}
+
+/* setup for making cards inspiration from https://www.w3schools.com/howto/howto_css_cards.asp */
+.card {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    padding: 2px 16px;
 }
 
 p {

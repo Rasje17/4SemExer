@@ -4,6 +4,62 @@
 <head>
     <title>ProjektPortalen</title>
     <link rel="Stylesheet" href="styles.css">
+
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+
+        window.onload = () => {
+
+            let userId = (urlParams.get('userId'));
+            let loginValue =(urlParams.get('loginVal'));  
+
+            fetch('http://localhost:8888/offers')
+                .then(response => response.json())
+                .then(json => convertToCards(json));
+
+            function convertToCards(json){
+                let offers = JSON.parse(json);
+                offers.forEach(element => {
+                    createCard(element);
+                });
+
+
+            }
+
+            function createCard(ob) {
+                let card = document.createElement("div");
+                card.setAttribute("id", ob.id);
+                card.className = "card";
+                card.addEventListener("click", () => {
+                location.href = 'offerPage.html?offerId=' + ob.id +'&userId='+userId+'&loginVal='+loginValue;
+                })
+
+                let container = document.createElement("div");
+                container.className = "container";
+
+                let title = document.createElement("h3");
+                title.textContent = ob.title;
+                container.appendChild(title);
+
+                let partner = document.createElement("p");
+                partner.textContent = "Samarbejdspartner: " + ob.offeringBusiness;
+                container.appendChild(partner);
+
+                let shDisc = document.createElement("p");
+                shDisc.textContent = ob.shortDesc;
+                container.appendChild(shDisc);
+
+
+
+                card.appendChild(container);
+                document.getElementById("offerlist").appendChild(card);
+            }
+
+        }
+
+
+    </script>
 </head>
 
 <header>
@@ -13,7 +69,22 @@
 </header>
 
 <body>
-    <br>
+    <h1>Projekt Oversigt</h1>
+
+    <div class="offerList" id="offerlist">
+        <!-- <div class=" card" id="insæt id her">
+            <div class="container">
+                <h3>Test heading</h3>
+                <p>Samarbejdspartner: Google</p>
+                <p>short description: Cross-origin resource sharing (CORS) allows AJAX requests to skip the Same-origin
+                    policy and access resources from remote hosts. In this post I will show you how to enable CORS
+                    support in Express. I will also provide some tips to handle common use cases that come up when
+                    working with Single Page Applications, like exposing HTTP sessions and custom headers.</p>
+            </div>
+        </div> -->
+    </div>
+
+    <!-- <br>
     <br>
     <br>
     <br>
@@ -45,18 +116,18 @@
         <div class="offerCells">
             <p>Some text..</p>
         </div>
-    </div>
+    </div> -->
 
 </body>
 
-<script>
+<!-- <script>
     async function testFunction() {
         console.log("Funtion has been called!");
-        
+
         fetch("http://localhost:8888/offers")
             .then(resp => resp.json())
             .then(json => console.log(json));
     }
-</script>
+</script> -->
 
 </html>

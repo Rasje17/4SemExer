@@ -16,12 +16,12 @@
                 if (data.busBool) {
                     // business sendes til businesspage
                     loginID = 2;
-                    window.location.href = 'businessPage.html?loginVal=' + loginID;
+                    window.location.href = ('businessPage.html?loginVal=' + loginID + '&userID=' + data.id);
                 }
                 else {
                     // student sendes til offer overview
                     loginID = 1;
-                    window.location.href = 'offerOverview.html?loginVal=' + loginID;
+                    window.location.href = ('offerOverview.html?loginVal=' + loginID + '&userID=' + data.id);
                 }
             }
             else {
@@ -31,16 +31,16 @@
             }
         }
         window.onload = () => {
-            let loginBtn = document.getElementById("loginButton");            
+            let loginBtn = document.getElementById("loginButton");
             loginBtn.addEventListener("click", () => {
                 let userName = document.getElementById("uNameField").value;
                 fetch("http://localhost:8888/users/" + userName)
                     .then(response => response.json())
                     .then(json => loginHandle(json));
             });
-            document.getElementById("createNewButton").onclick = function() {
-            location.href = 'createUser.html';
-        };
+            document.getElementById("createNewButton").onclick = function () {
+                location.href = 'createUser.html';
+            };
         }
     </script>
 </head>
@@ -55,7 +55,6 @@
     <h1>Login</h1>
 
     <div>
-        
         <form>
             Brugernavn: <input class="loginBox" id="uNameField" type="text" name="username"><br>
             Password: <input class="loginBox" id="pwField" type="password" name="pw"><br>

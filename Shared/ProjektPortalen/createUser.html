@@ -1,9 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Create User here</title>
-    </head>
-    <body>
-        <h1>Create User here</h1>
-    </body>
+
+<head>
+    <title>ProjektPortalen</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8"/>
+
+    <script>
+        window.onload = () => {
+            let btn = document.getElementById("opretButton");
+            btn.addEventListener("click", () => {
+                let subUserName = document.getElementById("userName").value;
+                let subpw = document.getElementById("pw").value;
+                let subBusBool = false;
+                if (document.getElementById("virksomhed").checked) {
+                    busBool = true;
+                }
+                let subName = document.getElementById("name").value;
+                let subEmail = document.getElementById("email").value;
+
+                console.log("fetching POST to /allusers");
+
+                // THIS FIXES SHIT - DONT TOUCH!!!
+                // If we don't ping the server first, sometimes the POST request never reaches it.
+                // for some reason, if we have a useless GET-fetch first, it works.
+                fetch("http://localhost:8888/allusers");
+
+                fetch("http://localhost:8888/allusers", {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        name: subName,
+                        email: subEmail,
+                        busBool: subBusBool,
+                        username: subUserName,
+                        password: subpw
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                });
+            })
+        }
+    </script>
+</head>
+
+<header>
+    <a href="#home">Forside</a>
+    <a href="#news">Nyheder</a>
+    <a href="#contact">Kontakt</a>
+</header>
+
+<body>
+    <h1>Opret ny bruger</h1>
+    <form>
+        Brugernavn: <input class="loginBox" type="text" id="userName"> <br>
+        Password: <input class="loginBox" type="password" id="pw"> <br>
+        Er dette en virksomhedsbruger? <input type="radio" name="busBool" value="true" id="virksomhed">Ja <input
+            type="radio" name="busBool" value="false" id="normalbruger" checked> Nej <br>
+        Dit navn eller navn på virksomheden: <input class="loginBox" type="text" id="name"> <br>
+        Email: <input class="loginBox" type="text" id="email"> <br>
+        <input class="loginBox" id="opretButton" type="submit" value="Opret">
+    </form>
+</body>
+
 </html>
