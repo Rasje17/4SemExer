@@ -16,7 +16,7 @@ Handlers for each type of request.
 const server = express();
 
 /*
-sets CORS for Server
+sets CORS and bodyparser (used for handling POST request-body with express) for Server
 */
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
@@ -39,6 +39,19 @@ server.get('/users/:usna', (req, res) => {
 
     res.end();
     });
+})
+
+// GET for specific user ID
+server.get('/users', (req, res) => {
+    let users = getUserList();
+
+    users.forEach(element => {
+        if (element.id == req.query.userID) {
+            res.json(JSON.stringify(element));
+            res.end();
+        }
+    });
+    res.end();
 })
 
 // GET for all offers
@@ -85,8 +98,6 @@ server.get('/allusers/', (req, res) => {
 
 // POST for adding new users
 server.post('/allusers', (req, res) => {
-    console.log("im here");
-
     let rName = req.body.name;
     let rMail = req.body.email;
     let rBusBool = req.body.busBool;
@@ -99,12 +110,31 @@ server.post('/allusers', (req, res) => {
     let newUser = new User(nextID, rName, rMail, rBusBool, rUserName, rPassword);
 
     users.push(newUser);
-
     saveUserList(users);
-    console.log("Users saved: " + users);
 
     res.end();
+})
 
+// POST for creating new Offers
+server.post('/createOffer', (req, res) => {
+    let rOwnerID = req.body.ownerID;
+    let rOfferingBusiness = req.body.offeringBusiness;
+    let rTitle = req.body.title;
+    let rShortDesc = req.body.shortDesc;
+    let rLongDesc = req.body.longDesc;
+    let rContactInfo = req.body.contactInfo;
+
+    let offers = getOfferList();
+    let nextID = offers[offers.length-1].id+1;
+    
+    let newOffer = new Offer(nextID, rOwnerID, rOfferingBusiness, rTitle, rShortDesc, rLongDesc, rContactInfo, []);
+
+    offers.push(newOffer);
+    saveOfferList(offers);
+
+    console.log("OFFERS SAVED /createOffer POST");
+
+    res.end();
 })
 
 //Defines which port to listen to
@@ -154,12 +184,12 @@ function loadData(fileName) {
             break;
         case './offers.json':
             businessObjectList.forEach(element => {
-                newList.push(new Offer(element.id, element.offeringBusiness, element.title, element.shortDesc, element.longDesc, element.contactInfo, element.applicants));
+                newList.push(new Offer(element.id, element.ownerID, element.offeringBusiness, element.title, element.shortDesc, element.longDesc, element.contactInfo, element.applicants));
             });
             break;
         default:
             console.log('Filename not recognized');
-            return null;
+            return newList;
     }
     return newList;
 }

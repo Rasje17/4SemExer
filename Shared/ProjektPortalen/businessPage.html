@@ -1,9 +1,77 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>BusinessPage</title>
-    </head>
-    <body>
-        <h1>My BusinessPage</h1>
-    </body>
+
+<head>
+    <title>BusinessPage</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8" />
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+
+        window.onload = () => {
+            let businessID = urlParams.get("userID");
+            let businessName = "";
+
+            fetch('http://localhost:8888/users?userID=' + businessID)
+                .then(res => res.json())
+                .then(json => showName(json));
+
+            function showName(JSONdata) {
+                let data = JSON.parse(JSONdata);
+                businessName = data.name;
+                document.getElementById("businessName").innerHTML = "Tilbudshåndtering for " + data.name;
+            }
+
+            let createOfferButton = document.getElementById('createOfferButton');
+            createOfferButton.addEventListener('click', () => {
+                if (document.getElementById('offerTitle').value != "" && document.getElementById('shortDesc').value != "" && document.getElementById('longDesc').value != "" && document.getElementById('contactInfo').value != "") {
+                    fetch('http://localhost:8888/createOffer', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            ownerID: businessID,
+                            offeringBusiness: businessName,
+                            title: document.getElementById('offerTitle').value,
+                            shortDesc: document.getElementById('shortDesc').value,
+                            longDesc: document.getElementById('longDesc').value,
+                            contactInfo: document.getElementById('contactInfo').value
+                        }),
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8'
+                        }
+                    });
+
+                } else {
+                    console.log('Udfyld vevnligst alle felterne!');
+                }
+
+                document.getElementById("offerTitle").value = "";
+                document.getElementById("shortDesc").value = "";
+                document.getElementById("longDesc").value = "";
+                document.getElementById("contactInfo").value = "";
+            })
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <h2>
+        <p type='text' id='businessName'>
+    </h2>
+
+    <p>Titel</p>
+    <input class='createOffer' id='offerTitle' type='text'><br>
+    <p>Kort beskrivelse af projektet</p>
+    <textarea class='createOffer' id='shortDesc' type='text'></textarea><br>
+    <p>Brødtekst til Projektbeskrivelsen</p>
+    <textarea class='createOffer' id='longDesc' type='text'></textarea><br>
+    <p>Kontaktinformation</p>
+    <input class='createOffer' id='contactInfo' type='text'><br><br>
+    <input class='createOffer' id='createOfferButton' type='button' value='Opret'>
+
+
+</body>
+
 </html>

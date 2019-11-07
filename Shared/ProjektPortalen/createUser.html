@@ -10,6 +10,7 @@
         window.onload = () => {
             let btn = document.getElementById("opretButton");
             btn.addEventListener("click", () => {
+                if (document.getElementById("userName").value != "" && document.getElementById("pw").value != "" && document.getElementById("name").value != "" && document.getElementById("email").value != "") {
                 let subUserName = document.getElementById("userName").value;
                 let subpw = document.getElementById("pw").value;
                 let subBusBool = false;
@@ -18,8 +19,6 @@
                 }
                 let subName = document.getElementById("name").value;
                 let subEmail = document.getElementById("email").value;
-
-                console.log("fetching POST to /allusers");
 
                 // THIS FIXES SHIT - DONT TOUCH!!!
                 // If we don't ping the server first, sometimes the POST request never reaches it.
@@ -39,6 +38,10 @@
                         "Content-type": "application/json; charset=UTF-8"
                     }
                 });
+            }
+            else {
+                console.log("Udfyld venligst alle felterne!");
+            }
             })
         }
     </script>
