@@ -18,13 +18,29 @@ const server = express();
 sets CORS for Server
 */
 server.use(cors());
-//server.options('*', cors())
+server.options('*', cors());
+
+// GET user for LogIn
+server.get('/users/:usna', (req, res) => {
+    
+    let users = getUserList();
+
+    users.forEach(element => {
+        if (element.username == req.params.usna) {
+            // console.log to check which user we found:
+            console.log(element.username);
+            
+            res.json(JSON.stringify(element));
+            res.end();
+        }
+
+    res.end();
+    });
+})
 
 // GET for all offers
 server.get('/offers', (req, res) => {
-    // res.header('Access-Control-Allow-Origin', '*');
-    // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-
+    
     //let testUsers = [new User(123, 'NoName', 's@s.dk', false, 'something', '1234'), [7,8]];
     let testOffers = [new Offer(951, 'Google', 'New Job', 'jobDesc', 'longer JobDisc', 88888888, [3,8])];
     saveOfferList(testOffers);
