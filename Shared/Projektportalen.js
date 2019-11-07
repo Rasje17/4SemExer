@@ -13,12 +13,17 @@ The server itself.
 Handlers for each type of request.
 */
 const server = express();
+
+/*
+sets CORS for Server
+*/
 server.use(cors());
 //server.options('*', cors())
 
+// GET for all offers
 server.get('/offers', (req, res) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    // res.header('Access-Control-Allow-Origin', '*');
+    // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
     //let testUsers = [new User(123, 'NoName', 's@s.dk', false, 'something', '1234'), [7,8]];
     let testOffers = [new Offer(951, 'Google', 'New Job', 'jobDesc', 'longer JobDisc', 88888888, [3,8])];
@@ -26,15 +31,12 @@ server.get('/offers', (req, res) => {
     res.json(JSON.stringify(testOffers));   
 });
 
+// GET for single offer
 server.get('/offer', (req, res) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
     let offerList = getOfferList();
-    console.log(req.query.id);
     offerList.forEach(e => {
         if(e.id == req.query.id) {
-            console.log(e);
             res.json(JSON.stringify(e));
             res.end();
         }
@@ -42,87 +44,28 @@ server.get('/offer', (req, res) => {
     res.end();
 });
 
+// PUT for aadding aplicant to offer
 server.put('/offer', (req, res) => {
-    //res.header('Access-Control-Allow-Origin', '*');
-    //res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
     let offerList = getOfferList();
+    
+
     offerList.forEach(e => {
         if(e.id == req.query.offerId) {
-
-            //listen bliver slettet for some wierd reason før der kan gøres noget...
-            console.log('before = ' + JSON.stringify(getOfferList));
-            e.addApplicant(req.query.applicant);
-            console.log('after = ' + JSON.stringify(getOfferList));
-            saveOfferList();
-            console.log('saved = ' + JSON.stringify(getOfferList));
+            e.addApplicant(parseInt(req.query.applicant));
         }
     })
+    saveOfferList(offerList);
     
 })
 
 //Defines which port to listen to
 server.listen(8888);
 
-/*
-The server itself:
-All input will be refered to the handlers above 
-based on the request-method received from the client
-*/
-//let server = http.createServer((request, response) => {
-
-/* ---- TESTS:
-let testUsers = [new User(123, 'NoName', 's@s.dk', false, 'something', '1234'), new User(321, 'newName', 'e@e.com', false, 'UserName', '987654')];
-let testOffers = [new Offer(951, 'Google', 'New Job', 'jobDesc', 'longer JobDisc', 88888888, testUsers[0])];
-saveUserList(testUsers);
-saveOfferList(testOffers);
-let outUsers = getUserList();
-let outOffers = getOfferList();
-console.log(outUsers[0].name + ', ' + outUsers[1].name);
-console.log(outOffers[0].offeringBusiness);
-*/
-
-//try {
-//  requestHandler[request.method](request, response);
-//    console.log("we're here!");
-//  } catch (error) {
-//        response.writeHead(405, { 'Content-Type': 'text/plain' });
-//        response.end('You dumbfuck, shits crashed yo');
-//    }
-
-//});
-
-
-
-
 
 
 /*
-Server logic:
-All possible requests has its own handler
-*/
-// let requestHandler = Object.create(null);
-// requestHandler.GET = (request, response) => {
-
-
-//     console.log("We're in GET!");
-
-//     response.write(JSON.stringify(getOfferList()), JSON);
-
-//     let offerIDs = [];
-//     getOfferList().forEach(element => {
-//         offerIDs.push(element.id);
-//     });
-
-//     console.log("We got these IDs: " + offerIDs);
-
-//     response.writeHead(200, { 'Content-Type': 'text/json', "Access-Control-Allow-Origin": "*" });
-
-//     response.end("Done");
-// }
-
-/*
-More server logic, for handling saving and loading of data
+functions for loading and saving data
 */
 function getUserList() {
     return loadData('./users.json');
@@ -172,6 +115,9 @@ function loadData(fileName) {
     }
     return newList;
 }
+
+
+
 
 
 

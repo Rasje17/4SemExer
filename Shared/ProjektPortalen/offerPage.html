@@ -4,6 +4,7 @@
 <head>
     <title>ProjektPortalen</title>
     <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8"/>
 </head>
 
 <header>
@@ -42,7 +43,6 @@
             applyBtn.addEventListener("click", () => {
                 console.log('inden if...')
                 if(urlParams.get('userId') != null) {
-                    console.log('hans hansen XXXXXXXXXXXXXXXXXXXXXXxxx')
                     fetch(('http://localhost:8888/offer?applicant=' + userId + '&offerId=' + offerId), 
                         {method : 'PUT'})
                         .then(resp => console.log(resp.status));
