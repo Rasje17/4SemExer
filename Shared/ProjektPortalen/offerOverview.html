@@ -42,7 +42,12 @@
                 card.setAttribute("id", ob.id);
                 card.className = "card";
                 card.addEventListener("click", () => {
-                    location.href = 'offerPage.html?offerId=' + ob.id + '&userId=' + userId + '&loginVal=' + loginValue;
+                    if (urlParams.has('loginVal')) {
+                        location.href = 'offerPage.html?offerId=' + ob.id + '&userId=' + userId + '&loginVal=' + loginValue;
+                    }
+                    else {
+                        location.href = 'offerPage.html?offerId=' + ob.id;
+                    }
                 })
 
                 let container = document.createElement("div");
