@@ -37,9 +37,14 @@
                         // student sendes til offer overview
                         loginID = 1;
 
-                        return_url = urlParams.get('src').substr(0).split('&') + "&userID=" + data.id + "&loginVal=" + loginID;
-                        if (urlParams.has('offerId')) {
-                            return_url += urlParams.get('offerId');
+                        if (urlParams.get('src').includes('?')) {
+                            return_url = urlParams.get('src').substr(0).split('&') + "&userID=" + data.id + "&loginVal=" + loginID;
+                            if (urlParams.has('offerId')) {
+                                return_url += urlParams.get('offerId');
+                            }
+                        }
+                        else {
+                            return_url = urlParams.get('src') + "?userID=" + data.id + "&loginVal=" + loginID;
                         }
 
                         window.location.href = return_url;
@@ -79,7 +84,7 @@
             let loginBtn = document.getElementById("loginButton");
             loginBtn.addEventListener("click", () => {
                 let userName = document.getElementById("uNameField").value;
-                fetch("http://localhost:8888/users/" + userName)
+                fetch("http://localhost:8888/loginuser?username=" + userName)
                     .then(response => response.json())
                     .then(json => loginHandle(json));
             });
@@ -98,12 +103,10 @@
     <h1>Login</h1>
 
     <div>
-        <form>
             Brugernavn: <input class="loginBox" id="uNameField" type="text" name="username"><br>
             Password: <input class="loginBox" id="pwField" type="password" name="pw"><br>
             <input class="loginBox" id="loginButton" type="submit" value="Log ind">
             <input class="loginBox" id="createNewButton" type="button" value="Opret nyt login">
-        </form>
     </div>
 </body>
 

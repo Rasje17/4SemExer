@@ -12,13 +12,18 @@
         window.onload = () => {
             let this_url = window.location.href;
 
-            if (urlParams.has('loginVal') && urlParams.get('loginVal') != 0 && urlParams.get('loginVal') != null) {
-                document.getElementById('loginRef').innerHTML = "Log Ud";
-                document.getElementById('loginRef').href = "index.html";
-            }
-            else {
-                document.getElementById('loginRef').innerHTML = "Login";
-                document.getElementById('loginRef').href = ("login.html?src=" + this_url);
+            function setupNav() {
+                if (urlParams.has('loginVal') && urlParams.get('loginVal') != 0 && urlParams.get('loginVal') != null) {
+                    document.getElementById('loginRef').innerHTML = "Log Ud";
+                    document.getElementById('loginRef').href = "index.html";
+                }
+                else {
+                    document.getElementById('loginRef').innerHTML = "Login";
+                    document.getElementById('loginRef').href = ("login.html?src=" + this_url);
+                }
+
+                document.getElementById('offerlink').innerHTML = "Tilbudsoversigt";
+                document.getElementById('offerlink').href = ('offerOverview.html?userID=' + urlParams.get('userID') + '&loginVal=' + urlParams.get('loginVal'));
             }
 
             let userId = (urlParams.get('userID'));
@@ -71,6 +76,8 @@
                 document.getElementById("offerlist").appendChild(card);
             }
 
+            setupNav();
+
         }
 
 
@@ -79,6 +86,7 @@
 
 <header>
     <a href="index.html">Forside</a>
+    <a id="offerlink"></a>
     <a id="loginRef"></a>
 </header>
 

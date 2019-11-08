@@ -34,11 +34,29 @@ server.get('/users/:usna', (req, res) => {
             console.log(element.username);
             
             res.json(JSON.stringify(element));
-            res.end();
         }
 
-    res.end();
+    
     });
+
+    res.end();
+})
+
+server.get('/loginuser', (req, res) => {
+    let users = getUserList();
+
+    let someObj = {};
+
+    users.forEach(e => {
+        if (e.username == req.query.username) {
+            someObj = JSON.stringify(e);
+            console.log(e);
+        }
+    });
+
+    res.json(someObj);
+
+    res.end();
 })
 
 // GET for specific user ID
@@ -48,7 +66,6 @@ server.get('/users', (req, res) => {
     users.forEach(element => {
         if (element.id == req.query.userID) {
             res.json(JSON.stringify(element));
-            res.end();
         }
     });
     res.end();
@@ -67,7 +84,6 @@ server.get('/offer', (req, res) => {
     offerList.forEach(e => {
         if(e.id == req.query.id) {
             res.json(JSON.stringify(e));
-            res.end();
         }
     });
     res.end();
@@ -103,6 +119,7 @@ server.put('/offer', (req, res) => {
     })
     saveOfferList(offerList);
     
+    res.end();
 })
 
 // GET for getting entire list of users
