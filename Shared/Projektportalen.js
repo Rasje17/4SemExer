@@ -73,6 +73,23 @@ server.get('/offer', (req, res) => {
     res.end();
 });
 
+// DELETE for removing an offer
+server.delete('/offer', (req, res) => {
+    let offers = getOfferList();
+
+    offers.forEach(element => {
+        if (element.id == req.query.offerId) {
+            offers.splice(offers.indexOf(element), 1);
+        }
+    });
+
+    saveOfferList(offers);
+
+    console.log("we have deleted!");
+
+    res.end();
+})
+
 // PUT for aadding aplicant to offer
 server.put('/offer', (req, res) => {
 

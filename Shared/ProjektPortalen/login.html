@@ -22,8 +22,8 @@
                         loginID = 2;
 
                         return_url = urlParams.get('src').substr(0).split('&') + "&userID=" + data.id + "&loginVal=" + loginID;
-                        if (urlParams.has('offerID')) {
-                            return_url += urlParams.get('offerID');
+                        if (urlParams.has('offerId')) {
+                            return_url += urlParams.get('offerId');
                         }
 
                         window.location.href = return_url;
@@ -31,10 +31,10 @@
                     else {
                         // student sendes til offer overview
                         loginID = 1;
-                        
+
                         return_url = urlParams.get('src').substr(0).split('&') + "&userID=" + data.id + "&loginVal=" + loginID;
-                        if (urlParams.has('offerID')) {
-                            return_url += urlParams.get('offerID');
+                        if (urlParams.has('offerId')) {
+                            return_url += urlParams.get('offerId');
                         }
 
                         window.location.href = return_url;
