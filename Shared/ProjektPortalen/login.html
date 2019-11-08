@@ -21,9 +21,14 @@
                         // business sendes til businesspage
                         loginID = 2;
 
-                        return_url = urlParams.get('src').substr(0).split('&') + "&userID=" + data.id + "&loginVal=" + loginID;
-                        if (urlParams.has('offerId')) {
-                            return_url += urlParams.get('offerId');
+                        if (urlParams.get('src').includes('?')) {
+                            return_url = urlParams.get('src').substr(0).split('&') + "&userID=" + data.id + "&loginVal=" + loginID;
+                            if (urlParams.has('offerId')) {
+                                return_url += urlParams.get('offerId');
+                            }
+                        }
+                        else {
+                            return_url = urlParams.get('src') + "?userID=" + data.id + "&loginVal=" + loginID;
                         }
 
                         window.location.href = return_url;

@@ -21,7 +21,7 @@
                 document.getElementById('loginRef').href = ("login.html?src=" + this_url);
             }
 
-            let userId = (urlParams.get('userId'));
+            let userId = (urlParams.get('userID'));
             let loginValue = (urlParams.get('loginVal'));
 
             fetch('http://localhost:8888/offers')
@@ -43,7 +43,7 @@
                 card.className = "card";
                 card.addEventListener("click", () => {
                     if (urlParams.has('loginVal')) {
-                        location.href = 'offerPage.html?offerId=' + ob.id + '&userId=' + userId + '&loginVal=' + loginValue;
+                        location.href = 'offerPage.html?offerId=' + ob.id + '&userID=' + userId + '&loginVal=' + loginValue;
                     }
                     else {
                         location.href = 'offerPage.html?offerId=' + ob.id;

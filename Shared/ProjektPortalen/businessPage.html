@@ -21,6 +21,7 @@
                 document.getElementById('loginRef').href = ("login.html?src=" + this_url);
             }
 
+            document.getElementById('offerlink').href = ('offerOverview.html?userID=' + urlParas.get('userID') + '&loginVal=' + urlParams.get('loginVal'));
 
             let businessID = urlParams.get("userID");
             let businessName = "";
@@ -65,7 +66,7 @@
 
             let overButton = document.getElementById("toOverview");
             overButton.addEventListener("click", () => {
-                location.href = "offerOverview.html?userID=" + urlParams.get('userID') + "&loginVal=" + urlParams.get('loginVal');
+                location.href = 'offerOverview.html?userID=' + urlParams.get('userID') + '&loginVal=' + urlParams.get('loginVal');
             })
         }
     </script>
@@ -75,6 +76,7 @@
 
 <header>
     <a href="index.html">Forside</a>
+    <a id='offerlink'>Tilbudsoversigt</a>
     <a id="loginRef"></a>
 </header>
 
