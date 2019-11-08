@@ -5,31 +5,71 @@
     <title>ProjektPortalen</title>
     <link rel="stylesheet" href="styles.css">
     <script>
+        const urlParams = new URLSearchParams(window.location.search);
+
         function loginHandle(JSONdata) {
             let data = JSON.parse(JSONdata);
             let pw = document.getElementById("pwField").value;
             let loginID = 0;
-            console.log("We ARE HERE!!!");
-            if (data.password == pw.toString()) {
-                console.log("Password was correct!");
-                // login godkendt, giv id og send videre
-                if (data.busBool) {
-                    // business sendes til businesspage
-                    loginID = 2;
-                    window.location.href = ('businessPage.html?loginVal=' + loginID + '&userID=' + data.id);
+            let return_url = "";
+
+            if (urlParams.has('src')) {
+                if (data.password == pw.toString()) {
+                    console.log("Password was correct!");
+                    // login godkendt, giv id og send videre
+                    if (data.busBool) {
+                        // business sendes til businesspage
+                        loginID = 2;
+
+                        return_url = urlParams.get('src').substr(0).split('&') + "&userID=" + data.id + "&loginVal=" + loginID;
+                        if (urlParams.has('offerID')) {
+                            return_url += urlParams.get('offerID');
+                        }
+
+                        window.location.href = return_url;
+                    }
+                    else {
+                        // student sendes til offer overview
+                        loginID = 1;
+                        
+                        return_url = urlParams.get('src').substr(0).split('&') + "&userID=" + data.id + "&loginVal=" + loginID;
+                        if (urlParams.has('offerID')) {
+                            return_url += urlParams.get('offerID');
+                        }
+
+                        window.location.href = return_url;
+                    }
                 }
                 else {
-                    // student sendes til offer overview
-                    loginID = 1;
-                    window.location.href = ('offerOverview.html?loginVal=' + loginID + '&userID=' + data.id);
+                    // login afvist, reset
+                    // evt check noget ud med et label og set style.visibility="visible", men "hidden" til at starte med
+                    window.location.href = 'login.html';
                 }
             }
             else {
-                // login afvist, reset
-                // evt check noget ud med et label og set style.visibility="visible", men "hidden" til at starte med
-                window.location.href = 'login.html';
+                if (data.password == pw.toString()) {
+                    console.log("Password was correct!");
+                    // login godkendt, giv id og send videre
+                    if (data.busBool) {
+                        // business sendes til businesspage
+                        loginID = 2;
+                        window.location.href = ('businessPage.html?loginVal=' + loginID + '&userID=' + data.id);
+                    }
+                    else {
+                        // student sendes til offer overview
+                        loginID = 1;
+                        window.location.href = ('offerOverview.html?loginVal=' + loginID + '&userID=' + data.id);
+                    }
+                }
+                else {
+                    // login afvist, reset
+                    // evt check noget ud med et label og set style.visibility="visible", men "hidden" til at starte med
+                    window.location.href = 'login.html';
+                }
             }
+
         }
+
         window.onload = () => {
             let loginBtn = document.getElementById("loginButton");
             loginBtn.addEventListener("click", () => {
@@ -46,9 +86,7 @@
 </head>
 
 <header>
-    <a href="#home">Forside</a>
-    <a href="#news">Nyheder</a>
-    <a href="#contact">Kontakt</a>
+    <a href="index.html">Forside</a>
 </header>
 
 <body>

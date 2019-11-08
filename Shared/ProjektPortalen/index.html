@@ -4,20 +4,35 @@
 <head>
     <title>ProjektPortalen</title>
     <link rel="stylesheet" href="styles.css">
+
+    <script>
+        window.onload = () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            let this_url = window.location.href;
+
+            if (urlParams.has('loginVal') && urlParams.get('loginVal') != 0 && urlParams.get('loginVal') != null) {
+                document.getElementById('loginRef').innerHTML = "Log Ud";
+                document.getElementById('loginRef').href = "index.html";
+            }
+            else {
+                document.getElementById('loginRef').innerHTML = "Login";
+                document.getElementById('loginRef').href = ("login.html?src=" + this_url);
+            }
+        }
+    </script>
 </head>
 
 <header>
-    <a href="#home">Forside</a>
-    <a href="#news">Nyheder</a>
-    <a href="#contact">Kontakt</a>
+    <a href="index.html">Forside</a>
+    <a id="loginRef"></a>
 </header>
 
 <body class="welcomeBody">
     <div class="welcome">
         <h1>Velkommen til ProjektPortalen</h1>
     </div>
-        <input class="welcomeButton" type="button" value="Virksomhed" onclick="location.href='login.html'" />
-        <input class="welcomeButton" type="button" value="Studerende" onclick="location.href='offerOverview.html'" />
+    <input class="welcomeButton" type="button" value="Virksomhed" onclick="location.href='login.html'" />
+    <input class="welcomeButton" type="button" value="Studerende" onclick="location.href='offerOverview.html'" />
 
 </body>
 

@@ -10,15 +10,25 @@
         const urlParams = new URLSearchParams(window.location.search);
 
         window.onload = () => {
+            let this_url = window.location.href;
+
+            if (urlParams.has('loginVal') && urlParams.get('loginVal') != 0 && urlParams.get('loginVal') != null) {
+                document.getElementById('loginRef').innerHTML = "Log Ud";
+                document.getElementById('loginRef').href = "index.html";
+            }
+            else {
+                document.getElementById('loginRef').innerHTML = "Login";
+                document.getElementById('loginRef').href = ("login.html?src=" + this_url);
+            }
 
             let userId = (urlParams.get('userId'));
-            let loginValue =(urlParams.get('loginVal'));  
+            let loginValue = (urlParams.get('loginVal'));
 
             fetch('http://localhost:8888/offers')
                 .then(response => response.json())
                 .then(json => convertToCards(json));
 
-            function convertToCards(json){
+            function convertToCards(json) {
                 let offers = JSON.parse(json);
                 offers.forEach(element => {
                     createCard(element);
@@ -32,7 +42,7 @@
                 card.setAttribute("id", ob.id);
                 card.className = "card";
                 card.addEventListener("click", () => {
-                location.href = 'offerPage.html?offerId=' + ob.id +'&userId='+userId+'&loginVal='+loginValue;
+                    location.href = 'offerPage.html?offerId=' + ob.id + '&userId=' + userId + '&loginVal=' + loginValue;
                 })
 
                 let container = document.createElement("div");
@@ -63,9 +73,8 @@
 </head>
 
 <header>
-    <a href="#home">Forside</a>
-    <a href="#news">Nyheder</a>
-    <a href="#contact">Kontakt</a>
+    <a href="index.html">Forside</a>
+    <a id="loginRef"></a>
 </header>
 
 <body>

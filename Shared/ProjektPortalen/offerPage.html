@@ -4,13 +4,12 @@
 <head>
     <title>ProjektPortalen</title>
     <link rel="stylesheet" href="styles.css">
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
 </head>
 
 <header>
-    <a href="#home">Forside</a>
-    <a href="#news">Nyheder</a>
-    <a href="#contact">Kontakt</a>
+    <a href="index.html">Forside</a>
+    <a id="loginRef"></a>
 </header>
 
 <body>
@@ -18,6 +17,17 @@
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         window.onload = () => {
+            let this_url = window.location.href;
+
+            if (urlParams.has('loginVal') && urlParams.get('loginVal') != 0 && urlParams.get('loginVal') != null) {
+                document.getElementById('loginRef').innerHTML = "Log Ud";
+                document.getElementById('loginRef').href = "index.html";
+            }
+            else {
+                document.getElementById('loginRef').innerHTML = "Login";
+                document.getElementById('loginRef').href = ("login.html?src=" + this_url);
+            }
+
             console.log(urlParams.has('offerId'));
             console.log(urlParams.get('offerId'));
 
@@ -42,9 +52,9 @@
             let applyBtn = document.getElementById("applyButton");
             applyBtn.addEventListener("click", () => {
                 console.log('inden if...')
-                if(urlParams.get('userId') != null) {
-                    fetch(('http://localhost:8888/offer?applicant=' + userId + '&offerId=' + offerId), 
-                        {method : 'PUT'})
+                if (urlParams.get('userId') != null) {
+                    fetch(('http://localhost:8888/offer?applicant=' + userId + '&offerId=' + offerId),
+                        { method: 'PUT' })
                         .then(resp => console.log(resp.status));
                 } else {
                     //refer to login with url as parameter
@@ -65,7 +75,7 @@
         <p type='text' id='longDesc'>
     </section>
 
-    <button type="button" id="applyButton" >Ansøg</button>
+    <button type="button" id="applyButton">Ansøg</button>
 
 </body>
 
