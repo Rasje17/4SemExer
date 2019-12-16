@@ -1,3 +1,5 @@
+//NB All changes made in hand-in 2 has been commented and tagged with "ALROL17" for better overview
+
 /*
 "Imports"
 */
@@ -23,10 +25,23 @@ server.use(bodyParser.json());
 server.use(cors());
 server.options('*', cors());
 
+// ALROL17: Locally storing all users and offers
+let users = getUserList();
+let offerList = getOfferList();
+
+// ALROL17: Update function for the offerlist in case of changes to the list while storing locally
+// Not really necessary but allows for better readability
+    users = getUserList();
+
+
+function UpdateOfferList() {
+    offerLsit = getOfferList();
+}
+
 // GET user for LogIn
 server.get('/users/:usna', (req, res) => {
     
-    let users = getUserList();
+    // let users = getUserList();
 
     users.forEach(element => {
         if (element.username == req.params.usna) {
@@ -43,7 +58,7 @@ server.get('/users/:usna', (req, res) => {
 })
 
 server.get('/loginuser', (req, res) => {
-    let users = getUserList();
+    // let users = getUserList();
 
     let someObj = {};
 
@@ -61,7 +76,7 @@ server.get('/loginuser', (req, res) => {
 
 // GET for specific user ID
 server.get('/users', (req, res) => {
-    let users = getUserList();
+    // let users = getUserList();
 
     users.forEach(element => {
         if (element.id == req.query.userID) {
@@ -80,7 +95,7 @@ server.get('/offers', (req, res) => {
 // GET for single offer
 server.get('/offer', (req, res) => {
 
-    let offerList = getOfferList();
+    // let offerList = getOfferList();
     offerList.forEach(e => {
         if(e.id == req.query.id) {
             res.json(JSON.stringify(e));
@@ -91,7 +106,7 @@ server.get('/offer', (req, res) => {
 
 // DELETE for removing an offer
 server.delete('/offer', (req, res) => {
-    let offers = getOfferList();
+    // let offers = getOfferList();
 
     offers.forEach(element => {
         if (element.id == req.query.offerId) {
@@ -103,14 +118,16 @@ server.delete('/offer', (req, res) => {
 
     console.log("we have deleted!");
 
+    // ALROL17: Update locally stored offerlist
+    UpdateOfferList();
+
     res.end();
 })
 
 // PUT for aadding aplicant to offer
 server.put('/offer', (req, res) => {
 
-    let offerList = getOfferList();
-    
+    // let offerList = getOfferList();
 
     offerList.forEach(e => {
         if(e.id == req.query.offerId) {
@@ -118,13 +135,16 @@ server.put('/offer', (req, res) => {
         }
     })
     saveOfferList(offerList);
+
+    //ALROL17: Update locally stored (serverside) offerlist
+    UpdateOfferList();
     
     res.end();
 })
 
 // GET for getting entire list of users
 server.get('/allusers/', (req, res) => {
-    let users = getUserList();
+    // let users = getUserList();
 
     res.json(JSON.stringify(users));
     res.end();
