@@ -1,13 +1,15 @@
 /*
 "Imports"
 */
+/* eslint-env es6 */
+/* eslint-disable */
 const http = require('http');
 const url = require('url');
 const fileSys = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+let args = process.argv.splice(2);
 
 /*
 The server itself.
@@ -172,7 +174,7 @@ server.post('/createOffer', (req, res) => {
 })
 
 //Defines which port to listen to
-server.listen(8888);
+server.listen(args[0] || 8888);
 
 
 
