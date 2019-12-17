@@ -25,23 +25,40 @@ server.use(bodyParser.json());
 server.use(cors());
 server.options('*', cors());
 
+
 // ALROL17: Locally storing all users and offers
-let users = getUserList();
-let offerList = getOfferList();
+let users;
+let offerList;
+
+// ALROL17: Initial loading of both lists
+loadUserList();
+loadOfferList();
 
 // ALROL17: Update function for the offerlist in case of changes to the list while storing locally
 // Not really necessary but allows for better readability
-    users = getUserList();
-
-
 function UpdateOfferList() {
-    offerLsit = getOfferList();
+    offerList = loadOfferList();
 }
+
+function loadUserList() {
+    server.get('/users', (req, res) => {
+        users = getUserList();
+        res.json(JSON.stringify(users));
+        res.end();
+    })
+}
+
+function loadOfferList() {
+    server.get('/offers', (req, res) => {
+        offerList = getOfferList();
+        res.json(JSON.stringify(offerList));  
+        res.end();
+    });
+}
+
 
 // GET user for LogIn
 server.get('/users/:usna', (req, res) => {
-    
-    // let users = getUserList();
 
     users.forEach(element => {
         if (element.username == req.params.usna) {
@@ -58,7 +75,6 @@ server.get('/users/:usna', (req, res) => {
 })
 
 server.get('/loginuser', (req, res) => {
-    // let users = getUserList();
 
     let someObj = {};
 
@@ -76,7 +92,6 @@ server.get('/loginuser', (req, res) => {
 
 // GET for specific user ID
 server.get('/users', (req, res) => {
-    // let users = getUserList();
 
     users.forEach(element => {
         if (element.id == req.query.userID) {
@@ -88,14 +103,13 @@ server.get('/users', (req, res) => {
 
 // GET for all offers
 server.get('/offers', (req, res) => {
-    res.json(JSON.stringify(getOfferList()));   
+    res.json(JSON.stringify(offerList));   
     res.end();
 });
 
 // GET for single offer
 server.get('/offer', (req, res) => {
 
-    // let offerList = getOfferList();
     offerList.forEach(e => {
         if(e.id == req.query.id) {
             res.json(JSON.stringify(e));
@@ -106,7 +120,6 @@ server.get('/offer', (req, res) => {
 
 // DELETE for removing an offer
 server.delete('/offer', (req, res) => {
-    // let offers = getOfferList();
 
     offers.forEach(element => {
         if (element.id == req.query.offerId) {
@@ -127,8 +140,6 @@ server.delete('/offer', (req, res) => {
 // PUT for aadding aplicant to offer
 server.put('/offer', (req, res) => {
 
-    // let offerList = getOfferList();
-
     offerList.forEach(e => {
         if(e.id == req.query.offerId) {
             e.addApplicant(parseInt(req.query.applicant));
@@ -144,7 +155,6 @@ server.put('/offer', (req, res) => {
 
 // GET for getting entire list of users
 server.get('/allusers/', (req, res) => {
-    // let users = getUserList();
 
     res.json(JSON.stringify(users));
     res.end();
