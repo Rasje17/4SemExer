@@ -103,7 +103,8 @@ server.get('/users', (req, res) => {
 
 // GET for all offers
 server.get('/offers', (req, res) => {
-    res.json(JSON.stringify(offerList));   
+    res.json(JSON.stringify(offerList));
+    console.log("all offers called");   
     res.end();
 });
 
