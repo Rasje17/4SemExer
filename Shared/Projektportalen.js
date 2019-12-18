@@ -8,7 +8,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const User = require('./User.js');
-const Offer = require('./Offer');
+const Offer = require('./Offer.js');
 
 
 /*
