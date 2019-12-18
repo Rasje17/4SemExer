@@ -31,11 +31,27 @@ let users;
 let offerList;
 
 // ALROL17: Initial loading of both lists
+prepareLists();
+
+function prepareLists() {
+    console.log("I'm here");
+    if(users == null) {
+        console.log("user if true");
+        loadUserList();
+        getUserList();
+    }
+    if(offerList == null) {
+        console.log("offer if true");
+        loadOfferList();
+    }
+}
+/*
 loadUserList();
 console.log("users loaded");
 loadOfferList();
 console.log("offerlist loaded");
-
+console.log(offerList);
+*/
 // ALROL17: Update function for the offerlist in case of changes to the list while storing locally
 // Not really necessary but allows for better readability
 function UpdateOfferList() {
@@ -45,6 +61,7 @@ function UpdateOfferList() {
 // ALROL17: method for correctly querying the lists via get-request
 function loadUserList() {
     server.get('/users', (req, res) => {
+        console.log("loadUserList");
         users = getUserList();
         res.json(JSON.stringify(users));
         res.end();
@@ -54,7 +71,8 @@ function loadUserList() {
 function loadOfferList() {
     server.get('/offers', (req, res) => {
         offerList = getOfferList();
-        res.json(JSON.stringify(offerList));  
+        res.json(JSON.stringify(offerList));
+        console.log("Hello? " + offerList);  
         res.end();
     });
 }
@@ -63,6 +81,7 @@ function loadOfferList() {
 // GET user for LogIn
 //ALROL17: Replaced forEach with findIndex()
 server.get('/users/:usna', (req, res) => {
+    console.log("login user 1");
 
     let userIndex = users.findIndex(x => x.username == req.param.usna);
     console.log(userIndex);
@@ -85,8 +104,9 @@ server.get('/users/:usna', (req, res) => {
 })
 
 server.get('/loginuser', (req, res) => {
+    console.log("login user 2");
 
-    let userIndex = users.findIndex(x => x.username == req.query.username);
+    let userIndex = users.find(x => x.username == req.query.username);
     console.log("userIndex = " + userIndex);
 
     /*
@@ -98,13 +118,14 @@ server.get('/loginuser', (req, res) => {
     });
     */
 
-    res.json(JSON.stringify(users[userIndex]));
+    res.json(JSON.stringify(userIndex));
 
     res.end();
 })
 
 // GET for specific user ID
 server.get('/users', (req, res) => {
+    console.log("specific user)");
 
     let userIndex = users.findIndex(x => x.userID == req.query.userID);
     console.log("userIndex = " + userIndex);
@@ -125,24 +146,33 @@ server.get('/users', (req, res) => {
 
 // GET for all offers
 server.get('/offers', (req, res) => {
+    console.log("all offers");
+
     res.json(JSON.stringify(offerList));
-    console.log("all offers called");   
+    console.log("all offers called");
     res.end();
 });
 
 // GET for single offer
 server.get('/offer', (req, res) => {
+    console.log("single offer");
 
+    let offer = offerList.find(x => x.id == req.query.id);
+    res.json(JSON.stringify(offer));
+    /*
     offerList.forEach(e => {
         if(e.id == req.query.id) {
             res.json(JSON.stringify(e));
         }
     });
+    */
+
     res.end();
 });
 
 // DELETE for removing an offer
 server.delete('/offer', (req, res) => {
+    console.log("delete offer");
 
     offers.forEach(element => {
         if (element.id == req.query.offerId) {
@@ -160,8 +190,9 @@ server.delete('/offer', (req, res) => {
     res.end();
 })
 
-// PUT for aadding aplicant to offer
+// PUT for adding aplicant to offer
 server.put('/offer', (req, res) => {
+    console.log("add applicant to offer");
 
     offerList.forEach(e => {
         if(e.id == req.query.offerId) {
@@ -178,6 +209,7 @@ server.put('/offer', (req, res) => {
 
 // GET for getting entire list of users
 server.get('/allusers/', (req, res) => {
+    console.log("get all users");
 
     res.json(JSON.stringify(users));
     res.end();
@@ -185,6 +217,8 @@ server.get('/allusers/', (req, res) => {
 
 // POST for adding new users
 server.post('/allusers', (req, res) => {
+    console.log("add new user");
+
     let rName = req.body.name;
     let rMail = req.body.email;
     let rBusBool = req.body.busBool;
@@ -204,6 +238,8 @@ server.post('/allusers', (req, res) => {
 
 // POST for creating new Offers
 server.post('/createOffer', (req, res) => {
+    console.log("create new offer");
+
     let rOwnerID = req.body.ownerID;
     let rOfferingBusiness = req.body.offeringBusiness;
     let rTitle = req.body.title;
@@ -233,22 +269,32 @@ server.listen(8888);
 functions for loading and saving data
 */
 function getUserList() {
+    console.log("getUserList");
+
     return loadData('./users.json');
 }
 
 function getOfferList() {
+    console.log("getOfferList");
+
     return loadData('./offers.json');
 }
 
 function saveUserList(businessObjectList) {
+    console.log("saveUserList");
+
     return saveData(businessObjectList, './users.json');
 }
 
 function saveOfferList(businessObjectList) {
+    console.log("saveOfferList");
+
     return saveData(businessObjectList, './offers.json');
 }
 
 function saveData(businessObjectList, fileName) {
+    console.log("saveData");
+
     let dataToSave = JSON.stringify(businessObjectList);
 
     try {
@@ -261,17 +307,25 @@ function saveData(businessObjectList, fileName) {
 }
 
 function loadData(fileName) {
+    console.log("loadData");
+
     let businessObjectList = JSON.parse(fileSys.readFileSync(fileName));
     let newList = [];
     switch (fileName) {
         case './users.json':
+            console.log("user.json");
+
             businessObjectList.forEach(element => {
                 newList.push(new User(element.id, element.name, element.email, element.busBool, element.username, element.password));
+                console.log(element.name);
             });
             break;
         case './offers.json':
+            console.log("offers.json");
+
             businessObjectList.forEach(element => {
                 newList.push(new Offer(element.id, element.ownerID, element.offeringBusiness, element.title, element.shortDesc, element.longDesc, element.contactInfo, element.applicants));
+                console.log(element.title);
             });
             break;
         default:
