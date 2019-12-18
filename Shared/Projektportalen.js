@@ -7,6 +7,8 @@ const fileSys = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const User = require('./User.js');
+const Offer = require('./Offer');
 
 
 /*
@@ -226,43 +228,4 @@ function loadData(fileName) {
             return newList;
     }
     return newList;
-}
-
-
-
-
-
-
-/*
-Business Objects:
-Defines the objects that has to be saved and manipulated with business logic.
-*/
-class Offer {
-    constructor(id, ownerID, offeringBusiness, title, shortDesc, longDesc, contactInfo, applicants) {
-        this.id = id;
-        this.ownerID = ownerID;
-        this.offeringBusiness = offeringBusiness;
-        this.title = title;
-        this.shortDesc = shortDesc;
-        this.longDesc = longDesc;
-        this.contactInfo = contactInfo;
-        this.applicants = applicants;
-    }
-
-    addApplicant(applicantId) {
-        if(!(this.applicants.includes(applicantId))) {
-            this.applicants.push(applicantId);  
-        }
-    }
-}
-
-class User {
-    constructor(id, name, email, busBool, username, password) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.busBool = busBool;
-        this.username = username;
-        this.password = password;
-    }
 }
