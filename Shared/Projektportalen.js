@@ -38,20 +38,14 @@ function prepareLists() {
     if(users == null) {
         console.log("user if true");
         loadUserList();
-        getUserList();
     }
     if(offerList == null) {
         console.log("offer if true");
         loadOfferList();
+        console.log(offerList);
     }
 }
-/*
-loadUserList();
-console.log("users loaded");
-loadOfferList();
-console.log("offerlist loaded");
-console.log(offerList);
-*/
+
 // ALROL17: Update function for the offerlist in case of changes to the list while storing locally
 // Not really necessary but allows for better readability
 function UpdateOfferList() {
@@ -60,21 +54,27 @@ function UpdateOfferList() {
 
 // ALROL17: method for correctly querying the lists via get-request
 function loadUserList() {
+    console.log("loadUserList");
+    //loadData('./users.json');
+    /*
     server.get('/users', (req, res) => {
-        console.log("loadUserList");
         users = getUserList();
-        res.json(JSON.stringify(users));
+        //res.json(JSON.stringify(users));
+        console.log("users = " + users);
         res.end();
     })
+    */
 }
 
 function loadOfferList() {
+    loadData('./offers.json');
+    /*
     server.get('/offers', (req, res) => {
         offerList = getOfferList();
-        res.json(JSON.stringify(offerList));
-        console.log("Hello? " + offerList);  
+        res.json(JSON.stringify(offerList)); 
         res.end();
     });
+    */
 }
 
 
@@ -127,10 +127,10 @@ server.get('/loginuser', (req, res) => {
 server.get('/users', (req, res) => {
     console.log("specific user)");
 
-    let userIndex = users.findIndex(x => x.userID == req.query.userID);
+    let userIndex = users.find(x => x.userID == req.query.userID);
     console.log("userIndex = " + userIndex);
 
-    res.json(JSON.stringify(users[userIndex]));
+    res.json(JSON.stringify(userIndex));
 
     /*
     users.forEach(element => {
@@ -210,7 +210,7 @@ server.put('/offer', (req, res) => {
 // GET for getting entire list of users
 server.get('/allusers/', (req, res) => {
     console.log("get all users");
-
+    console.log(users);
     res.json(JSON.stringify(users));
     res.end();
 })
@@ -334,11 +334,6 @@ function loadData(fileName) {
     }
     return newList;
 }
-
-
-
-
-
 
 /*
 Business Objects:
