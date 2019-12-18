@@ -32,7 +32,9 @@ let offerList;
 
 // ALROL17: Initial loading of both lists
 loadUserList();
+console.log("users loaded");
 loadOfferList();
+console.log("offerlist loaded");
 
 // ALROL17: Update function for the offerlist in case of changes to the list while storing locally
 // Not really necessary but allows for better readability
@@ -40,6 +42,7 @@ function UpdateOfferList() {
     offerList = loadOfferList();
 }
 
+// ALROL17: method for correctly querying the lists via get-request
 function loadUserList() {
     server.get('/users', (req, res) => {
         users = getUserList();
@@ -58,8 +61,14 @@ function loadOfferList() {
 
 
 // GET user for LogIn
+//ALROL17: Replaced forEach with findIndex()
 server.get('/users/:usna', (req, res) => {
 
+    let userIndex = users.findIndex(x => x.username == req.param.usna);
+    console.log(userIndex);
+
+    res.json(JSON.stringify(users[userIndex]));
+    /*
     users.forEach(element => {
         if (element.username == req.params.usna) {
             // console.log to check which user we found:
@@ -70,22 +79,26 @@ server.get('/users/:usna', (req, res) => {
 
     
     });
+    */
 
     res.end();
 })
 
 server.get('/loginuser', (req, res) => {
 
-    let someObj = {};
+    let userIndex = users.findIndex(x => x.username == req.query.username);
+    console.log("userIndex = " + userIndex);
 
+    /*
     users.forEach(e => {
         if (e.username == req.query.username) {
             someObj = JSON.stringify(e);
             console.log(e);
         }
     });
+    */
 
-    res.json(someObj);
+    res.json(JSON.stringify(users[userIndex]));
 
     res.end();
 })
@@ -93,13 +106,22 @@ server.get('/loginuser', (req, res) => {
 // GET for specific user ID
 server.get('/users', (req, res) => {
 
+    let userIndex = users.findIndex(x => x.userID == req.query.userID);
+    console.log("userIndex = " + userIndex);
+
+    res.json(JSON.stringify(users[userIndex]));
+
+    /*
     users.forEach(element => {
         if (element.id == req.query.userID) {
             res.json(JSON.stringify(element));
         }
     });
+    */
+
     res.end();
 })
+
 
 // GET for all offers
 server.get('/offers', (req, res) => {
