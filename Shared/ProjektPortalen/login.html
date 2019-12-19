@@ -8,76 +8,32 @@
         const urlParams = new URLSearchParams(window.location.search);
 
         function loginHandle(JSONdata) {
-            let data = JSON.parse(JSONdata);
-            let pw = document.getElementById("pwField").value;
-            let loginID = 0;
+            console.log(JSONdata);
+            let data = JSONdata.id;
             let return_url = "";
 
             if (urlParams.has('src')) {
-                if (data.password == pw.toString()) {
-                    console.log("Password was correct!");
-                    // login godkendt, giv id og send videre
-                    if (data.busBool) {
-                        // business sendes til businesspage
-                        loginID = 2;
 
-                        if (urlParams.get('src').includes('?')) {
-                            return_url = urlParams.get('src').substr(0).split('&') + "&userID=" + data.id + "&loginVal=" + loginID;
-                            if (urlParams.has('offerId')) {
-                                return_url += urlParams.get('offerId');
-                            }
-                        }
-                        else {
-                            return_url = urlParams.get('src') + "?userID=" + data.id + "&loginVal=" + loginID;
-                        }
 
-                        window.location.href = return_url;
-                    }
-                    else {
-                        // student sendes til offer overview
-                        loginID = 1;
+                return_url = urlParams.get('src');
 
-                        if (urlParams.get('src').includes('?')) {
-                            return_url = urlParams.get('src').substr(0).split('&') + "&userID=" + data.id + "&loginVal=" + loginID;
-                            if (urlParams.has('offerId')) {
-                                return_url += urlParams.get('offerId');
-                            }
-                        }
-                        else {
-                            return_url = urlParams.get('src') + "?userID=" + data.id + "&loginVal=" + loginID;
-                        }
 
-                        window.location.href = return_url;
-                    }
-                }
-                else {
-                    // login afvist, reset
-                    // evt check noget ud med et label og set style.visibility="visible", men "hidden" til at starte med
-                    window.location.href = 'login.html';
-                }
+                window.location.href = return_url;
             }
+
             else {
-                if (data.password == pw.toString()) {
-                    console.log("Password was correct!");
-                    // login godkendt, giv id og send videre
-                    if (data.busBool) {
-                        // business sendes til businesspage
-                        loginID = 2;
-                        window.location.href = ('businessPage.html?loginVal=' + loginID + '&userID=' + data.id);
-                    }
-                    else {
-                        // student sendes til offer overview
-                        loginID = 1;
-                        window.location.href = ('offerOverview.html?loginVal=' + loginID + '&userID=' + data.id);
-                    }
+                if (data === true) {
+                    // business sendes til businesspage
+                    window.location.href = ('businessPage.html');
                 }
                 else {
-                    // login afvist, reset
-                    // evt check noget ud med et label og set style.visibility="visible", men "hidden" til at starte med
-                    window.location.href = 'login.html';
+                    // student sendes til offer overview
+                    window.location.href = ('offerOverview.html?');
                 }
-            }
 
+
+
+            }
         }
 
         window.onload = () => {
@@ -86,42 +42,53 @@
                 let userName = document.getElementById("uNameField").value;
                 let pw = document.getElementById("pwField").value;
 
-                // xhr method
-                var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-                var theUrl = "/json-handler";
-                xmlhttp.open("POST", "http://localhost:8888/loginuser", true);
-                xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                xmlhttp.withCredentials = true;
-                xmlhttp.send(JSON.stringify({
-                    username: userName,
-                    password: pw // should be hashed
-                }));
+                // // xhr method
+                // var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+                // var theUrl = "/json-handler";
+                // xmlhttp.open("POST", "http://localhost:8888/loginuser", true);
+                // xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                // xmlhttp.withCredentials = true;
+                // xmlhttp.send(JSON.stringify({
+                //     username: userName,
+                //     password: pw // should be hashed
+                // }));
 
-                // //fetch method
-                // fetch("http://localhost:8888/loginuser", {
-                //     method: 'POST',
-                //     body: JSON.stringify({
-                //         username: userName,
-                //         password: pw // should be hashed
-                //     }),
-                //     headers: {
-                //         "Content-type": "application/json; charset=UTF-8"
-                //     },
-                //     credentials: "same-origin",
-                // })
-
-                //             .then(res => {
-                //   console.log(res.headers.get('set-cookie')); // undefined
-                //   console.log(document.cookie); // nope
-                //   return res.json();
-                // })
-
-
-
-                //original
-                //             // .then(response => response.json())
-                // .then(json => loginHandle(json));
+                //fetch method
+                fetch("http://localhost:8888/loginuser", {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        username: userName,
+                        password: pw // should be hashed
+                    }),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    },
+                    credentials: "include",
+                })
+                    .then(response => {
+                        //sucsess
+                        if (response.status === 200) {
+                            response.json()
+                                .then(json => loginHandle(json))
+                        }
+                        // wrong pw
+                        else if (response.status === 401) {
+                            document.getElementById('warningLabel').innerHTML = 'Wrong Password';
+                            console.log('got a 401 wrong pw')
+                        }
+                        // user dos not exist
+                        else if (response.status === 404) {
+                            document.getElementById('warningLabel').innerHTML = 'Wrong User Name';
+                            console.log('got a 404 wrong user')
+                        }
+                        //not enough data
+                        else if (response.status === 422) {
+                            document.getElementById('warningLabel').innerHTML = 'Enter both username and password';
+                            console.log('got a 422 wrong data')
+                        }
+                    })
             });
+
             document.getElementById("createNewButton").onclick = function () {
                 location.href = 'createUser.html';
             };
@@ -141,6 +108,7 @@
         Password: <input class="loginBox" id="pwField" type="password" name="pw"><br>
         <input class="loginBox" id="loginButton" type="submit" value="Log ind">
         <input class="loginBox" id="createNewButton" type="button" value="Opret nyt login">
+        <p id='warningLabel' value='' style="color:red"></p>
     </div>
 </body>
 

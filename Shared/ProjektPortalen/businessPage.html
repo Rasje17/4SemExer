@@ -13,25 +13,25 @@
             let this_url = window.location.href;
 
             function setupNav() {
-                if (urlParams.has('loginVal') && urlParams.get('loginVal') != 0 && urlParams.get('loginVal') != null) {
-                    document.getElementById('loginRef').innerHTML = "Log Ud";
-                    document.getElementById('loginRef').href = "index.html";
-                }
-                else {
-                    document.getElementById('loginRef').innerHTML = "Login";
-                    document.getElementById('loginRef').href = ("login.html?src=" + this_url);
-                }
-
+                document.getElementById('loginRef').innerHTML = "Log Ud";
+                document.getElementById('loginRef').href = "index.html"; // fix den her
                 document.getElementById('offerlink').innerHTML = "Tilbudsoversigt";
-                document.getElementById('offerlink').href = ('offerOverview.html?userID=' + urlParams.get('userID') + '&loginVal=' + urlParams.get('loginVal'));
+                document.getElementById('offerlink').href = ('offerOverview.html');
             }
 
-            let businessID = urlParams.get("userID");
             let businessName = "";
 
-            fetch('http://localhost:8888/users?userID=' + businessID)
-                .then(res => res.json())
-                .then(json => showName(json));
+            fetch('http://localhost:8888/user', { credentials: "include" })
+                .then(res => {
+                    if (res.status === 200) {
+                        res.json()
+                        .then(json => showName(json))
+                    }
+                    else if (res.status === 401) {
+                        window.location.href = ("login.html?src=" + this_url);
+
+                    }
+                });
 
             function showName(JSONdata) {
                 let data = JSON.parse(JSONdata);
@@ -45,8 +45,6 @@
                     fetch('http://localhost:8888/createOffer', {
                         method: 'POST',
                         body: JSON.stringify({
-                            ownerID: businessID,
-                            offeringBusiness: businessName,
                             title: document.getElementById('offerTitle').value,
                             shortDesc: document.getElementById('shortDesc').value,
                             longDesc: document.getElementById('longDesc').value,
@@ -54,11 +52,22 @@
                         }),
                         headers: {
                             'Content-type': 'application/json; charset=UTF-8'
+                        },
+                        credentials: "include",
+
+                    }).then (res =>{
+                        if (res.status === 401){
+                            //do code to ensure that fields remain saved
+                            window.location.href = ("login.html?src=" + this_url);
                         }
                     });
+                    
+                    
+                    
+                    ;
 
                 } else {
-                    console.log('Udfyld vevnligst alle felterne!');
+                    console.log('Udfyld venligst alle felterne!');
                 }
 
                 document.getElementById("offerTitle").value = "";
@@ -69,10 +78,10 @@
 
             let overButton = document.getElementById("toOverview");
             overButton.addEventListener("click", () => {
-                location.href = 'offerOverview.html?userID=' + urlParams.get('userID') + '&loginVal=' + urlParams.get('loginVal');
+                location.href = 'offerOverview.html';
             })
 
-            
+
             setupNav();
         }
     </script>

@@ -40,44 +40,60 @@ server.use(session({
     saveUninitialized: false,
     secret: SESS_SECRET,
     cookie: {
-        maxAge: 36000,
+        // maxAge: 36000,
         sameSite: true,
         secure: false, //skift til true når det virker
- //
+        //
     }
-}))
+}));
+
+// //custom middleware for gettin userid from session
+// server.use((req, res, next) => {
+//     const { userId } = req.session
+//     if (userId) {
+//         res.locals.user = user.find(
+//             user => user.id === userID
+//         )
+//     }
+//     next()
+// }
+
+// )
 
 
 
-// GET user for LogIn
-server.get('/users/:usna', (req, res) => {
+// // GET user for LogIn
+// server.get('/users/:usna', (req, res) => {
 
-    let users = getUserList();
+//     let users = getUserList();
 
-    users.forEach(element => {
-        if (element.username == req.params.usna) {
-            // console.log to check which user we found:
-            console.log(element.username);
+//     users.forEach(element => {
+//         if (element.username == req.params.usna) {
+//             // console.log to check which user we found:
+//             console.log(element.username);
 
-            res.json(JSON.stringify(element));
-        }
+//             res.json(JSON.stringify(element));
+//         }
 
 
-    });
+//     });
 
-    res.end();
-})
+//     res.end();
+// })
 
 
 // GET for specific user ID
-server.get('/users', (req, res) => {
+server.get('/user', (req, res) => {
     let users = getUserList();
+    const user = users.find(user => user.id === req.session.userId)
+    // if user is in a session
+    if (user) {
+        res.json(JSON.stringify(user));
+    }
+    else {
+        res.status(401);
+    }
 
-    users.forEach(element => {
-        if (element.id == req.query.userID) {
-            res.json(JSON.stringify(element));
-        }
-    });
     res.end();
 })
 
@@ -142,7 +158,7 @@ server.get('/allusers/', (req, res) => {
 
 // skrives om til at håndtere alt login funct med at teste brugernavn/pw og sætte en session op
 server.post('/loginuser', (req, res) => {
-   //const { userID } = req.session.userID
+    //const { userID } = req.session.userId
     let username = req.body.username;
     let password = req.body.password;
 
@@ -151,15 +167,28 @@ server.post('/loginuser', (req, res) => {
 
     if (username && password) {
 
-        const user = users.find(e => e.username === username && e.password === password);
+        const user = users.find(e => e.username === username);
 
         if (user) {
-            req.session.userID = user.id
+            if (user.password === password) {
+                req.session.userId = user.id
+                res.json({ "id": user.busBool });
+            }
+            else {
+                res.status(401);
+            }
         }
-        console.log(JSON.stringify(user.busBool));
-        res.json({ "id":user.busBool});
+
+        else {
+            res.status(404);
+        }
+
     }
-    console.log(req.session.userID);
+    else {
+        res.status(422)
+    }
+
+    console.log('the session id is set to:'+req.session.userId);
 
     // let someObj = {};
 
@@ -175,7 +204,7 @@ server.post('/loginuser', (req, res) => {
     res.end();
 })
 
-// POST for adding new users
+// POST for adding new users mangler tjek for om user exist
 server.post('/allusers', (req, res) => {
     let rName = req.body.name;
     let rMail = req.body.email;
@@ -186,32 +215,55 @@ server.post('/allusers', (req, res) => {
     let users = getUserList();
     let nextID = users.length;
 
-    let newUser = new User(nextID, rName, rMail, rBusBool, rUserName, rPassword);
+    if (!users.some(e => e.username === rUserName)) {
+        let newUser = new User(nextID, rName, rMail, rBusBool, rUserName, rPassword);
 
-    users.push(newUser);
-    saveUserList(users);
+        users.push(newUser);
+        saveUserList(users);
+    }
+    else {
+        res.status(409) //conflict with usernames
+    }
 
     res.end();
 })
 
 // POST for creating new Offers
 server.post('/createOffer', (req, res) => {
-    let rOwnerID = req.body.ownerID;
-    let rOfferingBusiness = req.body.offeringBusiness;
-    let rTitle = req.body.title;
-    let rShortDesc = req.body.shortDesc;
-    let rLongDesc = req.body.longDesc;
-    let rContactInfo = req.body.contactInfo;
 
-    let offers = getOfferList();
-    let nextID = offers[offers.length - 1].id + 1;
+    
 
-    let newOffer = new Offer(nextID, rOwnerID, rOfferingBusiness, rTitle, rShortDesc, rLongDesc, rContactInfo, []);
+    let users = getUserList();
+    const user = users.find(user => user.id === req.session.userId)
+    // if user is in a session
+    if (user) {
+        let rOwnerID = user.id;
+        let rOfferingBusiness = user.name;
+        let rTitle = req.body.title;
+        let rShortDesc = req.body.shortDesc;
+        let rLongDesc = req.body.longDesc;
+        let rContactInfo = req.body.contactInfo;
 
-    offers.push(newOffer);
-    saveOfferList(offers);
+        let offers = getOfferList();
+        let nextID = offers[offers.length - 1].id + 1;
+    
+        let newOffer = new Offer(nextID, rOwnerID, rOfferingBusiness, rTitle, rShortDesc, rLongDesc, rContactInfo, []);
+    
+        offers.push(newOffer);
+        saveOfferList(offers);
+    
+   
+        console.log("OFFERS SAVED /createOffer POST");
 
-    console.log("OFFERS SAVED /createOffer POST");
+    }
+    else {
+        res.status(401);
+    }
+    
+    
+    
+
+
 
     res.end();
 })
