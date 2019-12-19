@@ -84,9 +84,43 @@
             let loginBtn = document.getElementById("loginButton");
             loginBtn.addEventListener("click", () => {
                 let userName = document.getElementById("uNameField").value;
-                fetch("http://localhost:8888/loginuser?username=" + userName)
-                    .then(response => response.json())
-                    .then(json => loginHandle(json));
+                let pw = document.getElementById("pwField").value;
+
+                // xhr method
+                var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+                var theUrl = "/json-handler";
+                xmlhttp.open("POST", "http://localhost:8888/loginuser", true);
+                xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                xmlhttp.withCredentials = true;
+                xmlhttp.send(JSON.stringify({
+                    username: userName,
+                    password: pw // should be hashed
+                }));
+
+                // //fetch method
+                // fetch("http://localhost:8888/loginuser", {
+                //     method: 'POST',
+                //     body: JSON.stringify({
+                //         username: userName,
+                //         password: pw // should be hashed
+                //     }),
+                //     headers: {
+                //         "Content-type": "application/json; charset=UTF-8"
+                //     },
+                //     credentials: "same-origin",
+                // })
+
+                //             .then(res => {
+                //   console.log(res.headers.get('set-cookie')); // undefined
+                //   console.log(document.cookie); // nope
+                //   return res.json();
+                // })
+
+
+
+                //original
+                //             // .then(response => response.json())
+                // .then(json => loginHandle(json));
             });
             document.getElementById("createNewButton").onclick = function () {
                 location.href = 'createUser.html';
@@ -103,10 +137,10 @@
     <h1>Login</h1>
 
     <div>
-            Brugernavn: <input class="loginBox" id="uNameField" type="text" name="username"><br>
-            Password: <input class="loginBox" id="pwField" type="password" name="pw"><br>
-            <input class="loginBox" id="loginButton" type="submit" value="Log ind">
-            <input class="loginBox" id="createNewButton" type="button" value="Opret nyt login">
+        Brugernavn: <input class="loginBox" id="uNameField" type="text" name="username"><br>
+        Password: <input class="loginBox" id="pwField" type="password" name="pw"><br>
+        <input class="loginBox" id="loginButton" type="submit" value="Log ind">
+        <input class="loginBox" id="createNewButton" type="button" value="Opret nyt login">
     </div>
 </body>
 

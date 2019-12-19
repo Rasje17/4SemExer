@@ -7,6 +7,13 @@ const fileSys = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const session = require('express-session');
+
+
+const {
+    SESS_NAME = 'sid',
+    SESS_SECRET = 'Should be a better walue'
+} = process.env
 
 
 /*
@@ -20,44 +27,47 @@ sets CORS and bodyparser (used for handling POST request-body with express) for 
 */
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
-server.use(cors());
+server.use(cors({
+    credentials: true,
+    origin: 'http://localhost'
+}));
 server.options('*', cors());
+
+
+server.use(session({
+    name: SESS_NAME,
+    resave: false,
+    saveUninitialized: false,
+    secret: SESS_SECRET,
+    cookie: {
+        maxAge: 36000,
+        sameSite: true,
+        secure: false, //skift til true når det virker
+ //
+    }
+}))
+
+
 
 // GET user for LogIn
 server.get('/users/:usna', (req, res) => {
-    
+
     let users = getUserList();
 
     users.forEach(element => {
         if (element.username == req.params.usna) {
             // console.log to check which user we found:
             console.log(element.username);
-            
+
             res.json(JSON.stringify(element));
         }
 
-    
+
     });
 
     res.end();
 })
 
-server.get('/loginuser', (req, res) => {
-    let users = getUserList();
-
-    let someObj = {};
-
-    users.forEach(e => {
-        if (e.username == req.query.username) {
-            someObj = JSON.stringify(e);
-            console.log(e);
-        }
-    });
-
-    res.json(someObj);
-
-    res.end();
-})
 
 // GET for specific user ID
 server.get('/users', (req, res) => {
@@ -73,7 +83,7 @@ server.get('/users', (req, res) => {
 
 // GET for all offers
 server.get('/offers', (req, res) => {
-    res.json(JSON.stringify(getOfferList()));   
+    res.json(JSON.stringify(getOfferList()));
     res.end();
 });
 
@@ -82,7 +92,7 @@ server.get('/offer', (req, res) => {
 
     let offerList = getOfferList();
     offerList.forEach(e => {
-        if(e.id == req.query.id) {
+        if (e.id == req.query.id) {
             res.json(JSON.stringify(e));
         }
     });
@@ -106,19 +116,19 @@ server.delete('/offer', (req, res) => {
     res.end();
 })
 
-// PUT for aadding aplicant to offer
+// PUT for adding aplicant to offer
 server.put('/offer', (req, res) => {
 
     let offerList = getOfferList();
-    
+
 
     offerList.forEach(e => {
-        if(e.id == req.query.offerId) {
+        if (e.id == req.query.offerId) {
             e.addApplicant(parseInt(req.query.applicant));
         }
     })
     saveOfferList(offerList);
-    
+
     res.end();
 })
 
@@ -127,6 +137,41 @@ server.get('/allusers/', (req, res) => {
     let users = getUserList();
 
     res.json(JSON.stringify(users));
+    res.end();
+})
+
+// skrives om til at håndtere alt login funct med at teste brugernavn/pw og sætte en session op
+server.post('/loginuser', (req, res) => {
+   //const { userID } = req.session.userID
+    let username = req.body.username;
+    let password = req.body.password;
+
+
+    let users = getUserList();
+
+    if (username && password) {
+
+        const user = users.find(e => e.username === username && e.password === password);
+
+        if (user) {
+            req.session.userID = user.id
+        }
+        console.log(JSON.stringify(user.busBool));
+        res.json({ "id":user.busBool});
+    }
+    console.log(req.session.userID);
+
+    // let someObj = {};
+
+    // users.forEach(e => {
+    //     if (e.username == req.query.username) {
+    //         someObj = JSON.stringify(e);
+    //         console.log(e);
+    //     }
+    // });
+
+    // res.json(someObj);
+
     res.end();
 })
 
@@ -140,7 +185,7 @@ server.post('/allusers', (req, res) => {
 
     let users = getUserList();
     let nextID = users.length;
-    
+
     let newUser = new User(nextID, rName, rMail, rBusBool, rUserName, rPassword);
 
     users.push(newUser);
@@ -159,8 +204,8 @@ server.post('/createOffer', (req, res) => {
     let rContactInfo = req.body.contactInfo;
 
     let offers = getOfferList();
-    let nextID = offers[offers.length-1].id+1;
-    
+    let nextID = offers[offers.length - 1].id + 1;
+
     let newOffer = new Offer(nextID, rOwnerID, rOfferingBusiness, rTitle, rShortDesc, rLongDesc, rContactInfo, []);
 
     offers.push(newOffer);
@@ -250,8 +295,8 @@ class Offer {
     }
 
     addApplicant(applicantId) {
-        if(!(this.applicants.includes(applicantId))) {
-            this.applicants.push(applicantId);  
+        if (!(this.applicants.includes(applicantId))) {
+            this.applicants.push(applicantId);
         }
     }
 }
