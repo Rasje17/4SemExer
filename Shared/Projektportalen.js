@@ -33,12 +33,6 @@ server.options('*', cors());
 let users = loadData('./users.json');
 let offerList = loadData('./offers.json');
 
-// ALROL17: Update function for the offerlist in case of changes to the list while storing locally
-function UpdateOfferList() {
-    offerList = loadData('./offers.json');
-}
-
-
 // GET user for LogIn
 server.get('/users/:usna', (req, res) => {
 
@@ -50,7 +44,7 @@ server.get('/users/:usna', (req, res) => {
 
 server.get('/loginuser', (req, res) => {
     let currentUser = users.find(x => x.username == req.query.username);
-    res.json(JSON.stringify(userIndex));
+    res.json(JSON.stringify(currentUser));
 
     res.end();
 })
@@ -83,14 +77,11 @@ server.get('/offer', (req, res) => {
 server.delete('/offer', (req, res) => {
 
     let removeIndex = offerList.findIndex(x => x.id == req.query.offerId)
-    offers.splice(removeIndex, 1);
+    offerLsit.splice(removeIndex, 1);
 
-    saveOfferList(offers);
+    saveOfferList(offerList);
 
     console.log("we have deleted!");
-
-    // ALROL17: Update locally stored offerlist
-    UpdateOfferList();
 
     res.end();
 })
@@ -102,14 +93,12 @@ server.put('/offer', (req, res) => {
     currentOffer.addApplicant(parseInt(req.query.applicant));
 
     saveOfferList(offerList);
-
-    //ALROL17: Update locally stored (serverside) offerlist
-    UpdateOfferList();
     
     res.end();
 })
 
 // GET for getting entire list of users
+// ALROL17: This is for testing only and should not be released with the complete system as it allows for data leak
 server.get('/allusers', (req, res) => {
     res.json(JSON.stringify(users));
     res.end();
