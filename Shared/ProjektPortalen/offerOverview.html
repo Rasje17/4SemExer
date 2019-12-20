@@ -5,83 +5,9 @@
     <title>ProjektPortalen</title>
     <link rel="Stylesheet" href="styles.css">
 
-
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-
-        window.onload = () => {
-            let this_url = window.location.href;
-
-            function setupNav() {
-                if (urlParams.has('loginVal') && urlParams.get('loginVal') != 0 && urlParams.get('loginVal') != null) {
-                    document.getElementById('loginRef').innerHTML = "Log Ud";
-                    document.getElementById('loginRef').href = "index.html";
-                }
-                else {
-                    document.getElementById('loginRef').innerHTML = "Login";
-                    document.getElementById('loginRef').href = ("login.html?src=" + this_url);
-                }
-
-                document.getElementById('offerlink').innerHTML = "Tilbudsoversigt";
-                document.getElementById('offerlink').href = ('offerOverview.html?userID=' + urlParams.get('userID') + '&loginVal=' + urlParams.get('loginVal'));
-            }
-
-            let userId = (urlParams.get('userID'));
-            let loginValue = (urlParams.get('loginVal'));
-
-            fetch('http://localhost:8888/offers')
-                .then(response => response.json())
-                .then(json => convertToCards(json));
-
-            function convertToCards(json) {
-                let offers = JSON.parse(json);
-                offers.forEach(element => {
-                    createCard(element);
-                });
-
-
-            }
-
-            function createCard(ob) {
-                let card = document.createElement("div");
-                card.setAttribute("id", ob.id);
-                card.className = "card";
-                card.addEventListener("click", () => {
-                    if (urlParams.has('loginVal')) {
-                        location.href = 'offerPage.html?offerId=' + ob.id + '&userID=' + userId + '&loginVal=' + loginValue;
-                    }
-                    else {
-                        location.href = 'offerPage.html?offerId=' + ob.id;
-                    }
-                })
-
-                let container = document.createElement("div");
-                container.className = "container";
-
-                let title = document.createElement("h3");
-                title.textContent = ob.title;
-                container.appendChild(title);
-
-                let partner = document.createElement("p");
-                partner.textContent = "Samarbejdspartner: " + ob.offeringBusiness;
-                container.appendChild(partner);
-
-                let shDisc = document.createElement("p");
-                shDisc.textContent = ob.shortDesc;
-                container.appendChild(shDisc);
-
-
-
-                card.appendChild(container);
-                document.getElementById("offerlist").appendChild(card);
-            }
-
-            setupNav();
-
-        }
-
-
-    </script>
+    <script type='text/javascript' src='./js/urlParamsDeclare.js'></script>
+    <script type="text/javascript" src="./js/setupNav.js"></script>
+    <script type="text/javascript" src="./js/offerOverviewOnLoad.js"></script>
 </head>
 
 <header>

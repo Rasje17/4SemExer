@@ -6,70 +6,9 @@
     <link rel="stylesheet" href="styles.css">
     <meta charset="utf-8" />
 
-    <script>
-        window.onload = () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            let this_url = window.location.href;
-
-            function setupNav() {
-                if (urlParams.has('loginVal') && urlParams.get('loginVal') != 0 && urlParams.get('loginVal') != null) {
-                    document.getElementById('loginRef').innerHTML = "Log Ud";
-                    document.getElementById('loginRef').href = "index.html";
-                }
-                else {
-                    document.getElementById('loginRef').innerHTML = "Login";
-                    document.getElementById('loginRef').href = ("login.html?src=" + this_url);
-                }
-
-                document.getElementById('offerlink').innerHTML = "Tilbudsoversigt";
-                document.getElementById('offerlink').href = ('offerOverview.html?userID=' + urlParams.get('userID') + '&loginVal=' + urlParams.get('loginVal'));
-            }
-
-            let btn = document.getElementById("opretButton");
-            btn.addEventListener("click", () => {
-                if (document.getElementById("userName").value != "" && document.getElementById("pw").value != "" && document.getElementById("name").value != "" && document.getElementById("email").value != "") {
-                    let subUserName = document.getElementById("userName").value;
-                    let subpw = document.getElementById("pw").value;
-                    let subBusBool = false;
-                    if (document.getElementById("virksomhed").checked) {
-                        busBool = true;
-                    }
-                    let subName = document.getElementById("name").value;
-                    let subEmail = document.getElementById("email").value;
-
-                    // THIS FIXES SHIT - DONT TOUCH!!!
-                    // If we don't ping the server first, sometimes the POST request never reaches it.
-                    // for some reason, if we have a useless GET-fetch first, it works.
-                    fetch("http://localhost:8888/allusers");
-
-                    fetch("http://localhost:8888/allusers", {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            name: subName,
-                            email: subEmail,
-                            busBool: subBusBool,
-                            username: subUserName,
-                            password: subpw
-                        }),
-                        headers: {
-                            "Content-type": "application/json; charset=UTF-8"
-                        }
-                    });
-
-                    document.getElementById("userName").value="";
-                    document.getElementById("pw").value="";
-                    document.getElementById("name").value="";
-                    document.getElementById("email").value="";
-
-                }
-                else {
-                    console.log("Udfyld venligst alle felterne!");
-                }
-            })
-
-            setupNav();
-        }
-    </script>
+    <script type='text/javascript' src='./js/urlParamsDeclare.js'></script>
+    <script type="text/javascript" src="./js/setupNav.js"></script>
+    <script type="text/javascript" src="./js/createUserOnLoad.js"></script>
 </head>
 
 <header>
