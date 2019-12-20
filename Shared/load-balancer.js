@@ -17,5 +17,5 @@ let proxy = httpProxy.createProxyServer({}); //Create proxy-server
 //Create the server to handle requests and response to and from the destinations listed above, through proxy server
 http.createServer((req, res) => {
     proxy.web(req, res, destinations[i]);
-    i = (i + 1) % destination.length;
+    i = (i + 1) % destinations.length;
 }).listen(args[0] || 8000); //Tells the server to listen on the argument input in the cmd terminal or to listen on port 8000 if nothing is given in terminal 
