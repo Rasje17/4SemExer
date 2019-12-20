@@ -29,7 +29,7 @@
             let userId = (urlParams.get('userID'));
             let loginValue = (urlParams.get('loginVal'));
 
-            fetch('http://localhost:8000/offers')
+            fetch('http://localhost:8888/offers')
                 .then(response => response.json())
                 .then(json => convertToCards(json));
 
