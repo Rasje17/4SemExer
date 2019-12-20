@@ -25,39 +25,31 @@ server.use(bodyParser.json());
 server.use(cors());
 server.options('*', cors());
 
-// GET user for LogIn
+// GET user (no longer in use, here to display a different way to set up the requesthandlers - using params instead of query)
 server.get('/users/:usna', (req, res) => {
-    
+
     let users = getUserList();
-
-    users.forEach(element => {
-        if (element.username == req.params.usna) {
-            // console.log to check which user we found:
-            console.log(element.username);
-            
-            res.json(JSON.stringify(element));
-        }
-
-    
-    });
+    let foundU = users.find(e => e.username == req.params.usna);
+    res.json(JSON.stringify(foundU));
 
     res.end();
 })
 
+// GET user for LogIn
 server.get('/loginuser', (req, res) => {
+
+    //for testing without having to read from disk every time:
+    /**
+    user1 = new User(0, "name1", "email1", false, "username1", "password1");
+    user2 = new User(1, "name2", "email2", true, "username2", "password2");
+    user3 = new User(2, "name3", "email3", false, "username3", "password3");
+    let users = [user1, user2, user3];
+     */
     let users = getUserList();
 
-    let someObj = {};
-
-    users.forEach(e => {
-        if (e.username == req.query.username) {
-            someObj = JSON.stringify(e);
-            console.log(e);
-        }
-    });
-
-    res.json(someObj);
-
+    let foundU = users.find(e => e.username == req.query.username);
+    res.json(JSON.stringify(foundU)); 
+    
     res.end();
 })
 
