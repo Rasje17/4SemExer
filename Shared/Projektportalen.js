@@ -47,6 +47,15 @@ server.get('/loginuser', (req, res) => {
      */
     let users = getUserList();
 
+    /*
+    users.forEach(e => {
+        if(e.username == req.query.username) {
+            someObj = JSON.stringify(e);
+        }
+    })
+    res.json(someObj);
+    */
+
     let foundU = users.find(e => e.username == req.query.username);
     res.json(JSON.stringify(foundU)); 
     
